@@ -14,6 +14,20 @@
 #include "pwm.h"
 #include "ios.h"
 
+#define PWM_ON_CHANNEL_0 /* MAT1.0 */ PINSEL0 &= ~((1<<24) | (1<<25)); PINSEL0 |= (1<<25)
+#define PWM_ON_CHANNEL_1 /* MAT1.1 */ PINSEL0 &= ~((1<<26) | (1<<27)); PINSEL0 |= (1<<27)
+#define PWM_ON_CHANNEL_2 /* MAT1.2 */ PINSEL1 &= ~((1<<6) | (1<<7)); PINSEL1 |= (1<<7)
+#define PWM_OFF_CHANNEL_0 /* MAT1.0 */ IOCLR = (1<<12); PINSEL0 &= ~((1<<24) | (1<<25))
+#define PWM_OFF_CHANNEL_1 /* MAT1.1 */ IOCLR = (1<<13); PINSEL0 &= ~((1<<26) | (1<<27))
+#define PWM_OFF_CHANNEL_2 /* MAT1.2 */ IOCLR = (1<<19); PINSEL1 &= ~((1<<6) | (1<<7))
+
+#define PHASE_0_ENABLE_OFF IOSET = (1<<0)
+#define PHASE_1_ENABLE_OFF IOSET = (1<<1)
+#define PHASE_2_ENABLE_OFF IOSET = (1<<2)
+#define PHASE_0_DISABLE_OFF IOCLR = (1<<0)
+#define PHASE_1_DISABLE_OFF IOCLR = (1<<1)
+#define PHASE_2_DISABLE_OFF IOCLR = (1<<2)
+
 volatile unsigned char state = 0;
 
 void timer0_int_handler (void) __attribute__ ((interrupt("IRQ")));
@@ -79,73 +93,44 @@ void timer0_int_handler (void)
   switch (state)
   {
     case 0: // 0º to 60º
-    //pwm_on (CHANNEL_0);
-    /* Initialize Pin Select Block for MAT1.0 */
-    PINSEL0 |= (1<<25);
-
-    //phase_b_enable_off ();
-    IOSET = (1 << 1);
-
-    //pwm_off (CHANNEL_2);
-    PINSEL1 &= ~(1<<7);
-    IOCLR = (1<<19);
+    PWM_ON_CHANNEL_0;
+    PHASE_1_ENABLE_OFF;
+    PWM_OFF_CHANNEL_2;
 
     state = 1;
     break;
 
     case 1: // 60º to 120º
-    //phase_b_disable_off ();
-    IOCLR = (1 << 1);
-
-    //phase_c_enable_off ();
-    IOSET = (1 << 2);
+    PHASE_1_DISABLE_OFF;
+    PHASE_2_ENABLE_OFF;
 
     state = 2;
     break;
 
     case 2: // 120º to 180º
-    //pwm_off (CHANNEL_0);
-    PINSEL0 &= ~(1<<25);
-    IOCLR = (1<<12);
-
-    //pwm_on (CHANNEL_1);
-    /* Initialize Pin Select Block for MAT1.1 */
-    PINSEL0 |= (1<<27);
-
-    //phase_c_enable_off ();
-    IOSET = (1 << 2);
+    PWM_OFF_CHANNEL_0;
+    PWM_ON_CHANNEL_1;
 
     state = 3;
     break;
 
     case 3: // 180º to 240º
-    //phase_a_enable_off ();
-    IOSET = (1 << 0);
-
-    //phase_c_disable_off ();
-    IOCLR = (1 << 2);
+    PHASE_0_ENABLE_OFF;
+    PHASE_2_DISABLE_OFF;
 
     state = 4;
     break;
 
     case 4: // 240º to 300º
-    //pwm_off (CHANNEL_1);
-    PINSEL0 &= ~(1<<27);
-    IOCLR = (1<<13);
-
-    //pwm_on (CHANNEL_2);
-    /* Initialize Pin Select Block for MAT1.2 */
-    PINSEL1 |= (1<<7);
+    PWM_OFF_CHANNEL_1;
+    PWM_ON_CHANNEL_2;
 
     state = 5;
     break;
 
     case 5: // 300º to 360º
-    //phase_a_disable_off ();
-    IOCLR = (1 << 0);
-
-    //phase_b_enable_off ();
-    IOSET = (1 << 1);
+    PHASE_0_DISABLE_OFF;
+    PHASE_1_ENABLE_OFF;
 
     state = 0;
     break;

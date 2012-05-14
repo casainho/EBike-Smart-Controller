@@ -20,6 +20,9 @@ void ios_init (void)
     phase_c --> P0.2
   */
 
+  /* P0.0, P0.1 and P0.2 as GPIOs */
+  PINSEL0 |= ((1<<0) | (1<<1) | (1<<2) | (1<<3) | (1<<4) | (1<<5));
+
   /* Clear the bits for the outputs */
   IOCLR |= ((1 << 0) | (1 << 1) | (1 << 2));
 
