@@ -9,7 +9,8 @@
  * Released under the GPL Licence, Version 3
  */
 
-void timer0_init (void);
-void timer0_set_us (unsigned long us);
-void timer0_start (void);
-void timer0_stop (void);
+void timer1_init (void);
+unsigned long millis(void);
+void delay_ms(unsigned long ms);
+unsigned long micros(void);
+void delay_us(unsigned long us);

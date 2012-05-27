@@ -21,13 +21,27 @@ void ios_init (void)
   */
 
   /* P0.0, P0.1 and P0.2 as GPIOs */
-  PINSEL0 |= ((1<<0) | (1<<1) | (1<<2) | (1<<3) | (1<<4) | (1<<5));
+  PINSEL0 &= ~((1<<0) | (1<<1) | (1<<2) | (1<<3) | (1<<4) | (1<<5));
+
+  PINSEL0 &= ~((1<<24) | (1<<25));
+  PINSEL0 &= ~((1<<26) | (1<<27));
+  PINSEL1 &= ~((1<<6) | (1<<7));
+
+  PINSEL0 &= ~((1<<8) | (1<<9));
 
   /* Clear the bits for the outputs */
   IOCLR |= ((1 << 0) | (1 << 1) | (1 << 2));
 
+  IOCLR |= ((1 << 12) | (1 << 13) | (1 << 19));
+
+  IOCLR |= (1 << 4);
+
   /* Define all lines as outputs */
   IODIR |= ((1 << 0) | (1 << 1) | (1 << 2));
+
+  IODIR |= ((1 << 12) | (1 << 13) | (1 << 19));
+
+  IODIR |= (1 << 4);
 }
 
 unsigned char io_is_set (unsigned char io_number)

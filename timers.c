@@ -11,128 +11,85 @@
 
 #include "lpc210x.h"
 #include "main.h"
-#include "pwm.h"
-#include "ios.h"
 
-#define PWM_ON_CHANNEL_0 /* MAT1.0 */ PINSEL0 &= ~((1<<24) | (1<<25)); PINSEL0 |= (1<<25)
-#define PWM_ON_CHANNEL_1 /* MAT1.1 */ PINSEL0 &= ~((1<<26) | (1<<27)); PINSEL0 |= (1<<27)
-#define PWM_ON_CHANNEL_2 /* MAT1.2 */ PINSEL1 &= ~((1<<6) | (1<<7)); PINSEL1 |= (1<<7)
-#define PWM_OFF_CHANNEL_0 /* MAT1.0 */ IOCLR = (1<<12); PINSEL0 &= ~((1<<24) | (1<<25))
-#define PWM_OFF_CHANNEL_1 /* MAT1.1 */ IOCLR = (1<<13); PINSEL0 &= ~((1<<26) | (1<<27))
-#define PWM_OFF_CHANNEL_2 /* MAT1.2 */ IOCLR = (1<<19); PINSEL1 &= ~((1<<6) | (1<<7))
+void timer1_int_handler (void)   __attribute__ ((interrupt("IRQ")));
 
-#define PHASE_0_ENABLE_OFF IOSET = (1<<0)
-#define PHASE_1_ENABLE_OFF IOSET = (1<<1)
-#define PHASE_2_ENABLE_OFF IOSET = (1<<2)
-#define PHASE_0_DISABLE_OFF IOCLR = (1<<0)
-#define PHASE_1_DISABLE_OFF IOCLR = (1<<1)
-#define PHASE_2_DISABLE_OFF IOCLR = (1<<2)
+long millis_ticks = 0;
 
-volatile unsigned char state = 0;
-
-void timer0_int_handler (void) __attribute__ ((interrupt("IRQ")));
-
-void timer0_init (void)
+void timer1_init (void)
 {
-  /* Initialize VIC */
-  VICINTSEL &= ~(1 << 4); /* Timer 0 selected as IRQ */
-  VICINTEN |= (1 << 4); /* Timer 0 interrupt enabled */
-  VICVECTCNTL1 = 0x24; /* Assign Timer0; IRQ */
-  VICVECTADDR1 = (unsigned long) timer0_int_handler; /* Address of the ISR */
+    /* Initialize VIC */
+    VICINTSEL &= ~(1 << 5); /* Timer 1 selected as IRQ */
+    VICINTEN |= (1 << 5); /* Timer 1 interrupt enabled */
+    VICVECTCNTL1 = 0x25;
+    VICVECTADDR1 = (unsigned long) timer1_int_handler; /* Address of the ISR */
 
-  /* Timer/Counter 0 power/clock enable */
-  PCONP |= (1 << 1);
+    /* Timer/Counter 1 power/clock enable */
+    PCONP |= (1 << 2);
 
-  /* Initialize Timer 0 */
-  TIMER0_TCR = 0;
-  TIMER0_TC = 0; /* Counter register: Clear counter */
-  TIMER0_PR = 47; /* Prescaler register: Timer0 Counter increments each 1us; 1us/(48MHz-1) */
-  TIMER0_PC = 0; /* Prescaler counter register: Clear prescaler counter */
+    /* Initialize Timer 1 */
+    TIMER1_TCR = 0;
+    TIMER1_TC = 0; /* Counter register: Clear counter */
+    TIMER1_PR = 47; /* Prescaler register: Timer2 Counter increments each 1us; 1us/(48MHz-1) */
+    TIMER1_PC = 0; /* Prescaler counter register: Clear prescaler counter */
 
-  /* Clear the interrupt flag */
-  TIMER0_IR = 1;
-  VICVECTADDR = 0xff;
+#ifdef XTAL_12000000HZ
+    /* Match register 0:
+     * Fclk = 48000000Hz; 48MHz/48 = 1MHz -> 1us.
+     * 1000 * 1us = 1ms */
+    TIMER1_MR0 = 1000;
+#elif defined XTAL_14745600HZ
+#error TODO
+    /* Match register 0:
+     * Fclk = 53236800Hz; 1ms => 0,001/(1/53236800); 1ms => 53237 */
+    TIMER1_MR0 = 53237;
+#else
+#ERROR XTAL frequ need to be defined
+#endif
 
-  TIMER0_MCR = 3; /* Reset and interrupt on match */
+    TIMER1_MCR = 3; /* Reset and interrupt on match */
+
+    /* Start timer */
+    TIMER1_TCR = 1;
 }
 
-void timer0_start (void)
+void timer1_int_handler (void)
 {
-  /* Start timer */
-  TIMER0_TCR = 1;
+    /* Clear the interrupt flag */
+    TIMER1_IR = 1;
+    VICVECTADDR = 0xff;
+
+    millis_ticks++;
 }
 
-void timer0_stop(void)
+/* Atomic */
+unsigned long millis(void)
 {
-  /* Stop timer */
-  TIMER0_TCR = 0;
+  unsigned long t;
+  VICINTEN &= ~(1 << 5); /* Timer 1 interrupt disabled */
+  t = millis_ticks;
+  VICINTEN |= (1 << 5); /* Timer 1 interrupt enabled */
+  return t;
 }
 
-void timer0_set_us (unsigned long us)
+void delay_ms(unsigned long ms)
 {
-  /* Match register 0:
-   * Fclk = 48000000Hz; 48MHz/48 = 1MHz -> 1us.
-   * x us * 1us = x us */
-  TIMER0_MR0 = us;
+  unsigned long start = millis();
+  while (millis() - start < ms)
+    ;
 }
 
-void timer0_int_handler (void)
+/* Atomic */
+long micros(void)
 {
-  /* Clear the interrupt flag */
-  TIMER0_IR = 1;
-  VICVECTADDR = 0xff;
+  return TIMER1_TC;
+}
 
-  /*             0   1                        0   1
-   *           ________                      _________
-   * PWM:      |||||||||  2              5  ||||||||||
-   * Disable:           ____            ____
-   *                        |  3   4   |
-   * Enable off:             __________
-   */
+/* Always with ~2ms offset. delay_us(1) will be a delay of 3us */
+void delay_us(unsigned long us)
+{
+  unsigned long start = micros();
 
-  switch (state)
-  {
-    case 0: // 0º to 60º
-    PWM_ON_CHANNEL_0;
-    PHASE_1_ENABLE_OFF;
-    PWM_OFF_CHANNEL_2;
-
-    state = 1;
-    break;
-
-    case 1: // 60º to 120º
-    PHASE_1_DISABLE_OFF;
-    PHASE_2_ENABLE_OFF;
-
-    state = 2;
-    break;
-
-    case 2: // 120º to 180º
-    PWM_OFF_CHANNEL_0;
-    PWM_ON_CHANNEL_1;
-
-    state = 3;
-    break;
-
-    case 3: // 180º to 240º
-    PHASE_0_ENABLE_OFF;
-    PHASE_2_DISABLE_OFF;
-
-    state = 4;
-    break;
-
-    case 4: // 240º to 300º
-    PWM_OFF_CHANNEL_1;
-    PWM_ON_CHANNEL_2;
-
-    state = 5;
-    break;
-
-    case 5: // 300º to 360º
-    PHASE_0_DISABLE_OFF;
-    PHASE_1_ENABLE_OFF;
-
-    state = 0;
-    break;
-  }
+  while (micros() - start < us)
+    ;
 }
