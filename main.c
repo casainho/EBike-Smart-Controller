@@ -17,6 +17,18 @@
 #include "main.h"
 #include "ios.h"
 
+/*
+ * Pins connections
+ * (please refer to KU63 schematic)
+ *
+ * LPC2103 P0.0 --> CPU1
+ * LPC2103 P0.1 --> CPU3
+ * LPC2103 P0.2 --> CPU5
+ * LPC2103 P0.12 (PWM; MAT1.0) --> CPU44
+ * LPC2103 P0.13 (PWM; MAT1.1) --> CPU2
+ * LPC2103 P0.19 (PWM; MAT1.2) --> CPU4
+ */
+
 int main (void)
 {
   /* Initialize the system */
