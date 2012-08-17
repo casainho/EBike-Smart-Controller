@@ -17,17 +17,42 @@
 #include "main.h"
 #include "ios.h"
 
-/*
- * Pins connections
- * (please refer to KU63 schematic)
- *
- * LPC2103 P0.0 --> CPU1
- * LPC2103 P0.1 --> CPU3
- * LPC2103 P0.2 --> CPU5
- * LPC2103 P0.12 (PWM; MAT1.0) --> CPU44
- * LPC2103 P0.13 (PWM; MAT1.1) --> CPU2
- * LPC2103 P0.19 (PWM; MAT1.2) --> CPU4
- */
+BYTE bSector =1;             /* sector of rotor position, 1~6 is possible value */
+BOOL fDir = FALSE;           /* motor direction variable---CCW direction is default */ 
+BYTE baStartUpTimeTbl[12]= {180,150,130,100,80,60
+                            ,50,40,30,20,10,5};                            
+
+BYTE bFreeRunTimePointer = 0; /* pointer of startup time table */
+
+void CheckZeroCrossing()
+{//TODO
+}
+
+//running without any sensor feedback
+void FreeRun(void)
+{
+    WORD wTimeCur;
+
+    /* Switch channel */      
+    Commutation();
+
+    wTimeCur = Timer1_wReadTimer();
+
+    /* loop for next freerun commutate */
+    while((Timer1_wReadTimer()-wTimeCur)< 100*(WORD)baStartUpTimeTbl[bFreeRunTimePointer]) 
+	{ 
+	// check for bemf zero crossing here
+	CheckZeroCrossing();
+    }       
+
+    /* Add speed bit by bit */      
+    bFreeRunTimePointer++;
+    if(bFreeRunTimePointer >11 ) /* Keep constant speeed */
+    {
+        bFreeRunTimePointer = 11;
+    }
+
+}
 
 int main (void)
 {
@@ -38,16 +63,19 @@ int main (void)
   pwm_init();
   ios_init();
 
-  // Set period 6 * 5ms = 30ms
-  timer0_set_us (5000);
+  //there is .006ms per cycle
+  //timer0_set_us (500); //this is 3ms = .006x500
+  timer0_set_us (166); //this is 1ms = .006x166
+
   // Start timer
   timer0_start ();
 
   // Set duty-cycle
-  update_duty_cycle(2); // 0 up to 1000
+  update_duty_cycle(500); // 0 up to 1000
 
   while (1)
   {
-
+  	FreeRun();
+	
   }
 }

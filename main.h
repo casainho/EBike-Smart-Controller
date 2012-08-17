@@ -15,4 +15,10 @@
 #define XTAL_12000000HZ
 //#define XTAL_14745600HZ
 
+#define BYTE unsigned char
+#define WORD unsigned int
+#define BOOL char
+#define FALSE 0
+#define TRUE 1
+
 #endif /* MAIN_H_ */
