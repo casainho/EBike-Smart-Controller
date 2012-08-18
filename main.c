@@ -25,29 +25,27 @@
  * LPC2103 P0.0 --> CPU1
  * LPC2103 P0.1 --> CPU3
  * LPC2103 P0.2 --> CPU5
- * LPC2103 P0.12 (PWM; MAT1.0) --> CPU44
- * LPC2103 P0.13 (PWM; MAT1.1) --> CPU2
- * LPC2103 P0.19 (PWM; MAT1.2) --> CPU4
+ * LPC2103 P0.12 (PWM; MAT1.0) --> CPU44 (inverted logic on hardware)
+ * LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 (inverted logic on hardware)
+ * LPC2103 P0.19 (PWM; MAT1.2) --> CPU4 (inverted logic on hardware)
  */
 
 int main (void)
 {
   /* Initialize the system */
-  system_init();
-  timer0_init();
-  enableIRQ();
-  pwm_init();
-  ios_init();
+  system_init ();
+  //timer0_init ();
+  //enableIRQ ();
+  timer2_init ();
+  pwm_init ();
+  ios_init ();
 
-  timer0_set_us (1000);
-  timer0_start (); // Start timer
-
-  update_duty_cycle(1000); // Set duty-cycle; 0 up to 1000
+  update_duty_cycle(50); // Set duty-cycle; 0 up to 1000
 
   while (1)
   {
     commutation_sector_1 ();
-    delay_us (25);
+    delay_us (50);
 
     commutation_disable ();
     delay_us (1000000); // 1 second
