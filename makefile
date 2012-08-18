@@ -22,7 +22,7 @@ ODFLAGS	= -x --syms
 
 clean:
 	-rm crt.lst crt.o main.o main.out main.map main.dmp main.bin \
-	system.o timers.o isrsupport.o pwm.o ios.o \
+	system.o timers.o isrsupport.o pwm.o ios.o motor.o \
 
 all: main.out
 	@ echo "...copying"
@@ -31,11 +31,11 @@ all: main.out
 	$(SIZE) main.out
 
 main.out: crt.o main.o system.o timers.o isrsupport.o \
-	pwm.o ios.o  \
+	pwm.o ios.o motor.o \
 	linker_script-flash_memory.cmd
 	@ echo "..linking"
 	$(LD) $(LDFLAGS) -o main.out crt.o main.o system.o timers.o \
-	isrsupport.o pwm.o ios.o libm.a libc.a libgcc.a
+	isrsupport.o pwm.o ios.o motor.o libm.a libc.a libgcc.a
 
 crt.o: crt.s
 	$(AS) $(AFLAGS) crt.s > crt.lst
@@ -56,4 +56,7 @@ pwm.o: pwm.c
 	$(CC) $(CFLAGS) $(OPT) pwm.c
 
 ios.o: ios.c
-	$(CC) $(CFLAGS) $(OPT) ios.c					
+	$(CC) $(CFLAGS) $(OPT) ios.c
+	
+motor.o: motor.c
+	$(CC) $(CFLAGS) $(OPT) motor.c							

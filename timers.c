@@ -14,8 +14,6 @@
 #include "pwm.h"
 #include "ios.h"
 
-volatile unsigned int wTime=0;
-
 void timer0_int_handler (void) __attribute__ ((interrupt("IRQ")));
 
 void timer0_init (void)
@@ -69,10 +67,20 @@ void timer0_int_handler (void)
   TIMER0_IR = 1;
   VICVECTADDR = 0xff;
 
-	wTime++;
+  //TODO
 }
 
-int Timer1_wReadTimer ()
+/* Atomic */
+long micros(void)
 {
-	return wTime;
+  return TIMER0_TC;
+}
+
+/* Always with ~2us offset. delay_us(1) will be a delay of 3us */
+void delay_us(unsigned long us)
+{
+  unsigned long start = micros();
+
+  while (micros() - start < us)
+    ;
 }
