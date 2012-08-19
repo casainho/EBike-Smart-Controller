@@ -34,20 +34,33 @@ int main (void)
 {
   /* Initialize the system */
   system_init ();
-  //timer0_init ();
+  timer0_init ();
   //enableIRQ ();
   timer2_init ();
   pwm_init ();
   ios_init ();
 
-  update_duty_cycle(50); // Set duty-cycle; 0 up to 1000
+  update_duty_cycle(500); // Set duty-cycle; 0 up to 1000
 
+#define DELAY 50
   while (1)
   {
     commutation_sector_1 ();
-    delay_us (50);
+    delay_us (DELAY);
+#if 0
+    commutation_sector_2 ();
+    delay_us (DELAY);
 
+    commutation_sector_3 ();
+    delay_us (DELAY);
+
+    commutation_sector_4 ();
+    delay_us (DELAY);
+
+    commutation_sector_5 ();
+    delay_us (DELAY);
+#endif
     commutation_disable ();
-    delay_us (1000000); // 1 second
+    delay_us (10000);
   }
 }

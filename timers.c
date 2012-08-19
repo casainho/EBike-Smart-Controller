@@ -19,10 +19,10 @@ void timer0_int_handler (void) __attribute__ ((interrupt("IRQ")));
 void timer0_init (void)
 {
   /* Initialize VIC */
-  VICINTSEL &= ~(1 << 4); /* Timer 0 selected as IRQ */
-  VICINTEN |= (1 << 4); /* Timer 0 interrupt enabled */
-  VICVECTCNTL1 = 0x24; /* Assign Timer0; IRQ */
-  VICVECTADDR1 = (unsigned long) timer0_int_handler; /* Address of the ISR */
+  //VICINTSEL &= ~(1 << 4); /* Timer 0 selected as IRQ */
+  //VICINTEN |= (1 << 4); /* Timer 0 interrupt enabled */
+  //VICVECTCNTL1 = 0x24; /* Assign Timer0; IRQ */
+  //VICVECTADDR1 = (unsigned long) timer0_int_handler; /* Address of the ISR */
 
   /* Timer/Counter 0 power/clock enable */
   PCONP |= (1 << 1);
@@ -34,10 +34,10 @@ void timer0_init (void)
   TIMER0_PC = 0; /* Prescaler counter register: Clear prescaler counter */
 
   /* Clear the interrupt flag */
-  TIMER0_IR = 1;
-  VICVECTADDR = 0xff;
+  //TIMER0_IR = 1;
+  //VICVECTADDR = 0xff;
 
-  TIMER0_MCR = 3; /* Reset and interrupt on match */
+  //TIMER0_MCR = 3; /* Reset and interrupt on match */
 }
 
 void timer0_start (void)
@@ -88,7 +88,7 @@ void timer2_init (void)
 /* Atomic */
 long micros(void)
 {
-  return TIMER2_TC;
+  return TIMER0_TC;
 }
 
 /* Always with ~2us offset. delay_us(1) will be a delay of 3us */

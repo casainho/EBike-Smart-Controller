@@ -41,7 +41,12 @@ void phase_u_h_pwm_off (void)
 void phase_u_l_pwm_on (void)
 {
   /* LPC2103 P0.19 (PWM; MAT1.2) --> CPU4 */
-  PINSEL1 |= (1 << 6);
+//  PINSEL1 |= (1 << 6);
+  /* LPC2103 P0.19 (PWM; MAT1.2) --> CPU4 */
+  PINSEL1 &= ~(1 << 6);
+  /* set to output */
+  IODIR |= (1 << 19);
+  IOCLR = (1 << 19); /* inverted logic */
 }
 
 void phase_u_l_pwm_off (void)
@@ -72,7 +77,10 @@ void phase_v_h_pwm_off (void)
 void phase_v_l_pwm_on (void)
 {
   /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
-  PINSEL0 |= (1 << 26);
+//  PINSEL0 |= (1 << 26);
+  /* set to output */
+  IODIR |= (1 << 13);
+  IOCLR = (1 << 13); /* inverted logic */
 }
 
 void phase_v_l_pwm_off (void)
@@ -103,7 +111,10 @@ void phase_w_h_pwm_off (void)
 void phase_w_l_pwm_on (void)
 {
   /* LPC2103 P0.12 (PWM; MAT1.0) --> CPU44 */
-  PINSEL0 |= (1 << 24);
+//  PINSEL0 |= (1 << 24);
+  /* set to output */
+  IODIR |= (1 << 12);
+  IOCLR= (1 << 12); /* inverted logic */
 }
 
 void phase_w_l_pwm_off (void)
