@@ -70,21 +70,22 @@ void update_duty_cycle(unsigned int value)
 
 }
 
-
+//note: active low
 void PWM3L_OFF(void)
 {
      	
 /* GPIO pin p0.2 */ PINSEL0 &= ~((1<<4) | (1<<5));
 /* set to output */ IODIR |= (1 << 2);
-IOCLR = (1 <<2);
+IOSET = (1 <<2);
 }
 
+//note: active low
 void PWM3L_ON(void)
 {
      	
 /* GPIO pin p0.2 */ PINSEL0 &= ~((1<<4) | (1<<5));
 /* set to output */ IODIR |= (1 << 2);
-IOSET = (1 <<2);
+IOCLR = (1 <<2);
 }
 
 void Enable_PWM2H(void)
@@ -97,20 +98,23 @@ void Disable_PWM2H(void)
 /* MAT1.1 pin p0.13*/ IOCLR = (1<<13); PINSEL0 &= ~((1<<26) | (1<<27));
 }
  
+//note: active low
 void PWM2L_OFF(void)
 {
 /* GPIO pin p0.2 */ PINSEL0 &= ~((1<<2) | (1<<3));
 /* set to output */ IODIR |= (1 << 1);
-IOCLR = (1 <<1);
+IOSET = (1 <<1);
 	
 }
+
+//note: active low
 void PWM2L_ON(void)
 {
 /* GPIO pin p0.2 */ PINSEL0 &= ~((1<<2) | (1<<3));
 /* set to output */ IODIR |= (1 << 1);
-IOSET = (1 <<1);
-
+IOCLR = (1 <<1);
 }
+
 void Enable_PWM1H(void)
 {
    	
@@ -123,17 +127,20 @@ void Disable_PWM1H(void)
 /* MAT1.0 pin p0.12*/ IOCLR = (1<<12); PINSEL0 &= ~((1<<24) | (1<<25));
 }
 
+//note: active low
 void PWM1L_OFF(void)
 {
 /* GPIO pin p0.1 */ PINSEL0 &= ~((1<<0) | (1<<1));
 /* set to output */ IODIR |= (1 << 1);
-IOCLR = (1 <<0);
+IOSET = (1 <<0);
 }
+
+//note: active low
 void PWM1L_ON(void)
 {
 /* GPIO pin p0.1 */ PINSEL0 &= ~((1<<0) | (1<<1));
 /* set to output */ IODIR |= (1 << 1);
-IOSET = (1 <<0);
+IOCLR = (1 <<0);
 }
 
 
