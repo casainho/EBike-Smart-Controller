@@ -46,7 +46,10 @@ void pwm_init(void)
 
 void update_duty_cycle(unsigned int value)
 {
-  value = 1000 - value;
+  if (value>PWMDUTY_LIMIT_HIGH)
+	value = PWMDUTY_LIMIT_HIGH;
+
+  value = PWMDUTY_LIMIT_HIGH - value;
 
   // Setup the value to the correspondent channel
   TIMER1_MR0 = value;

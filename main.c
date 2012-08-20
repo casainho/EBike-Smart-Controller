@@ -21,7 +21,7 @@ BYTE bSector =1;             /* sector of rotor position, 1~6 is possible value 
 BOOL fDir = FALSE;           /* motor direction variable---CCW direction is default */ 
 BYTE baStartUpTimeTbl[12]= {180,150,130,100,80,60
                             ,50,40,30,20,10,5};                            
-
+WORD wPWMDutyCycle = 0; 		/* Set PWM initial value in freerun stage  */ 
 BYTE bFreeRunTimePointer = 0; /* pointer of startup time table */
 
 void CheckZeroCrossing()
@@ -32,6 +32,13 @@ void CheckZeroCrossing()
 void FreeRun(void)
 {
     WORD wTimeCur;
+
+    /* Add pwm bit by bit, add strength and accerlarate */
+    wPWMDutyCycle += 10;
+    if(wPWMDutyCycle > MAXPWM)
+    wPWMDutyCycle = MAXPWM;
+
+  update_duty_cycle(wPWMDutyCycle);
 
     /* Switch channel */      
     Commutation();
@@ -52,6 +59,7 @@ void FreeRun(void)
         bFreeRunTimePointer = 11;
     }
 
+
 }
 
 int main (void)
@@ -71,7 +79,9 @@ int main (void)
   timer0_start ();
 
   // Set duty-cycle
-  update_duty_cycle(500); // 0 up to 1000
+  wPWMDutyCycle = 100;   /* Set PWM initial value in freerun stage   */
+  update_duty_cycle(wPWMDutyCycle);
+
 
   while (1)
   {

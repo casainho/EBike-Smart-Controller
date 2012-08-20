@@ -11,5 +11,10 @@
 
 #include "main.h"
 
+#define PWMDUTY_LIMIT_HIGH 1000
+#define PWMDUTY_LIMIT_LOW  200
+#define MAXPWM 500
+
 void pwm_init(void);
 void update_duty_cycle(unsigned int value);
+void Commutation(void);
