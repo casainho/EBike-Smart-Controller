@@ -82,6 +82,9 @@ int main (void)
   wPWMDutyCycle = 100;   /* Set PWM initial value in freerun stage   */
   update_duty_cycle(wPWMDutyCycle);
 
+  //Align the rotor
+  AlignRotor();
+
 
   while (1)
   {

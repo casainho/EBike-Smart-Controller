@@ -238,4 +238,23 @@ void Commutation(void)
 	    
 }
 
+#define ALIGNMENT_TIME 2 //msec
+void AlignRotor(void)   
+{                       
+    WORD wTimeCur;
+    wTimeCur = Timer1_wReadTimer();
+
+  //give it a big energy boost for initial motor alignment
+  update_duty_cycle(MAXPWM);
+
+    Enable_PWM1H();
+    PWM1L_OFF();
+    Disable_PWM2H();
+    PWM2L_ON();
+    Disable_PWM3H();
+    PWM3L_ON();
+
+    //give it some time for alignment to take place
+    while((Timer1_wReadTimer()-wTimeCur)< ALIGNMENT_TIME){} 
+}
 
