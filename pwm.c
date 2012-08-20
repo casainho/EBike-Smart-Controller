@@ -55,162 +55,231 @@ void update_duty_cycle(unsigned int value)
 }
 
 
-//functions to control each of 6 PWM signals
-  void Enable_PWM3H(void)
+void phase_u_h_pwm_on (void)
 {
-     	
-/* MAT1.2 pin p0.19*/ PINSEL1 &= ~((1<<6) | (1<<7)); PINSEL1 |= (1<<7);
-
+  /* LPC2103 P0.2 --> CPU4 */
+  /* set to output */
+  IODIR |= (1 << 2);
+  IOSET = (1 << 2);
 }
 
-  void Disable_PWM3H(void)
+void phase_u_h_pwm_off (void)
 {
-     	
-/* MAT1.2 pin p0.19*/ IOCLR = (1<<19); PINSEL1 &= ~((1<<6) | (1<<7));
-
+  /* LPC2103 P0.2 --> CPU4 */
+  /* set to output */
+  IODIR |= (1 << 2);
+  IOCLR = (1 << 2);
 }
 
-
-void PWM3L_OFF(void)
+void phase_u_l_pwm_on (void)
 {
-     	
-/* GPIO pin p0.2 */ PINSEL0 &= ~((1<<4) | (1<<5));
-/* set to output */ IODIR |= (1 << 2);
-IOCLR = (1 <<2);
+  /* LPC2103 P0.19 (PWM; MAT1.2) --> CPU4 */
+//  PINSEL1 |= (1 << 6);
+  /* LPC2103 P0.19 (PWM; MAT1.2) --> CPU4 */
+  PINSEL1 &= ~(1 << 6);
+  /* set to output */
+  IODIR |= (1 << 19);
+  IOCLR = (1 << 19); /* inverted logic */
 }
 
-void PWM3L_ON(void)
+void phase_u_l_pwm_off (void)
 {
-     	
-/* GPIO pin p0.2 */ PINSEL0 &= ~((1<<4) | (1<<5));
-/* set to output */ IODIR |= (1 << 2);
-IOSET = (1 <<2);
+  /* LPC2103 P0.19 (PWM; MAT1.2) --> CPU4 */
+  PINSEL1 &= ~(1 << 6);
+  /* set to output */
+  IODIR |= (1 << 19);
+  IOSET = (1 << 19); /* inverted logic */
 }
 
-void Enable_PWM2H(void)
+void phase_v_h_pwm_on (void)
 {
-/* MAT1.1 pin p0.13*/ PINSEL0 &= ~((1<<26) | (1<<27)); PINSEL0 |= (1<<27);
+  /* LPC2103 P0.1 --> CPU3 */
+  /* set to output */
+  IODIR |= (1 << 1);
+  IOSET = (1 << 1);
 }
 
-void Disable_PWM2H(void)
+void phase_v_h_pwm_off (void)
 {
-/* MAT1.1 pin p0.13*/ IOCLR = (1<<13); PINSEL0 &= ~((1<<26) | (1<<27));
-}
- 
-void PWM2L_OFF(void)
-{
-/* GPIO pin p0.2 */ PINSEL0 &= ~((1<<2) | (1<<3));
-/* set to output */ IODIR |= (1 << 1);
-IOCLR = (1 <<1);
-	
-}
-void PWM2L_ON(void)
-{
-/* GPIO pin p0.2 */ PINSEL0 &= ~((1<<2) | (1<<3));
-/* set to output */ IODIR |= (1 << 1);
-IOSET = (1 <<1);
-
-}
-void Enable_PWM1H(void)
-{
-   	
-/* MAT1.0 pin p0.12*/ PINSEL0 &= ~((1<<24) | (1<<25)); PINSEL0 |= (1<<25);
+  /* LPC2103 P0.1 --> CPU3 */
+  /* set to output */
+  IODIR |= (1 << 1);
+  IOCLR = (1 << 1);
 }
 
-void Disable_PWM1H(void)
+void phase_v_l_pwm_on (void)
 {
-   	
-/* MAT1.0 pin p0.12*/ IOCLR = (1<<12); PINSEL0 &= ~((1<<24) | (1<<25));
+  /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
+//  PINSEL0 |= (1 << 26);
+  /* set to output */
+  IODIR |= (1 << 13);
+  IOCLR = (1 << 13); /* inverted logic */
 }
 
-void PWM1L_OFF(void)
+void phase_v_l_pwm_off (void)
 {
-/* GPIO pin p0.1 */ PINSEL0 &= ~((1<<0) | (1<<1));
-/* set to output */ IODIR |= (1 << 1);
-IOCLR = (1 <<0);
-}
-void PWM1L_ON(void)
-{
-/* GPIO pin p0.1 */ PINSEL0 &= ~((1<<0) | (1<<1));
-/* set to output */ IODIR |= (1 << 1);
-IOSET = (1 <<0);
+  /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
+  PINSEL0 &= ~(1 << 26);
+  /* set to output */
+  IODIR |= (1 << 13);
+  IOSET = (1 << 13); /* inverted logic */
 }
 
-
-void Commutate(BYTE sector)
+void phase_w_h_pwm_on (void)
 {
-	switch(sector)
-	{
-	 case 1: //2
-			PWM1L_OFF();
-			Disable_PWM2H();
-			PWM2L_OFF();
-			Disable_PWM3H();
-
-			Enable_PWM1H();	
-	 		PWM3L_ON();
-	 		break;
-	 case 6: 
-			Disable_PWM1H();
-			PWM1L_OFF();
-			PWM2L_OFF();
-			Disable_PWM3H();
-
-			Enable_PWM2H();
-	 		PWM3L_ON();	
-	 		break;
-	 case 5: 
-			Disable_PWM1H();
-			PWM2L_OFF();
-			PWM3L_OFF();
-			Disable_PWM3H();
-
-			Enable_PWM2H();
-	 		PWM1L_ON();	
-	 		break;
-	 case 4: 
-			Disable_PWM1H();
-			Disable_PWM2H();
-			PWM2L_OFF();
-			PWM3L_OFF();
-
-	 		Enable_PWM3H();
-	 		PWM1L_ON();	
-	 		break;
-	 case 3: 
-			Disable_PWM1H();
-			PWM1L_OFF();
-			Disable_PWM2H();
-			PWM3L_OFF();
-
-			Enable_PWM3H();
-	 		PWM2L_ON();
-	 		break;	
-	 case 2: 
-			PWM1L_OFF();
-			Disable_PWM2H();
-			PWM3L_OFF();
-			Disable_PWM3H();
-
-			Enable_PWM1H();
-	 		PWM2L_ON();
-	 		break;		 			 
-	 default:
-	 		Disable_PWM1H();
-			PWM1L_OFF();
-			Disable_PWM2H();
-			PWM2L_OFF();
-			PWM3L_OFF();
-			Disable_PWM3H();
-			break;				 				 				 		
-	}
-
+  /* LPC2103 P0.0 --> CPU1 */
+  /* set to output */
+  IODIR |= (1 << 0);
+  IOSET = (1 << 0);
 }
 
+void phase_w_h_pwm_off (void)
+{
+  /* LPC2103 P0.0 --> CPU1 */
+  /* set to output */
+  IODIR |= (1 << 0);
+  IOCLR = (1 << 0);
+}
+
+void phase_w_l_pwm_on (void)
+{
+  /* LPC2103 P0.12 (PWM; MAT1.0) --> CPU44 */
+//  PINSEL0 |= (1 << 24);
+  /* set to output */
+  IODIR |= (1 << 12);
+  IOCLR= (1 << 12); /* inverted logic */
+}
+
+void phase_w_l_pwm_off (void)
+{
+  /* LPC2103 P0.12 (PWM; MAT1.0) --> CPU44 */
+  PINSEL0 &= ~(1 << 24);
+  /* set to output */
+  IODIR |= (1 << 12);
+  IOSET = (1 << 12); /* inverted logic */
+}
+
+void commutation_sector_1 (void)
+{
+  phase_u_l_pwm_off ();
+  phase_u_h_pwm_on ();
+
+  phase_v_h_pwm_off ();
+  phase_v_l_pwm_on ();
+
+  phase_w_h_pwm_off ();
+  phase_w_l_pwm_off ();
+}
+
+void commutation_sector_2 (void)
+{
+  phase_u_l_pwm_off ();
+  phase_u_h_pwm_on ();
+
+  phase_v_h_pwm_off ();
+  phase_v_l_pwm_off ();
+
+  phase_w_h_pwm_off ();
+  phase_w_l_pwm_on ();
+}
+
+void commutation_sector_3 (void)
+{
+  phase_u_h_pwm_off ();
+  phase_u_l_pwm_off ();
+
+  phase_v_l_pwm_off ();
+  phase_v_h_pwm_on ();
+
+  phase_w_h_pwm_off ();
+  phase_w_l_pwm_on ();
+}
+
+void commutation_sector_4 (void)
+{
+  phase_u_h_pwm_off ();
+  phase_u_l_pwm_on ();
+
+  phase_v_l_pwm_off ();
+  phase_v_h_pwm_on ();
+
+  phase_w_h_pwm_off ();
+  phase_w_l_pwm_off ();
+}
+
+void commutation_sector_5 (void)
+{
+  phase_u_h_pwm_off ();
+  phase_u_l_pwm_on ();
+
+  phase_v_h_pwm_off ();
+  phase_v_l_pwm_off ();
+
+  phase_w_l_pwm_off ();
+  phase_w_h_pwm_on ();
+}
+
+void commutation_sector_6 (void)
+{
+  phase_u_h_pwm_off ();
+  phase_u_l_pwm_off ();
+
+  phase_v_h_pwm_off ();
+  phase_v_l_pwm_on ();
+
+  phase_w_l_pwm_off ();
+  phase_w_h_pwm_on ();
+}
+
+void commutation_disable (void)
+{
+  phase_u_h_pwm_off ();
+  phase_u_l_pwm_off ();
+
+  phase_v_h_pwm_off ();
+  phase_v_l_pwm_off ();
+
+  phase_w_h_pwm_off ();
+  phase_w_l_pwm_off ();
+}
+
+void commutate (BYTE sector)
+{
+  switch (sector)
+  {
+    case 1:
+    commutation_sector_1 ();
+    break;
+
+    case 6:
+    commutation_sector_6 ();
+    break;
+
+    case 5:
+    commutation_sector_5 ();
+    break;
+
+    case 4:
+    commutation_sector_4 ();
+    break;
+
+    case 3:
+    commutation_sector_3 ();
+    break;
+
+    case 2:
+    commutation_sector_2 ();
+    break;
+
+    default:
+    commutation_disable ();
+    break;
+  }
+}
 
 void Commutation(void)
 {
-    Commutate(bSector); 
+    commutate(bSector);
 
 	
 	/* ClockWise rotation */

@@ -13,3 +13,4 @@
 
 void pwm_init(void);
 void update_duty_cycle(unsigned int value);
+void Commutation(void);
