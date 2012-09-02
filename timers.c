@@ -70,6 +70,7 @@ void timer0_int_handler (void)
   //TODO
 }
 
+#if 0
 void timer2_init (void)
 {
   /* Timer/Counter 2 power/clock enable */
@@ -83,6 +84,37 @@ void timer2_init (void)
 
   /* Start timer */
   TIMER2_TCR = 1;
+}
+
+/* Atomic */
+long micros(void)
+{
+  return TIMER2_TC;
+}
+
+/* Always with ~2us offset. delay_us(1) will be a delay of 3us */
+void delay_us(unsigned long us)
+{
+  unsigned long start = micros();
+
+  while (micros() - start < us)
+    ;
+}
+#endif
+
+void timer2_init (void)
+{
+  /* Timer/Counter 2 power/clock enable */
+  PCONP |= (1 << 1);
+
+  /* Initialize Timer 2 */
+  TIMER0_TCR = 0;
+  TIMER0_TC = 0; /* Counter register: Clear counter */
+  TIMER0_PR = 47; /* Prescaler register: Timer2 Counter increments each 1us; 1us/(48MHz-1) */
+  TIMER0_PC = 0; /* Prescaler counter register: Clear prescaler counter */
+
+  /* Start timer */
+  TIMER0_TCR = 1;
 }
 
 /* Atomic */

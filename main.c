@@ -34,19 +34,26 @@ int main (void)
 {
   /* Initialize the system */
   system_init ();
-  timer0_init ();
+  //timer0_init ();
   //enableIRQ ();
   timer2_init ();
-  pwm_init ();
+  //pwm_init ();
   ios_init ();
 
-  update_duty_cycle(500); // Set duty-cycle; 0 up to 1000
+  //update_duty_cycle(500); // Set duty-cycle; 0 up to 1000
+
+  debug_on();
 
 #define DELAY 50
   while (1)
   {
-    commutation_sector_1 ();
-    delay_us (DELAY);
+    delay_us (1000000);
+    debug_off ();
+    delay_us (1000000);
+    debug_on ();
+
+    //commutation_sector_1 ();
+    //delay_us (DELAY);
 #if 0
     commutation_sector_2 ();
     delay_us (DELAY);
@@ -60,7 +67,7 @@ int main (void)
     commutation_sector_5 ();
     delay_us (DELAY);
 #endif
-    commutation_disable ();
-    delay_us (10000);
+    //commutation_disable ();
+    //delay_us (10000);
   }
 }

@@ -18,15 +18,17 @@ void ios_init (void)
     phase_a --> P0.0
     phase_b --> P0.1
     phase_c --> P0.2
+
+    debug --> P0.4
   */
 
   /* P0.0, P0.1 and P0.2 as GPIOs at reset */
 
   /* Clear the bits for the outputs */
-  IOCLR |= ((1 << 0) | (1 << 1) | (1 << 2));
+  IOCLR |= ((1 << 0) | (1 << 1) | (1 << 2) | (1 << 4));
 
   /* Define all lines as outputs */
-  IODIR |= ((1 << 0) | (1 << 1) | (1 << 2));
+  IODIR |= ((1 << 0) | (1 << 1) | (1 << 2) | (1 << 4));
 }
 
 unsigned char io_is_set (unsigned char io_number)
@@ -71,4 +73,14 @@ void phase_c_disable_off (void)
 void phase_c_enable_off (void)
 {
   IOSET = (1 << 2);
+}
+
+void debug_on (void)
+{
+  IOSET = (1 << 4);
+}
+
+void debug_off (void)
+{
+  IOCLR = (1 << 4);
 }

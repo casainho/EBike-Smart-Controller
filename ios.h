@@ -22,3 +22,5 @@ void phase_b_disable_off (void);
 void phase_b_enable_off (void);
 void phase_c_disable_off (void);
 void phase_c_enable_off (void);
+void debug_on (void);
+void debug_off (void);
