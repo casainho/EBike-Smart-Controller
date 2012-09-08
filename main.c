@@ -35,9 +35,10 @@ int main (void)
   /* Initialize the system */
   system_init ();
   //timer0_init ();
+  //timer0_start ();
   //enableIRQ ();
   timer2_init ();
-  //pwm_init ();
+  pwm_init ();
   ios_init ();
 
   //update_duty_cycle(500); // Set duty-cycle; 0 up to 1000
@@ -49,7 +50,7 @@ int main (void)
   {
     delay_us (1000000);
     debug_off ();
-    delay_us (1000000);
+    delay_us (60000);
     debug_on ();
 
     //commutation_sector_1 ();

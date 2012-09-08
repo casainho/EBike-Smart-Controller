@@ -25,7 +25,7 @@ void pwm_init(void)
   */
 
   /* Enable power for TIMER1 */
-  PCONP |= (1 << 2);
+  //PCONP |= (1 << 2);
 
   /* CPU clock = peripheral clock = 48000000Hz */
   TIMER1_PR = 2; //timer0 clock will be 16MHz = peripheral clock / (2 + 1)

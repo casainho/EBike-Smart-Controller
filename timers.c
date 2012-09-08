@@ -13,16 +13,17 @@
 #include "main.h"
 #include "pwm.h"
 #include "ios.h"
+#include "motor.h"
 
 void timer0_int_handler (void) __attribute__ ((interrupt("IRQ")));
 
 void timer0_init (void)
 {
   /* Initialize VIC */
-  //VICINTSEL &= ~(1 << 4); /* Timer 0 selected as IRQ */
-  //VICINTEN |= (1 << 4); /* Timer 0 interrupt enabled */
-  //VICVECTCNTL1 = 0x24; /* Assign Timer0; IRQ */
-  //VICVECTADDR1 = (unsigned long) timer0_int_handler; /* Address of the ISR */
+  VICINTSEL &= ~(1 << 4); /* Timer 0 selected as IRQ */
+  VICINTEN |= (1 << 4); /* Timer 0 interrupt enabled */
+  VICVECTCNTL1 = 0x24; /* Assign Timer0; IRQ */
+  VICVECTADDR1 = (unsigned long) timer0_int_handler; /* Address of the ISR */
 
   /* Timer/Counter 0 power/clock enable */
   PCONP |= (1 << 1);
@@ -34,10 +35,10 @@ void timer0_init (void)
   TIMER0_PC = 0; /* Prescaler counter register: Clear prescaler counter */
 
   /* Clear the interrupt flag */
-  //TIMER0_IR = 1;
-  //VICVECTADDR = 0xff;
+  TIMER0_IR = 1;
+  VICVECTADDR = 0xff;
 
-  //TIMER0_MCR = 3; /* Reset and interrupt on match */
+  TIMER0_MCR = 3; /* Reset and interrupt on match */
 }
 
 void timer0_start (void)
@@ -67,10 +68,10 @@ void timer0_int_handler (void)
   TIMER0_IR = 1;
   VICVECTADDR = 0xff;
 
-  //TODO
+  /* Execute the BLDC coils commutation */
+  commutation ();
 }
 
-#if 0
 void timer2_init (void)
 {
   /* Timer/Counter 2 power/clock enable */
@@ -92,42 +93,26 @@ long micros(void)
   return TIMER2_TC;
 }
 
-/* Always with ~2us offset. delay_us(1) will be a delay of 3us */
 void delay_us(unsigned long us)
 {
-  unsigned long start = micros();
+  unsigned int a = us / 65535;
+  unsigned int b = us - (a * 65535);
 
-  while (micros() - start < us)
-    ;
-}
-#endif
+  while (a > 0)
+  {
+    a--;
 
-void timer2_init (void)
-{
-  /* Timer/Counter 2 power/clock enable */
-  PCONP |= (1 << 1);
+    unsigned long start = micros();
 
-  /* Initialize Timer 2 */
-  TIMER0_TCR = 0;
-  TIMER0_TC = 0; /* Counter register: Clear counter */
-  TIMER0_PR = 47; /* Prescaler register: Timer2 Counter increments each 1us; 1us/(48MHz-1) */
-  TIMER0_PC = 0; /* Prescaler counter register: Clear prescaler counter */
+    while (micros() - start < 65535)
+      ;
+  }
 
-  /* Start timer */
-  TIMER0_TCR = 1;
-}
+  if (b > 0)
+  {
+    unsigned long start = micros();
 
-/* Atomic */
-long micros(void)
-{
-  return TIMER0_TC;
-}
-
-/* Always with ~2us offset. delay_us(1) will be a delay of 3us */
-void delay_us(unsigned long us)
-{
-  unsigned long start = micros();
-
-  while (micros() - start < us)
-    ;
+    while (micros() - start < b)
+      ;
+  }
 }
