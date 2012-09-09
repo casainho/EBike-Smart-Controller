@@ -6,7 +6,7 @@
  *   casainho [at] gmail [dot] com
  *     www.casainho.net
  *
- * Released under the GPL Licence, Version 3
+ * Released under the GPL License, Version 3
  */
 
 #include "lpc210x.h"
@@ -69,7 +69,7 @@ void timer0_int_handler (void)
   VICVECTADDR = 0xff;
 
   /* Execute the BLDC coils commutation */
-  commutation ();
+  //commutation ();
 }
 
 void timer2_init (void)

@@ -6,7 +6,7 @@
  *   casainho [at] gmail [dot] com
  *     www.casainho.net
  *
- * Released under the GPL Licence, Version 3
+ * Released under the GPL License, Version 3
  */
 
 #include "lpc210x.h"
@@ -34,23 +34,24 @@ int main (void)
 {
   /* Initialize the system */
   system_init ();
-  //timer0_init ();
-  //timer0_start ();
-  //enableIRQ ();
+  timer0_init ();
+  timer0_set_us (1000000);
+  timer0_start ();
+  enableIRQ ();
   timer2_init ();
   pwm_init ();
   ios_init ();
 
-  //update_duty_cycle(500); // Set duty-cycle; 0 up to 1000
+  update_duty_cycle (250); // Set duty-cycle; 0 up to 1000
 
-  debug_on();
+  debug_on ();
 
 #define DELAY 50
   while (1)
   {
-    delay_us (1000000);
+    delay_us (200000);
     debug_off ();
-    delay_us (60000);
+    delay_us (1000000);
     debug_on ();
 
     //commutation_sector_1 ();

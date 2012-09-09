@@ -6,7 +6,7 @@
  *   casainho [at] gmail [dot] com
  *     www.casainho.net
  *
- * Released under the GPL Licence, Version 3
+ * Released under the GPL License, Version 3
  */
 
 void timer0_init (void);

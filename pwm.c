@@ -6,7 +6,7 @@
  *   casainho [at] gmail [dot] com
  *     www.casainho.net
  *
- * Released under the GPL Licence, Version 3
+ * Released under the GPL License, Version 3
  */
 
 #include "lpc210x.h"
@@ -24,8 +24,12 @@ void pwm_init(void)
     MAT1.2: P0.19
   */
 
+  // Configure P0.12, P0.13 and P0.19 for working as  MAT1.0, MAT1.1, MAT1.2
+  PINSEL0 |= ((1 << 25) | (1 << 27));
+  PINSEL1 |= (1 << 7);
+
   /* Enable power for TIMER1 */
-  //PCONP |= (1 << 2);
+  PCONP |= (1 << 2);
 
   /* CPU clock = peripheral clock = 48000000Hz */
   TIMER1_PR = 2; //timer0 clock will be 16MHz = peripheral clock / (2 + 1)
@@ -33,9 +37,9 @@ void pwm_init(void)
   TIMER1_MCR |= (1<<10); // reset timer1 on MR3 match
   TIMER1_MR3 = (1000 - 1); // PWM frequency = 16MHz / 1000 = 16kHz
 
-  TIMER1_MR0 = 1000; // duty cycle for channel 0 = 0%
-  TIMER1_MR1 = 1000; // duty cycle for channel 1 = 0%
-  TIMER1_MR2 = 1000; // duty cycle for channel 2 = 0%
+  TIMER1_MR0 = 0; // duty cycle for channel 0 = 0%
+  TIMER1_MR1 = 0; // duty cycle for channel 1 = 0%
+  TIMER1_MR2 = 0; // duty cycle for channel 2 = 0%
 
   TIMER1_PWMCON = (1<<0) | (1<<1) | (1<<2); // enable PWM mode for MAT1.0, MAT1.1, MAT1.2
 
