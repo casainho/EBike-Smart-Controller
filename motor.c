@@ -13,15 +13,10 @@
 #include "pwm.h"
 #include "ios.h"
 
-BYTE bSector =1;             /* sector of rotor position, 1~6 is possible value */
-BOOL fDir = FALSE;           /* motor direction variable---CCW direction is default */
-BYTE baStartUpTimeTbl[12]= {180,150,130,100,80,60
-                            ,50,40,30,20,10,5};
-
-BYTE bFreeRunTimePointer = 0; /* pointer of startup time table */
+BYTE bSector = 1;       /* sector of rotor position, 1~6 is possible value */
+BOOL fDir = FALSE;      /* motor direction variable---CCW direction is default */
 
 //functions to control each of 6 PWM signals
-
 void phase_u_h_pwm_on (void)
 {
   /* LPC2103 P0.2 --> CPU4 */
@@ -41,21 +36,17 @@ void phase_u_h_pwm_off (void)
 void phase_u_l_pwm_on (void)
 {
   /* LPC2103 P0.19 (PWM; MAT1.2) --> CPU4 */
-//  PINSEL1 |= (1 << 6);
-  /* LPC2103 P0.19 (PWM; MAT1.2) --> CPU4 */
-  PINSEL1 &= ~(1 << 6);
-  /* set to output */
-  IODIR |= (1 << 19);
-  IOCLR = (1 << 19); /* inverted logic */
+  PINSEL1 |= (1 << 6);
 }
 
 void phase_u_l_pwm_off (void)
 {
-  /* LPC2103 P0.19 (PWM; MAT1.2) --> CPU4 */
-  PINSEL1 &= ~(1 << 6);
   /* set to output */
   IODIR |= (1 << 19);
   IOSET = (1 << 19); /* inverted logic */
+
+  /* LPC2103 P0.19 (PWM; MAT1.2) --> CPU4 */
+  PINSEL1 &= ~(1 << 6);
 }
 
 void phase_v_h_pwm_on (void)
@@ -77,19 +68,17 @@ void phase_v_h_pwm_off (void)
 void phase_v_l_pwm_on (void)
 {
   /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
-//  PINSEL0 |= (1 << 26);
-  /* set to output */
-  IODIR |= (1 << 13);
-  IOCLR = (1 << 13); /* inverted logic */
+  PINSEL0 |= (1 << 26);
 }
 
 void phase_v_l_pwm_off (void)
 {
-  /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
-  PINSEL0 &= ~(1 << 26);
   /* set to output */
   IODIR |= (1 << 13);
   IOSET = (1 << 13); /* inverted logic */
+
+  /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
+  PINSEL0 &= ~(1 << 26);
 }
 
 void phase_w_h_pwm_on (void)
@@ -111,19 +100,17 @@ void phase_w_h_pwm_off (void)
 void phase_w_l_pwm_on (void)
 {
   /* LPC2103 P0.12 (PWM; MAT1.0) --> CPU44 */
-//  PINSEL0 |= (1 << 24);
-  /* set to output */
-  IODIR |= (1 << 12);
-  IOCLR= (1 << 12); /* inverted logic */
+  PINSEL0 |= (1 << 24);
 }
 
 void phase_w_l_pwm_off (void)
 {
-  /* LPC2103 P0.12 (PWM; MAT1.0) --> CPU44 */
-  PINSEL0 &= ~(1 << 24);
   /* set to output */
   IODIR |= (1 << 12);
   IOSET = (1 << 12); /* inverted logic */
+
+  /* LPC2103 P0.12 (PWM; MAT1.0) --> CPU44 */
+  PINSEL0 &= ~(1 << 24);
 }
 
 void commutation_sector_1 (void)
@@ -245,15 +232,15 @@ void commutate (BYTE sector)
 }
 
 
-void commutation(void)
+void commutation (void)
 {
-  commutate(bSector);
+  commutate (bSector);
 
   /* ClockWise rotation */
-  if(fDir)
+  if (fDir)
   {
     bSector--;
-    if(bSector<1)
+    if (bSector < 1)
     {
       bSector = 6;
     }
@@ -262,41 +249,9 @@ void commutation(void)
   else
   {
     bSector++;
-    if(bSector>6)
+    if (bSector > 6)
     {
-      bSector =1;
+      bSector = 1;
     }
   }
 }
-
-void CheckZeroCrossing()
-{//TODO
-}
-
-#if 0
-//running without any sensor feedback
-void FreeRun(void)
-{
-    WORD wTimeCur;
-
-    /* Switch channel */
-    Commutation();
-
-    wTimeCur = Timer1_wReadTimer();
-
-    /* loop for next freerun commutate */
-    while((Timer1_wReadTimer()-wTimeCur)< 100*(WORD)baStartUpTimeTbl[bFreeRunTimePointer])
-        {
-        // check for bemf zero crossing here
-        CheckZeroCrossing();
-    }
-
-    /* Add speed bit by bit */
-    bFreeRunTimePointer++;
-    if(bFreeRunTimePointer >11 ) /* Keep constant speeed */
-    {
-        bFreeRunTimePointer = 11;
-    }
-
-}
-#endif

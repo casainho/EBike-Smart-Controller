@@ -16,3 +16,4 @@ void commutation_sector_4 (void);
 void commutation_sector_5 (void);
 void commutation_sector_6 (void);
 void commutation_disable (void);
+void commutation (void);
