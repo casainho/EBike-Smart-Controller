@@ -42,7 +42,7 @@ int main (void)
   pwm_init ();
   ios_init ();
 
-  update_duty_cycle (200); // 20% duty-cycle
+  update_duty_cycle (250); // 25% duty-cycle
 
   while (1)
   {
