@@ -15,15 +15,24 @@
 #include "ios.h"
 #include "motor.h"
 
-void timer0_int_handler (void) __attribute__ ((interrupt("IRQ")));
+//just use it to increase the time
+void __attribute__ ((interrupt("IRQ"))) timer0_int_handler (void)
+{
+  /* Clear the interrupt flag */
+  TIMER0_IR = 1;
+  VICVECTADDR = 0xff;
+
+  /* Execute the BLDC coils commutation */
+  commutation ();
+}
 
 void timer0_init (void)
 {
   /* Initialize VIC */
   VICINTSEL &= ~(1 << 4); /* Timer 0 selected as IRQ */
   VICINTEN |= (1 << 4); /* Timer 0 interrupt enabled */
-  VICVECTCNTL1 = 0x24; /* Assign Timer0; IRQ */
-  VICVECTADDR1 = (unsigned long) timer0_int_handler; /* Address of the ISR */
+  VICVECTCNTL0 = 0x24; /* Assign Timer0; IRQ. Higher priority */
+  VICVECTADDR0 = (unsigned long) timer0_int_handler; /* Address of the ISR */
 
   /* Timer/Counter 0 power/clock enable */
   PCONP |= (1 << 1);
@@ -61,17 +70,6 @@ void timer0_set_us (unsigned long us)
   TIMER0_MR0 = us;
 }
 
-//just use it to increase the time
-void timer0_int_handler (void)
-{
-  /* Clear the interrupt flag */
-  TIMER0_IR = 1;
-  VICVECTADDR = 0xff;
-
-  /* Execute the BLDC coils commutation */
-  //commutation ();
-}
-
 void timer2_init (void)
 {
   /* Timer/Counter 2 power/clock enable */
@@ -88,15 +86,17 @@ void timer2_init (void)
 }
 
 /* Atomic */
-long micros(void)
+unsigned long micros(void)
 {
   return TIMER2_TC;
 }
 
 void delay_us(unsigned long us)
 {
-  unsigned int a = us / 65535;
-  unsigned int b = us - (a * 65535);
+  // There is some bug. Seems the delay is not consistent.
+
+  unsigned long a = us / 65535;
+  unsigned long b = us - (a * 65535);
 
   while (a > 0)
   {

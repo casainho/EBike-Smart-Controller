@@ -9,12 +9,16 @@ SIZE	= arm-none-eabi-size
 THUMB    =
 THUMB_IW =
 
+# Optimization level, can be [0, 1, 2, 3, s]. 
+# 0 = turn off optimization. s = optimize for size.
+OPT = s
+
 CFLAGS = -Wall -Wcast-align -Wcast-qual -Wimplicit
 CFLAGS += -Wpointer-arith -Wswitch
 CFLAGS += -Wredundant-decls -Wreturn-type -Wshadow -Wunused 
-CFLAGS  += -mcpu=arm7tdmi $(THUMB_IW) -I./ -c -fno-common -g
-O0 = -O0
-#OS = -Os
+CFLAGS += -mcpu=arm7tdmi $(THUMB_IW) -I./ -c -fno-common -g
+CFLAGS += -O$(OPT)
+
 AFLAGS  = -ahls -mapcs-32 -g -o crt.o
 LDFLAGS  = -Map main.map -T linker_script-flash_memory.cmd
 CPFLAGS = -O binary
@@ -35,28 +39,28 @@ main.out: crt.o main.o system.o timers.o isrsupport.o \
 	linker_script-flash_memory.cmd
 	@ echo "..linking"
 	$(LD) $(LDFLAGS) -o main.out crt.o main.o system.o timers.o \
-	isrsupport.o pwm.o ios.o motor.o libm.a libc.a libgcc.a
+	isrsupport.o pwm.o ios.o motor.o libc.a libgcc.a libm.a
 
 crt.o: crt.s
 	$(AS) $(AFLAGS) crt.s > crt.lst
 
 main.o: main.c
-	$(CC) $(CFLAGS) $(OPT) main.c
+	$(CC) $(CFLAGS) main.c
 	
 system.o: system.c
-	$(CC) $(CFLAGS) $(OPT) system.c
+	$(CC) $(CFLAGS) system.c
 	
 timers.o: timers.c
-	$(CC) $(CFLAGS) $(OPT) timers.c
+	$(CC) $(CFLAGS) timers.c
 		
 isrsupport.o: isrsupport.c
-	$(CC) $(CFLAGS) $(OPT) isrsupport.c
+	$(CC) $(CFLAGS) isrsupport.c
 	
 pwm.o: pwm.c
-	$(CC) $(CFLAGS) $(OPT) pwm.c
+	$(CC) $(CFLAGS) pwm.c
 
 ios.o: ios.c
-	$(CC) $(CFLAGS) $(OPT) ios.c
+	$(CC) $(CFLAGS) ios.c
 	
 motor.o: motor.c
-	$(CC) $(CFLAGS) $(OPT) motor.c							
+	$(CC) $(CFLAGS) motor.c							

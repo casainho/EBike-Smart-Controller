@@ -34,22 +34,21 @@ int main (void)
 {
   /* Initialize the system */
   system_init ();
-  //timer0_init ();
-  //timer0_set_us (1000000);
-  //timer0_start ();
-  //enableIRQ ();
+  timer0_init ();
   timer2_init ();
+  enableIRQ ();
   pwm_init ();
   ios_init ();
 
-  update_duty_cycle (250); // 25% duty-cycle
+  update_duty_cycle (50); // 50 --> 5% duty-cycle
+  timer0_set_us (10000);
+  timer0_start ();
 
   while (1)
   {
-
-    // Testing the start-up motor
-    commutation ();
-    delay_us (5000); // 5ms commutations of each step --> ~30ms period, measured on Cute85 slow/start velocity.
-
+    delay_us (1000000);
+    debug_on ();
+    delay_us (330000);
+    debug_on ();
   }
 }
