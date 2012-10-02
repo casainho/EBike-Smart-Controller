@@ -16,58 +16,58 @@
 #include "motor.h"
 
 //just use it to increase the time
-void __attribute__ ((interrupt("IRQ"))) timer0_int_handler (void)
+void __attribute__ ((interrupt("IRQ"))) timer2_int_handler (void)
 {
   /* Clear the interrupt flag */
-  TIMER0_IR = 1;
+  TIMER2_IR = 1;
   VICVECTADDR = 0xff;
 
   /* Execute the BLDC coils commutation */
   commutation ();
 }
 
-void timer0_init (void)
+void timer2_init (void)
 {
   /* Initialize VIC */
-  VICINTSEL &= ~(1 << 4); /* Timer 0 selected as IRQ */
-  VICINTEN |= (1 << 4); /* Timer 0 interrupt enabled */
-  VICVECTCNTL0 = 0x24; /* Assign Timer0; IRQ. Higher priority */
-  VICVECTADDR0 = (unsigned long) timer0_int_handler; /* Address of the ISR */
+  VICINTSEL &= ~(1 << 26); /* Timer 2 selected as IRQ */
+  VICINTEN |= (1 << 26); /* Timer 2 interrupt enabled */
+  VICVECTCNTL0 = ((1<<5) | 26); /* Assign Timer2; IRQ. Higher priority */
+  VICVECTADDR0 = (unsigned long) timer2_int_handler; /* Address of the ISR */
 
-  /* Timer/Counter 0 power/clock enable */
-  PCONP |= (1 << 1);
+  /* Timer/Counter 2 power/clock enable */
+  PCONP |= (1 << 22);
 
-  /* Initialize Timer 0 */
-  TIMER0_TCR = 0;
-  TIMER0_TC = 0; /* Counter register: Clear counter */
-  TIMER0_PR = 47; /* Prescaler register: Timer0 Counter increments each 1us; 1us/(48MHz-1) */
-  TIMER0_PC = 0; /* Prescaler counter register: Clear prescaler counter */
+  /* Initialize Timer 2 */
+  TIMER2_TCR = 0;
+  TIMER2_TC = 0; /* Counter register: Clear counter */
+  TIMER2_PR = 47; /* Prescaler register: Timer2 Counter increments each 1us; 1us/(48MHz-1) */
+  TIMER2_PC = 0; /* Prescaler counter register: Clear prescaler counter */
 
   /* Clear the interrupt flag */
-  TIMER0_IR = 1;
+  TIMER2_IR = 1;
   VICVECTADDR = 0xff;
 
   TIMER0_MCR = 3; /* Reset and interrupt on match */
 }
 
-void timer0_start (void)
+void timer2_start (void)
 {
   /* Start timer */
-  TIMER0_TCR = 1;
+  TIMER2_TCR = 1;
 }
 
-void timer0_stop(void)
+void timer2_stop(void)
 {
   /* Stop timer */
-  TIMER0_TCR = 0;
+  TIMER2_TCR = 0;
 }
 
-void timer0_set_us (unsigned long us)
+void timer2_set_us (unsigned long us)
 {
   /* Match register 0:
    * Fclk = 48000000Hz; 48MHz/48 = 1MHz -> 1us.
    * x us * 1us = x us */
-  TIMER0_MR0 = us;
+  TIMER2_MR0 = us;
 }
 
 void timer2_init (void)
