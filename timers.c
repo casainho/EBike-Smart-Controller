@@ -70,25 +70,25 @@ void timer2_set_us (unsigned long us)
   TIMER2_MR0 = us;
 }
 
-void timer2_init (void)
+void timer3_init (void)
 {
-  /* Timer/Counter 2 power/clock enable */
-  PCONP |= (1 << 22);
+  /* Timer/Counter 3 power/clock enable */
+  PCONP |= (1 << 23);
 
-  /* Initialize Timer 2 */
-  TIMER2_TCR = 0;
-  TIMER2_TC = 0; /* Counter register: Clear counter */
-  TIMER2_PR = 47; /* Prescaler register: Timer2 Counter increments each 1us; 1us/(48MHz-1) */
-  TIMER2_PC = 0; /* Prescaler counter register: Clear prescaler counter */
+  /* Initialize Timer 3 */
+  TIMER3_TCR = 0;
+  TIMER3_TC = 0; /* Counter register: Clear counter */
+  TIMER3_PR = 47; /* Prescaler register: Timer3 Counter increments each 1us; 1us/(48MHz-1) */
+  TIMER3_PC = 0; /* Prescaler counter register: Clear prescaler counter */
 
   /* Start timer */
-  TIMER2_TCR = 1;
+  TIMER3_TCR = 1;
 }
 
 /* Atomic */
 unsigned long micros(void)
 {
-  return TIMER2_TC;
+  return TIMER3_TC;
 }
 
 void delay_us(unsigned long us)

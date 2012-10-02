@@ -35,14 +35,14 @@ int main (void)
   /* Initialize the system */
   system_init ();
   timer2_init (); // used for commutation of mosfets
-  timerX_init (); // used for delay function
+  timer3_init (); // used for delay function
   enableIRQ ();
   pwm_init (); // uses timer1 for PWM
   ios_init ();
 
   update_duty_cycle (200); // 50 --> 5% duty-cycle
-  timer0_set_us (3000);
-  timer0_start ();
+  timer2_set_us (3000);
+  timer2_start ();
 
   while (1)
   {

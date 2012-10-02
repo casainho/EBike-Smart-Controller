@@ -141,6 +141,28 @@
 #define TIMER2_CR2     (*((volatile unsigned long *) 0xE0070034))
 #define TIMER2_CR3     (*((volatile unsigned long *) 0xE0070038))
 #define TIMER2_EMR     (*((volatile unsigned long *) 0xE007003C))
+#define TIMER2_CTCR     (*((volatile unsigned long *) 0xE0070070))
+#define TIMER2_PWMCON     (*((volatile unsigned long *) 0xE0070074))
+
+/* Timer 3 */
+#define TIMER3_IR      (*((volatile unsigned long *) 0xE0004000))
+#define TIMER3_TCR     (*((volatile unsigned long *) 0xE0004004))
+#define TIMER3_TC      (*((volatile unsigned long *) 0xE0004008))
+#define TIMER3_PR      (*((volatile unsigned long *) 0xE000400C))
+#define TIMER3_PC      (*((volatile unsigned long *) 0xE0004010))
+#define TIMER3_MCR     (*((volatile unsigned long *) 0xE0004014))
+#define TIMER3_MR0     (*((volatile unsigned long *) 0xE0004018))
+#define TIMER3_MR1     (*((volatile unsigned long *) 0xE000401C))
+#define TIMER3_MR2     (*((volatile unsigned long *) 0xE0004020))
+#define TIMER3_MR3     (*((volatile unsigned long *) 0xE0004024))
+#define TIMER3_CCR     (*((volatile unsigned long *) 0xE0004028))
+#define TIMER3_CR0     (*((volatile unsigned long *) 0xE000402C))
+#define TIMER3_CR1     (*((volatile unsigned long *) 0xE0004030))
+#define TIMER3_CR2     (*((volatile unsigned long *) 0xE0004034))
+#define TIMER3_CR3     (*((volatile unsigned long *) 0xE0004038))
+#define TIMER3_EMR     (*((volatile unsigned long *) 0xE000403C))
+#define TIMER3_CTCR     (*((volatile unsigned long *) 0xE0004070))
+#define TIMER3_PWMCON     (*((volatile unsigned long *) 0xE0004074))
 
 /* Pulse Width Modulator (PWM) */
 #define PWM_IR         (*((volatile unsigned long *) 0xE0014000))
