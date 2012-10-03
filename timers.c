@@ -47,7 +47,7 @@ void timer2_init (void)
   TIMER2_IR = 1;
   VICVECTADDR = 0xff;
 
-  TIMER0_MCR = 3; /* Reset and interrupt on match */
+  TIMER2_MCR = 3; /* Reset and interrupt on match */
 }
 
 void timer2_start (void)

@@ -13,9 +13,6 @@
 #include "pwm.h"
 #include "ios.h"
 
-extern BYTE bSector;
-extern BOOL fDir;
-
 void pwm_init(void)
 {
   /*
