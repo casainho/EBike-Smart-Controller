@@ -1,0 +1,521 @@
+EESchema Schematic File Version 2  date Sáb 20 Out 2012 23:34:51 WEST
+LIBS:Allegro_ACS754_ACS755_ACS756_HallCurrentSensor_RevA
+LIBS:ac-dc
+LIBS:conn
+LIBS:contrib
+LIBS:dc-dc
+LIBS:device
+LIBS:elec-unifil
+LIBS:gennum
+LIBS:hc11
+LIBS:intel
+LIBS:interface
+LIBS:linear
+LIBS:memory
+LIBS:microcontrollers
+LIBS:nxp_armmcu
+LIBS:power
+LIBS:powerint
+LIBS:pspice
+LIBS:regul
+LIBS:sensors
+LIBS:special
+LIBS:transistors
+LIBS:ttl_ieee
+LIBS:opendous
+EELAYER 43  0
+EELAYER END
+$Descr A4 11700 8267
+encoding utf-8
+Sheet 1 1
+Title "EBike Smart Controller"
+Date "20 oct 2012"
+Rev "V0.1"
+Comp "Author: Jorge Pinto aka Casainho (casainho@gmail.com)"
+Comment1 "License: GPL V3"
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Wire Wire Line
+	7250 3050 5700 3050
+Wire Wire Line
+	5700 3050 5400 3050
+Wire Wire Line
+	7250 3250 6200 3250
+Wire Wire Line
+	6200 3250 5400 3250
+Connection ~ 5950 3150
+Wire Wire Line
+	5950 2950 5950 3150
+Wire Wire Line
+	6200 2650 6200 2750
+Wire Wire Line
+	5950 2650 5950 2750
+Wire Wire Line
+	5700 2650 5700 2750
+Wire Wire Line
+	5400 2950 5500 2950
+Wire Wire Line
+	5500 2950 5500 2900
+Wire Wire Line
+	5400 3350 5500 3350
+Connection ~ 5600 1750
+Wire Wire Line
+	5600 1800 5600 1750
+Wire Wire Line
+	5350 1500 5350 1300
+Wire Wire Line
+	1950 4850 1950 4800
+Wire Wire Line
+	1950 4800 1950 4750
+Connection ~ 2350 3500
+Wire Wire Line
+	2350 3550 2350 3500
+Connection ~ 2150 3500
+Wire Wire Line
+	2150 3550 2150 3500
+Wire Wire Line
+	2150 3500 2150 3450
+Wire Wire Line
+	1900 3050 1900 3100
+Wire Wire Line
+	1950 3850 1950 3300
+Wire Wire Line
+	1950 3300 1800 3300
+Wire Wire Line
+	1800 3200 2150 3200
+Wire Wire Line
+	2150 3200 2150 3250
+Wire Wire Line
+	2150 3750 2150 3850
+Wire Wire Line
+	3300 1700 2500 1700
+Wire Wire Line
+	2500 1950 2500 2050
+Wire Wire Line
+	2500 1450 2500 1400
+Wire Wire Line
+	2500 1400 1850 1400
+Connection ~ 2000 1600
+Wire Wire Line
+	1850 1600 2000 1600
+Wire Wire Line
+	1600 1100 1600 950 
+Wire Wire Line
+	1600 1900 1600 2050
+Wire Wire Line
+	1850 1500 2200 1500
+Wire Wire Line
+	2200 1500 2200 2050
+Wire Wire Line
+	1600 950  2150 950 
+Wire Wire Line
+	2000 1250 2000 1600
+Wire Wire Line
+	2000 1600 2000 1650
+Wire Wire Line
+	2000 2050 2000 1850
+Wire Wire Line
+	2500 1750 2500 1700
+Wire Wire Line
+	2500 1700 2500 1650
+Connection ~ 2500 1700
+Wire Wire Line
+	1900 3100 1800 3100
+Wire Wire Line
+	2350 3850 2350 3750
+Wire Wire Line
+	3100 3500 2350 3500
+Wire Wire Line
+	2350 3500 2150 3500
+Wire Wire Line
+	1950 5150 1950 5100
+Wire Wire Line
+	1950 5100 1950 5050
+Connection ~ 1950 4800
+Wire Wire Line
+	1950 4450 1950 4550
+Wire Wire Line
+	1800 4800 1950 4800
+Wire Wire Line
+	1950 4800 2700 4800
+Wire Wire Line
+	1800 5000 1850 5000
+Wire Wire Line
+	1850 5000 1850 5100
+Wire Wire Line
+	1850 5100 1950 5100
+Connection ~ 1950 5100
+Connection ~ 5350 1750
+Wire Wire Line
+	5350 1700 5350 1750
+Wire Wire Line
+	5350 1750 5350 1800
+Wire Wire Line
+	5350 2000 5350 2100
+Wire Wire Line
+	5350 1300 6050 1300
+Wire Wire Line
+	5600 2100 5600 2000
+Wire Wire Line
+	6400 1750 5600 1750
+Wire Wire Line
+	5600 1750 5350 1750
+Wire Wire Line
+	5500 3350 5500 3900
+Wire Wire Line
+	5700 2950 5700 3050
+Connection ~ 5700 3050
+Wire Wire Line
+	6200 2950 6200 3250
+Connection ~ 6200 3250
+Wire Wire Line
+	7250 3150 5950 3150
+Wire Wire Line
+	5950 3150 5400 3150
+Text Label 6350 3250 0    60   ~ 0
+Hall sensor phase_a (LPC2103 P0.2)
+Text Label 6350 3150 0    60   ~ 0
+Hall sensor phase_b (LPC2103 P0.4)
+Text Label 6350 3050 0    60   ~ 0
+Hall sensor phase_c (LPC2103 P0.6)
+$Comp
+L R_MINI R?
+U 1 1 5083266E
+P 6200 2850
+F 0 "R?" H 6200 2800 25  0000 C CNN
+F 1 "10K" H 6200 2900 25  0000 C CNN
+	1    6200 2850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 5083266D
+P 6200 2650
+F 0 "#PWR?" H 6200 2610 30  0001 C CNN
+F 1 "+3.3V" H 6200 2760 30  0000 C CNN
+	1    6200 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 50832668
+P 5950 2650
+F 0 "#PWR?" H 5950 2610 30  0001 C CNN
+F 1 "+3.3V" H 5950 2760 30  0000 C CNN
+	1    5950 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L R_MINI R?
+U 1 1 50832667
+P 5950 2850
+F 0 "R?" H 5950 2800 25  0000 C CNN
+F 1 "10K" H 5950 2900 25  0000 C CNN
+	1    5950 2850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R_MINI R?
+U 1 1 50832663
+P 5700 2850
+F 0 "R?" H 5700 2800 25  0000 C CNN
+F 1 "10K" H 5700 2900 25  0000 C CNN
+	1    5700 2850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 50832662
+P 5700 2650
+F 0 "#PWR?" H 5700 2610 30  0001 C CNN
+F 1 "+3.3V" H 5700 2760 30  0000 C CNN
+	1    5700 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 50832572
+P 5500 2900
+F 0 "#PWR?" H 5500 2990 20  0001 C CNN
+F 1 "+5V" H 5500 2990 30  0000 C CNN
+	1    5500 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 50832562
+P 5500 3900
+F 0 "#PWR?" H 5500 3900 30  0001 C CNN
+F 1 "GND" H 5500 3830 30  0001 C CNN
+	1    5500 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_5 P?
+U 1 1 50832540
+P 5000 3150
+F 0 "P?" V 4950 3150 50  0000 C CNN
+F 1 "Hall sensors" V 5050 3150 50  0000 C CNN
+	1    5000 3150
+	-1   0    0    1   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 508324F5
+P 5600 2100
+F 0 "#PWR?" H 5600 2100 30  0001 C CNN
+F 1 "GND" H 5600 2030 30  0001 C CNN
+	1    5600 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_MINI C?
+U 1 1 508324F4
+P 5600 1900
+F 0 "C?" V 5550 1940 30  0000 C CNN
+F 1 "100nF" H 5650 1970 25  0000 C CNN
+	1    5600 1900
+	0    -1   -1   0   
+$EndComp
+Text Label 5550 1300 0    60   ~ 0
+24V battery (up to 33V)
+$Comp
+L R_MINI R?
+U 1 1 5083228E
+P 5350 1600
+F 0 "R?" H 5350 1550 25  0000 C CNN
+F 1 "100K" H 5350 1650 25  0000 C CNN
+	1    5350 1600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R_MINI R?
+U 1 1 5083228D
+P 5350 1900
+F 0 "R?" H 5400 1850 25  0000 C CNN
+F 1 "10K" H 5350 1950 25  0000 C CNN
+	1    5350 1900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5083228C
+P 5350 2100
+F 0 "#PWR?" H 5350 2100 30  0001 C CNN
+F 1 "GND" H 5350 2030 30  0001 C CNN
+	1    5350 2100
+	1    0    0    -1  
+$EndComp
+Text Label 5750 1750 0    60   ~ 0
+Voltage_signal (LPC2103 P0.22)
+$Comp
+L +3.3V #PWR?
+U 1 1 5083200B
+P 1950 4450
+F 0 "#PWR?" H 1950 4410 30  0001 C CNN
+F 1 "+3.3V" H 1950 4560 30  0000 C CNN
+	1    1950 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_2 P?
+U 1 1 50831FC0
+P 1450 4900
+F 0 "P?" V 1400 4900 40  0000 C CNN
+F 1 "Brake" V 1500 4900 40  0000 C CNN
+	1    1450 4900
+	-1   0    0    1   
+$EndComp
+Text Label 2150 4800 0    60   ~ 0
+Brake_signal (LPC2103 P0.11)
+$Comp
+L R_MINI R?
+U 1 1 50831F42
+P 1950 4650
+F 0 "R?" H 1950 4600 25  0000 C CNN
+F 1 "10K" H 1950 4700 25  0000 C CNN
+	1    1950 4650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 50831F3E
+P 1950 5150
+F 0 "#PWR?" H 1950 5150 30  0001 C CNN
+F 1 "GND" H 1950 5080 30  0001 C CNN
+	1    1950 5150
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_MINI C?
+U 1 1 50831F3D
+P 1950 4950
+F 0 "C?" V 1900 4990 30  0000 C CNN
+F 1 "100nF" H 2000 5020 25  0000 C CNN
+	1    1950 4950
+	0    -1   -1   0   
+$EndComp
+Text Notes 1250 2200 0    60   ~ 0
+Battery GND
+$Comp
+L C_MINI C?
+U 1 1 50831E6F
+P 2350 3650
+F 0 "C?" V 2300 3690 30  0000 C CNN
+F 1 "100nF" H 2400 3720 25  0000 C CNN
+	1    2350 3650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 50831E6E
+P 2350 3850
+F 0 "#PWR?" H 2350 3850 30  0001 C CNN
+F 1 "GND" H 2350 3780 30  0001 C CNN
+	1    2350 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_3 K?
+U 1 1 50831D6C
+P 1450 3200
+F 0 "K?" V 1400 3200 50  0000 C CNN
+F 1 "Throttle" V 1500 3200 40  0000 C CNN
+	1    1450 3200
+	-1   0    0    1   
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 50831D0B
+P 1900 3050
+F 0 "#PWR?" H 1900 3140 20  0001 C CNN
+F 1 "+5V" H 1900 3140 30  0000 C CNN
+	1    1900 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 50831D09
+P 1950 3850
+F 0 "#PWR?" H 1950 3850 30  0001 C CNN
+F 1 "GND" H 1950 3780 30  0001 C CNN
+	1    1950 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L R_MINI R?
+U 1 1 50831D06
+P 2150 3350
+F 0 "R?" H 2150 3300 25  0000 C CNN
+F 1 "3K6" H 2150 3400 25  0000 C CNN
+	1    2150 3350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R_MINI R?
+U 1 1 50831D05
+P 2150 3650
+F 0 "R?" H 2200 3600 25  0000 C CNN
+F 1 "6K8" H 2150 3700 25  0000 C CNN
+	1    2150 3650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 50831D04
+P 2150 3850
+F 0 "#PWR?" H 2150 3850 30  0001 C CNN
+F 1 "GND" H 2150 3780 30  0001 C CNN
+	1    2150 3850
+	1    0    0    -1  
+$EndComp
+Text Label 2450 3500 0    60   ~ 0
+Throttle_signal (LPC2103 P0.24)
+Text Label 2650 1700 0    60   ~ 0
+Current_signal (LPC2103 P0.23)
+$Comp
+L GND #PWR?
+U 1 1 50831B19
+P 2500 2050
+F 0 "#PWR?" H 2500 2050 30  0001 C CNN
+F 1 "GND" H 2500 1980 30  0001 C CNN
+	1    2500 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L R_MINI R?
+U 1 1 50831B08
+P 2500 1850
+F 0 "R?" H 2550 1800 25  0000 C CNN
+F 1 "6K8" H 2500 1900 25  0000 C CNN
+	1    2500 1850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R_MINI R?
+U 1 1 50831AF9
+P 2500 1550
+F 0 "R?" H 2500 1500 25  0000 C CNN
+F 1 "3K6" H 2500 1600 25  0000 C CNN
+	1    2500 1550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 50831623
+P 2000 2050
+F 0 "#PWR?" H 2000 2050 30  0001 C CNN
+F 1 "GND" H 2000 1980 30  0001 C CNN
+	1    2000 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_MINI C?
+U 1 1 50831587
+P 2000 1750
+F 0 "C?" V 1950 1790 30  0000 C CNN
+F 1 "100nF" V 2050 1820 25  0000 C CNN
+	1    2000 1750
+	0    -1   -1   0   
+$EndComp
+Text Label 1650 950  0    60   ~ 0
+Motor GND
+$Comp
+L GND #PWR?
+U 1 1 50831321
+P 2200 2050
+F 0 "#PWR?" H 2200 2050 30  0001 C CNN
+F 1 "GND" H 2200 1980 30  0001 C CNN
+	1    2200 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 50831300
+P 1600 2050
+F 0 "#PWR?" H 1600 2050 30  0001 C CNN
+F 1 "GND" H 1600 1980 30  0001 C CNN
+	1    1600 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 508312E5
+P 2000 1250
+F 0 "#PWR?" H 2000 1340 20  0001 C CNN
+F 1 "+5V" H 2000 1340 30  0000 C CNN
+	1    2000 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L ACS754_ACS755_ACS756_HALLCURRENTSENSOR IC?
+U 1 1 50830D7C
+P 1650 1500
+F 0 "IC?" H 1650 1700 60  0000 C CNN
+F 1 "ACS756SCA-100B" H 1700 1850 60  0000 C CNN
+	1    1650 1500
+	0    -1   -1   0   
+$EndComp
+$EndSCHEMATC

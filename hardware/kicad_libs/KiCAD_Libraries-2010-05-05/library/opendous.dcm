@@ -1,0 +1,153 @@
+EESchema-DOCLIB  Version 2.0  Date: 01/05/2010 12:53:24
+#
+$CMP 1117
+K LDO Regulator 1117 NCP1117 TLV1117 1.5V 1.8V 2V 2.5V 2.85V 3.3V 5V 12V
+$ENDCMP
+#
+$CMP 74HC138
+D 3-to-8 Decoder Active-Low
+K 3-to-8 Decoder Active-Low
+$ENDCMP
+#
+$CMP 93CX6
+K Microwire Serial EEPROM
+$ENDCMP
+#
+$CMP ADS1298
+D ADS1x9x Analog Front-End for Biopotential Measurements
+K TI ADS1298 ADS1294 ADS1198 ADS1194 Opendous
+$ENDCMP
+#
+$CMP ADuMx401
+D ADuMx401 Quad-Channel (3-1) Digital Isolator
+K ADuM1401 ADuM3401 ADuM3441 ADuM4401 ADuM5401 ADuM6401
+$ENDCMP
+#
+$CMP AND_GATE
+K NC7SZ08 Single AND Gate SOT23-5 1.65V-5.5V 24mA
+$ENDCMP
+#
+$CMP attiny44
+K ATtiny24 ATtiny44 ATtiny84
+$ENDCMP
+#
+$CMP BUFFER_GATE
+K NC7SZ125 Single Buffer Gate SOT23-5 1.65V-5.5V 24mA
+$ENDCMP
+#
+$CMP C_MINI
+K Unpolarized Capacitor
+$ENDCMP
+#
+$CMP CONN_MMC_MMCplus_GMC06003XSEU
+K Memory Card MMC MMCplus RS-MMC Amphenol GMC06003XSEU or 101-00395-?? or Newark.com 40P2505
+$ENDCMP
+#
+$CMP CP_MINI
+K Polarized Capacitor
+$ENDCMP
+#
+$CMP D_zener
+D Zener Diode
+K DEV DIODE Zener
+$ENDCMP
+#
+$CMP DDR_SDRAM_MT46_x16
+D JEDEC DDR SDRAM TSSOP66
+K JEDEC DDR SDRAM TSSOP66 Opendous
+$ENDCMP
+#
+$CMP ESD
+D Double Shottky Diode - Common Cathodes
+K DEV DIODE
+$ENDCMP
+#
+$CMP ESD_Zener
+D Double Shottky Diode - Common Cathodes
+K DEV DIODE
+$ENDCMP
+#
+$CMP GNDS
+K GNDS GND_Shield Earth Shield
+$ENDCMP
+#
+$CMP iMX233
+D Freescale i.MX233 ARM9 Portable Multimedia Processor
+K Freescale i.MX233 i.MX23 i.MX ARM9 MCIMX233_AG4B 128LQFP Opendous
+$ENDCMP
+#
+$CMP Inverter
+K NC7SZ04 Single Inverter Gate SOT23-5 1.65V-5.5V 24mA
+$ENDCMP
+#
+$CMP LM3S9B92
+D TI LM3S9B9x Cortex-M3 MCU
+K LM3S9B92 LM3S9B95 LM3S9B96 LM3S9B9x LM3S979x ARM Cortex-M3 Stellaris Opendous
+$ENDCMP
+#
+$CMP LPC1343
+D LPC1343 ARM Cortex-M3
+K LPC1343 ARM Cortex-M3 USB MCU LQFP48 Opendous
+$ENDCMP
+#
+$CMP LPC175x
+D LPC175x ARM Cortex-M3
+K ARM Cortex-M3 USB Ethernet I2S SPI I2C PWM DAC ADC LQFP80 Opendous
+$ENDCMP
+#
+$CMP LPC176x
+D LPC176x ARM Cortex-M3
+K ARM Cortex-M3 USB Ethernet I2S SPI I2C PWM DAC ADC LQFP100 Opendous
+$ENDCMP
+#
+$CMP LPC313x
+D NXP LPC313x ARM9 with LCD and High Speed USB
+K LPC3130 LPC3131 NXP ARM ARM9 Opendous
+$ENDCMP
+#
+$CMP Micropendous1
+K Micropendous1 AT90USB162 www.Micropendous.org/Micropendous1
+$ENDCMP
+#
+$CMP OPA211
+D OPA211 1.1nV/Hz Low Noise Low Power Precision Op-Amp
+K TI OPA211
+$ENDCMP
+#
+$CMP RCA_JACK
+D RCA Jack
+K RCA Jack Connector CUI RCJ-01x-SMT Opendous
+$ENDCMP
+#
+$CMP REGULATOR_SOT23-5
+K Regulator SOT23 SOT23-5 SOT25 TPS736xx AP131 PQ1Uxx1M2ZPH LP2985 ZXCLxxx 
+$ENDCMP
+#
+$CMP STEREO-AUDIO-JACK_SJ1-3524-SMT
+D Stereo Audio Jack 4Pin
+K Stereo Audio Jack 4Pin CUI SJ1-3524-SMT
+$ENDCMP
+#
+$CMP TPS719XX
+D Dual, 200mA Output, Low Noise, High PSRR LDOs
+K LDO 200mA
+$ENDCMP
+#
+$CMP TPS79101
+D Ultralow Noise, High-PSRR, Fast RF Adjustable LDO
+K TI TPS79101 TPS79201
+$ENDCMP
+#
+$CMP TS3USB221
+K USB HighSpeed HS 480Mbps 1:2 Multiplexer/Demultiplexer Switch
+$ENDCMP
+#
+$CMP TXB0108
+K Voltage Level Translator TXS0108 ADG3300 MAX3002 TXB0108
+$ENDCMP
+#
+$CMP TXB0108_Inverted
+K Voltage Level Translator TXS0108 ADG3300 MAX3002 TXB0108
+$ENDCMP
+#
+#End Doc Library

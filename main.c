@@ -34,10 +34,11 @@ int main (void)
 {
   /* Initialize the system */
   system_init ();
+  //timer0_init (); // used for capture the time of BEMF signals
   timer2_init (); // used for commutation of mosfets
-  //timer3_init (); // used for delay function
+  timer3_init (); // used for delay function
   enableIRQ ();
-  //pwm_init (); // uses timer1 for PWM
+  pwm_init (); // uses timer1 for PWM
   ios_init ();
 
   //update_duty_cycle (200); // 0 --> 1000 => 0 --> 100%
@@ -46,9 +47,9 @@ int main (void)
 
   while (1)
   {
-    //delay_us (1000000);
+    delay_us (1000000);
     debug_on ();
-    //delay_us (330000);
+    delay_us (330000);
     debug_on ();
   }
 }
