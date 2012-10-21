@@ -1,4 +1,4 @@
-update=Sáb 20 Out 2012 22:19:00 WEST
+update=Dom 21 Out 2012 11:05:37 WEST
 version=1
 last_client=eeschema
 [cvpcb]
@@ -94,3 +94,4 @@ LibName21=special
 LibName22=transistors
 LibName23=ttl_ieee
 LibName24=kicad_libs/KiCAD_Libraries-2010-05-05/library/opendous
+LibName25=kicad_libs/R2C2_bluetooth
