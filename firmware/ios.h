@@ -11,10 +11,6 @@
 
 #include "main.h"
 
-#define CHANNEL_0 0
-#define CHANNEL_1 1
-#define CHANNEL_2 2
-
 void ios_init (void);
 void phase_a_disable_off (void);
 void phase_a_enable_off (void);

@@ -15,21 +15,11 @@
 
 void pwm_init(void)
 {
-  /*
-    MAT1.0: P0.12
-    MAT1.1: P0.13
-    MAT1.2: P0.19
-  */
-
-  // Configure P0.12, P0.13 and P0.19 for working as  MAT1.0, MAT1.1, MAT1.2
-  PINSEL0 |= ((1 << 25) | (1 << 27));
-  PINSEL1 |= (1 << 7);
-
   /* Enable power for TIMER1 */
   PCONP |= (1 << 2);
 
   /* CPU clock = peripheral clock = 48000000Hz */
-  TIMER1_PR = 2; //timer0 clock will be 16MHz = peripheral clock / (2 + 1)
+  TIMER1_PR = 2; //timer1 clock will be 16MHz = peripheral clock / (2 + 1)
 
   TIMER1_MCR |= (1<<10); // reset timer1 on MR3 match
   TIMER1_MR3 = (1000 - 1); // PWM frequency = 16MHz / 1000 = 16kHz

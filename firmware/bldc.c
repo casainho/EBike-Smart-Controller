@@ -13,6 +13,8 @@
 #include "pwm.h"
 #include "ios.h"
 
+#define HALL_SENSORS_MASK ((1<<6) | (1<<4) | (1<<2)) // P0.2, P0.4, P0.6
+
 BYTE bSector = 1;       /* sector of rotor position, 1~6 is possible value */
 BOOL fDir = FALSE;      /* motor direction variable---CCW direction is default */
 
@@ -115,11 +117,11 @@ void phase_w_l_pwm_on (void)
 
 void commutation_sector_1 (void)
 {
-  phase_u_l_pwm_off ();
-  phase_u_h_on ();
+  phase_u_h_off ();
+  phase_u_l_pwm_on ();
 
-  phase_v_h_off ();
-  phase_v_l_pwm_on ();
+  phase_v_l_pwm_off ();
+  phase_v_h_on ();
 
   phase_w_h_off ();
   phase_w_l_pwm_off ();
@@ -127,6 +129,18 @@ void commutation_sector_1 (void)
 
 void commutation_sector_2 (void)
 {
+  phase_u_h_off ();
+  phase_u_l_pwm_off ();
+
+  phase_v_l_pwm_off ();
+  phase_v_h_on ();
+
+  phase_w_h_off ();
+  phase_w_l_pwm_on ();
+}
+
+void commutation_sector_3 (void)
+{
   phase_u_l_pwm_off ();
   phase_u_h_on ();
 
@@ -137,25 +151,13 @@ void commutation_sector_2 (void)
   phase_w_l_pwm_on ();
 }
 
-void commutation_sector_3 (void)
-{
-  phase_u_h_off ();
-  phase_u_l_pwm_off ();
-
-  phase_v_l_pwm_off ();
-  phase_v_h_on ();
-
-  phase_w_h_off ();
-  phase_w_l_pwm_on ();
-}
-
 void commutation_sector_4 (void)
 {
-  phase_u_h_off ();
-  phase_u_l_pwm_on ();
+  phase_u_l_pwm_off ();
+  phase_u_h_on ();
 
-  phase_v_l_pwm_off ();
-  phase_v_h_on ();
+  phase_v_h_off ();
+  phase_v_l_pwm_on ();
 
   phase_w_h_off ();
   phase_w_l_pwm_off ();
@@ -164,10 +166,10 @@ void commutation_sector_4 (void)
 void commutation_sector_5 (void)
 {
   phase_u_h_off ();
-  phase_u_l_pwm_on ();
+  phase_u_l_pwm_off ();
 
   phase_v_h_off ();
-  phase_v_l_pwm_off ();
+  phase_v_l_pwm_on ();
 
   phase_w_l_pwm_off ();
   phase_w_h_on ();
@@ -176,10 +178,10 @@ void commutation_sector_5 (void)
 void commutation_sector_6 (void)
 {
   phase_u_h_off ();
-  phase_u_l_pwm_off ();
+  phase_u_l_pwm_on ();
 
   phase_v_h_off ();
-  phase_v_l_pwm_on ();
+  phase_v_l_pwm_off ();
 
   phase_w_l_pwm_off ();
   phase_w_h_on ();
@@ -197,61 +199,68 @@ void commutation_disable (void)
   phase_w_l_pwm_off ();
 }
 
-void commutate (BYTE sector)
+void commutation (void)
 {
-  switch (sector)
+  unsigned int switch_sequence;
+
+  switch_sequence = (IOPIN & HALL_SENSORS_MASK); // mask other pins
+
+  switch (switch_sequence)
   {
-    case 1:
+    /*
+     * P0.2 -- phase_a
+     * P0.4 -- phase_b
+     * P0.6 -- phase_c
+     *
+     *   c b a
+     *   0000100 = 4
+     */
+    case 4:
     commutation_sector_1 ();
     break;
 
-    case 6:
-    commutation_sector_6 ();
+    /*
+     *   c b a
+     *   1000100 = 68
+     */
+    case 68:
+    commutation_sector_2 ();
     break;
 
-    case 5:
-    commutation_sector_5 ();
-    break;
-
-    case 4:
-    commutation_sector_4 ();
-    break;
-
-    case 3:
+    /*
+     *   c b a
+     *   1000000 = 64
+     */
+    case 64:
     commutation_sector_3 ();
     break;
 
-    case 2:
-    commutation_sector_2 ();
+    /*
+     *   c b a
+     *   1010000 = 80
+     */
+    case 80:
+    commutation_sector_4 ();
+    break;
+
+    /*
+     *   c b a
+     *   0010000 = 16
+     */
+    case 16:
+    commutation_sector_5 ();
+    break;
+
+    /*
+     *   c b a
+     *   0010100 = 20
+     */
+    case 20:
+    commutation_sector_6 ();
     break;
 
     default:
     commutation_disable ();
     break;
-  }
-}
-
-
-void commutation (void)
-{
-  commutate (bSector);
-
-  /* ClockWise rotation */
-  if (fDir)
-  {
-    bSector--;
-    if (bSector < 1)
-    {
-      bSector = 6;
-    }
-  }
-
-  else
-  {
-    bSector++;
-    if (bSector > 6)
-    {
-      bSector = 1;
-    }
   }
 }
