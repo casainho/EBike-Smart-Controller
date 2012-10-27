@@ -32,11 +32,20 @@ void __attribute__ ((interrupt("IRQ"))) timer0_int_handler (void)
   VICVECTADDR = 0xff;
 }
 
+unsigned int get_timer0_count (void)
+{
+  unsigned int temp;
+
+  disableIRQ (); // disable interrupts
+  temp = timer0_count; // atomic access
+  enableIRQ (); // enable interrupts
+  return temp;
+}
+
 void timer0_capture_init (void)
 {
   /* Initialize VIC */
   VICINTSEL &= ~(1 << 4); /* Timer 0 selected as IRQ */
-  VICINTEN |= (1 << 4); /* Timer 0 interrupt enabled */
   VICVECTCNTL0 = ((1<<5) | 4); /* Assign Timer0; IRQ. Higher priority */
   VICVECTADDR0 = (unsigned long) timer0_int_handler; /* Address of the ISR */
 

@@ -9,9 +9,7 @@
  * Released under the GPL License, Version 3
  */
 
-void timer0_capture_init (void);
-unsigned int get_timer0_count (void);
-void commutation_disable (void);
-void timer3_init (void);
-unsigned long micros(void);
-void delay_us(unsigned long us);
+void motor_start (void);
+void motor_coast (void);
+void motor_set_duty_cycle (unsigned int value);
+unsigned int motor_get_speed (void);

@@ -32,7 +32,8 @@ int main (void)
 {
   initialize ();
 
-  update_duty_cycle (200); // 0 --> 1000 => 0 --> 100%
+  motor_set_duty_cycle (100);
+  motor_start ();
 
   while (1)
   {

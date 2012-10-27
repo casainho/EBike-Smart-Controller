@@ -9,9 +9,5 @@
  * Released under the GPL License, Version 3
  */
 
-void timer0_capture_init (void);
-unsigned int get_timer0_count (void);
-void commutation_disable (void);
-void timer3_init (void);
-unsigned long micros(void);
-void delay_us(unsigned long us);
+void adc_init (void);
+unsigned short int adc_read (unsigned char channel);
