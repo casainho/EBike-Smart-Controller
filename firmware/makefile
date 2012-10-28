@@ -11,7 +11,7 @@ THUMB_IW =
 
 # Optimization level, can be [0, 1, 2, 3, s]. 
 # 0 = turn off optimization. s = optimize for size.
-OPT = s
+OPT = 0
 
 CFLAGS = -Wall -Wcast-align -Wcast-qual -Wimplicit
 CFLAGS += -Wpointer-arith -Wswitch

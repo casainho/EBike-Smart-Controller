@@ -13,6 +13,10 @@
 #include "pwm.h"
 #include "ios.h"
 
+#define PHASE_A 7
+#define PHASE_B 8
+#define PHASE_C 9
+
 #define HALL_SENSORS_MASK ((1<<6) | (1<<4) | (1<<2)) // P0.2, P0.4, P0.6
 
 BYTE bSector = 1;       /* sector of rotor position, 1~6 is possible value */
@@ -21,18 +25,18 @@ BOOL fDir = FALSE;      /* motor direction variable---CCW direction is default *
 //functions to control each of 6 PWM signals
 void phase_u_h_on (void)
 {
-  /* LPC2103 P0.2 --> CPU4 */
+  /* LPC2103 P0.7 --> CPU1 */
   /* set to output */
-  IODIR |= (1 << 2);
-  IOSET = (1 << 2);
+  IODIR |= (1 << PHASE_A);
+  IOSET = (1 << PHASE_A);
 }
 
 void phase_u_h_off (void)
 {
-  /* LPC2103 P0.2 --> CPU4 */
+  /* LPC2103 P0.7 --> CPU1 */
   /* set to output */
-  IODIR |= (1 << 2);
-  IOCLR = (1 << 2);
+  IODIR |= (1 << PHASE_A);
+  IOCLR = (1 << PHASE_A);
 }
 
 void phase_u_l_pwm_off (void)
@@ -55,16 +59,16 @@ void phase_v_h_on (void)
 {
   /* LPC2103 P0.1 --> CPU3 */
   /* set to output */
-  IODIR |= (1 << 1);
-  IOSET = (1 << 1);
+  IODIR |= (1 << PHASE_B);
+  IOSET = (1 << PHASE_B);
 }
 
 void phase_v_h_off (void)
 {
   /* LPC2103 P0.1 --> CPU3 */
   /* set to output */
-  IODIR |= (1 << 1);
-  IOCLR = (1 << 1);
+  IODIR |= (1 << PHASE_B);
+  IOCLR = (1 << PHASE_B);
 }
 
 void phase_v_l_pwm_off (void)
@@ -87,16 +91,16 @@ void phase_w_h_on (void)
 {
   /* LPC2103 P0.0 --> CPU1 */
   /* set to output */
-  IODIR |= (1 << 0);
-  IOSET = (1 << 0);
+  IODIR |= (1 << PHASE_C);
+  IOSET = (1 << PHASE_C);
 }
 
 void phase_w_h_off (void)
 {
   /* LPC2103 P0.0 --> CPU1 */
   /* set to output */
-  IODIR |= (1 << 0);
-  IOCLR = (1 << 0);
+  IODIR |= (1 << PHASE_C);
+  IOCLR = (1 << PHASE_C);
 }
 
 void phase_w_l_pwm_off (void)

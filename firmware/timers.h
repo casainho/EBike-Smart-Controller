@@ -11,7 +11,6 @@
 
 void timer0_capture_init (void);
 unsigned int get_timer0_count (void);
-void commutation_disable (void);
 void timer3_init (void);
 unsigned long micros(void);
 void delay_us(unsigned long us);

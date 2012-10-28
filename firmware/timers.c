@@ -45,13 +45,16 @@ unsigned int get_timer0_count (void)
 
 void timer0_capture_init (void)
 {
+  // P0.2, P0.4, P0.6 as Capture input pins
+  PINSEL0 |= ((1 << 5) | (1 << 9) | (1 << 13));
+
   /* Initialize VIC */
   VICINTSEL &= ~(1 << 4); /* Timer 0 selected as IRQ */
   VICVECTCNTL0 = ((1<<5) | 4); /* Assign Timer0; IRQ. Higher priority */
   VICVECTADDR0 = (unsigned long) timer0_int_handler; /* Address of the ISR */
 
   /* Timer/Counter 0 power/clock enable */
-  PCONP |= (1 << 4);
+  PCONP |= (1 << 1);
 
   /* Initialize Timer 0 */
   TIMER0_TCR = 0;
