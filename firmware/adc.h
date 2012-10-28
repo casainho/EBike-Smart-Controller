@@ -9,5 +9,5 @@
  * Released under the GPL License, Version 3
  */
 
-void adc_init (void);
-unsigned short int adc_read (unsigned char channel);
+void adc_init (unsigned char channel);
+unsigned int adc_read (unsigned char channel);

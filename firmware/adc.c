@@ -10,19 +10,33 @@
  */
 
 #include "lpc210x.h"
+#include "config.h"
 
-void adc_init (void)
+void adc_init (unsigned char channel)
 {
     /* Enable the ADC pheripherial power */
     PCONP |= (1 << 12);
 
-    /* Select P0.22 to be used for ADC */
-    PINSEL1 |=  ((1 << 12) | (1 << 13)) \ // AD0.0
-                ((1 << 14) | (1 << 15)) \ // AD0.1
-                ((1 << 16) | (1 << 17));  // AD0.2
+    switch (channel)
+    {
+      case VOLTAGE:
+      PINSEL1 |= ((1 << 12) | (1 << 13)); // AD0.0
+      break;
+
+      case CURRENT:
+      PINSEL1 |= ((1 << 14) | (1 << 15)); // AD0.1
+      break;
+
+      case THROTTLE:
+      PINSEL1 |= ((1 << 16) | (1 << 17)); // AD0.2
+      break;
+
+      default:
+      break;
+    }
 }
 
-unsigned short int adc_read (unsigned char channel)
+unsigned int adc_read (unsigned char channel)
 {
     /* Enable ADC; configure the clock; 10 bits resolution; configure channel */
     /* CLKDIV = 12 ==> > 4.5MHz the clock for ADC */

@@ -10,6 +10,7 @@
  */
 
 #include "lpc210x.h"
+#include "isrsupport.h"
 #include "main.h"
 #include "pwm.h"
 #include "ios.h"
