@@ -19,11 +19,8 @@
 
 #define HALL_SENSORS_MASK ((1<<6) | (1<<4) | (1<<2)) // P0.2, P0.4, P0.6
 
-BYTE bSector = 1;       /* sector of rotor position, 1~6 is possible value */
-BOOL fDir = FALSE;      /* motor direction variable---CCW direction is default */
-
 //functions to control each of 6 PWM signals
-void phase_u_h_on (void)
+void phase_a_h_on (void)
 {
   /* LPC2103 P0.7 --> CPU1 */
   /* set to output */
@@ -31,7 +28,7 @@ void phase_u_h_on (void)
   IOSET = (1 << PHASE_A);
 }
 
-void phase_u_h_off (void)
+void phase_a_h_off (void)
 {
   /* LPC2103 P0.7 --> CPU1 */
   /* set to output */
@@ -39,168 +36,168 @@ void phase_u_h_off (void)
   IOCLR = (1 << PHASE_A);
 }
 
-void phase_u_l_pwm_off (void)
+void phase_a_l_pwm_on (void)
 {
-  /* LPC2103 P0.19 (PWM; MAT1.2) --> CPU4 */
-  PINSEL1 |= (1 << 6);
+  /* LPC2103 P0.12 (PWM; MAT1.2) --> CPU44 */
+  PINSEL0 |= (1 << 25);
 }
 
-void phase_u_l_pwm_on (void)
+void phase_a_l_pwm_off (void)
 {
   /* set to output */
-  IODIR |= (1 << 19);
-  IOSET = (1 << 19); /* inverted logic */
+  IODIR |= (1 << 12);
+  IOSET = (1 << 12); /* inverted logic */
 
-  /* LPC2103 P0.19 (PWM; MAT1.2) --> CPU4 */
-  PINSEL1 &= ~(1 << 6);
+  /* LPC2103 P0.12 (PWM; MAT1.2) --> CPU44 */
+  PINSEL0 &= ~(1 << 25);
 }
 
-void phase_v_h_on (void)
+void phase_b_h_on (void)
 {
-  /* LPC2103 P0.1 --> CPU3 */
+  /* LPC2103 P0.8 --> CPU3 */
   /* set to output */
   IODIR |= (1 << PHASE_B);
   IOSET = (1 << PHASE_B);
 }
 
-void phase_v_h_off (void)
+void phase_b_h_off (void)
 {
-  /* LPC2103 P0.1 --> CPU3 */
+  /* LPC2103 P0.8 --> CPU3 */
   /* set to output */
   IODIR |= (1 << PHASE_B);
   IOCLR = (1 << PHASE_B);
 }
 
-void phase_v_l_pwm_off (void)
+void phase_b_l_pwm_on (void)
 {
   /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
-  PINSEL0 |= (1 << 26);
+  PINSEL0 |= (1 << 27);
 }
 
-void phase_v_l_pwm_on (void)
+void phase_b_l_pwm_off (void)
 {
   /* set to output */
   IODIR |= (1 << 13);
   IOSET = (1 << 13); /* inverted logic */
 
   /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
-  PINSEL0 &= ~(1 << 26);
+  PINSEL0 &= ~(1 << 27);
 }
 
-void phase_w_h_on (void)
+void phase_c_h_on (void)
 {
-  /* LPC2103 P0.0 --> CPU1 */
+  /* LPC2103 P0.9 --> CPU5 */
   /* set to output */
   IODIR |= (1 << PHASE_C);
   IOSET = (1 << PHASE_C);
 }
 
-void phase_w_h_off (void)
+void phase_c_h_off (void)
 {
-  /* LPC2103 P0.0 --> CPU1 */
+  /* LPC2103 P0.9 --> CPU5 */
   /* set to output */
   IODIR |= (1 << PHASE_C);
   IOCLR = (1 << PHASE_C);
 }
 
-void phase_w_l_pwm_off (void)
+void phase_c_l_pwm_on (void)
 {
-  /* LPC2103 P0.12 (PWM; MAT1.0) --> CPU44 */
-  PINSEL0 |= (1 << 24);
+  /* LPC2103 P0.19 (PWM; MAT1.0) --> CPU4 */
+  PINSEL1 |= (1 << 7);
 }
 
-void phase_w_l_pwm_on (void)
+void phase_c_l_pwm_off (void)
 {
   /* set to output */
-  IODIR |= (1 << 12);
-  IOSET = (1 << 12); /* inverted logic */
+  IODIR |= (1 << 19);
+  IOSET = (1 << 19); /* inverted logic */
 
-  /* LPC2103 P0.12 (PWM; MAT1.0) --> CPU44 */
-  PINSEL0 &= ~(1 << 24);
+  /* LPC2103 P0.19 (PWM; MAT1.0) --> CPU4 */
+  PINSEL1 &= ~(1 << 7);
 }
 
 void commutation_sector_1 (void)
 {
-  phase_u_h_off ();
-  phase_u_l_pwm_on ();
+  phase_a_h_off ();
+  phase_a_l_pwm_on ();
 
-  phase_v_l_pwm_off ();
-  phase_v_h_on ();
+  phase_b_l_pwm_off ();
+  phase_b_h_on ();
 
-  phase_w_h_off ();
-  phase_w_l_pwm_off ();
+  phase_c_h_off ();
+  phase_c_l_pwm_off ();
 }
 
 void commutation_sector_2 (void)
 {
-  phase_u_h_off ();
-  phase_u_l_pwm_off ();
+  phase_a_h_off ();
+  phase_a_l_pwm_off ();
 
-  phase_v_l_pwm_off ();
-  phase_v_h_on ();
+  phase_b_l_pwm_off ();
+  phase_b_h_on ();
 
-  phase_w_h_off ();
-  phase_w_l_pwm_on ();
+  phase_c_h_off ();
+  phase_c_l_pwm_on ();
 }
 
 void commutation_sector_3 (void)
 {
-  phase_u_l_pwm_off ();
-  phase_u_h_on ();
+  phase_a_l_pwm_off ();
+  phase_a_h_on ();
 
-  phase_v_h_off ();
-  phase_v_l_pwm_off ();
+  phase_b_h_off ();
+  phase_b_l_pwm_off ();
 
-  phase_w_h_off ();
-  phase_w_l_pwm_on ();
+  phase_c_h_off ();
+  phase_c_l_pwm_on ();
 }
 
 void commutation_sector_4 (void)
 {
-  phase_u_l_pwm_off ();
-  phase_u_h_on ();
+  phase_a_l_pwm_off ();
+  phase_a_h_on ();
 
-  phase_v_h_off ();
-  phase_v_l_pwm_on ();
+  phase_b_h_off ();
+  phase_b_l_pwm_on ();
 
-  phase_w_h_off ();
-  phase_w_l_pwm_off ();
+  phase_c_h_off ();
+  phase_c_l_pwm_off ();
 }
 
 void commutation_sector_5 (void)
 {
-  phase_u_h_off ();
-  phase_u_l_pwm_off ();
+  phase_a_h_off ();
+  phase_a_l_pwm_off ();
 
-  phase_v_h_off ();
-  phase_v_l_pwm_on ();
+  phase_b_h_off ();
+  phase_b_l_pwm_on ();
 
-  phase_w_l_pwm_off ();
-  phase_w_h_on ();
+  phase_c_l_pwm_off ();
+  phase_c_h_on ();
 }
 
 void commutation_sector_6 (void)
 {
-  phase_u_h_off ();
-  phase_u_l_pwm_on ();
+  phase_a_h_off ();
+  phase_a_l_pwm_on ();
 
-  phase_v_h_off ();
-  phase_v_l_pwm_off ();
+  phase_b_h_off ();
+  phase_b_l_pwm_off ();
 
-  phase_w_l_pwm_off ();
-  phase_w_h_on ();
+  phase_c_l_pwm_off ();
+  phase_c_h_on ();
 }
 
 void commutation_disable (void)
 {
-  phase_u_h_off ();
-  phase_u_l_pwm_off ();
+  phase_a_h_off ();
+  phase_a_l_pwm_off ();
 
-  phase_v_h_off ();
-  phase_v_l_pwm_off ();
+  phase_b_h_off ();
+  phase_b_l_pwm_off ();
 
-  phase_w_h_off ();
-  phase_w_l_pwm_off ();
+  phase_c_h_off ();
+  phase_c_l_pwm_off ();
 }
 
 void commutation (void)
@@ -264,7 +261,7 @@ void commutation (void)
     break;
 
     default:
-    commutation_disable ();
+    //commutation_disable ();
     break;
   }
 }

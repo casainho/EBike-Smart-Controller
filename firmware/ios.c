@@ -31,10 +31,10 @@ void ios_init (void)
   /* P0.7, P0.8 and P0.9 as GPIOs at reset */
 
   /* Clear the bits for the outputs */
-  IOCLR |= ((1 << PHASE_A) | (1 << PHASE_B) | (1 << PHASE_C));
+  IOCLR |= ((1 << PHASE_A) | (1 << PHASE_B) | (1 << PHASE_C) | (1 << DEBUG));
 
   /* Define all lines as outputs */
-  IODIR |= ((1 << PHASE_A) | (1 << PHASE_B) | (1 << PHASE_C));
+  IODIR |= ((1 << PHASE_A) | (1 << PHASE_B) | (1 << PHASE_C) | (1 << DEBUG));
 }
 
 unsigned char io_is_set (unsigned char io_number)

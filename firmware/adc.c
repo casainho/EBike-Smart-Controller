@@ -14,38 +14,38 @@
 
 void adc_init (unsigned char channel)
 {
-  /* Enable the ADC pheripherial power */
-  PCONP |= (1 << 12);
+    /* Enable the ADC pheripherial power */
+    PCONP |= (1 << 12);
 
-  switch (channel)
-  {
-    case VOLTAGE:
-    PINSEL1 |= ((1 << 12) | (1 << 13)); // AD0.0
-    break;
+    switch (channel)
+    {
+      case VOLTAGE:
+      PINSEL1 |= ((1 << 12) | (1 << 13)); // AD0.0
+      break;
 
-    case CURRENT:
-    PINSEL1 |= ((1 << 14) | (1 << 15)); // AD0.1
-    break;
+      case CURRENT:
+      PINSEL1 |= ((1 << 14) | (1 << 15)); // AD0.1
+      break;
 
-    case THROTTLE:
-    PINSEL1 |= ((1 << 16) | (1 << 17)); // AD0.2
-    break;
+      case THROTTLE:
+      PINSEL1 |= ((1 << 16) | (1 << 17)); // AD0.2
+      break;
 
-    default:
-    break;
-  }
+      default:
+      break;
+    }
 }
 
 unsigned int adc_read (unsigned char channel)
 {
-  /* Enable ADC; configure the clock; 10 bits resolution; configure channel */
-  /* CLKDIV = 12 ==> > 4.5MHz the clock for ADC */
-  /* Each conversion should take about 2,5us */
-  ADCR = ((12 << 8) | (1 << 21) | (1 << 24) | (1 << channel));
+    /* Enable ADC; configure the clock; 10 bits resolution; configure channel */
+    /* CLKDIV = 12 ==> > 4.5MHz the clock for ADC */
+    /* Each conversion should take about 2,5us */
+    ADCR = ((12 << 8) | (1 << 21) | (1 << 24) | (1 << channel));
 
-  /* Wait for finish the conversion */
-  while (!(ADGDR & (1 << 31))) ;
+    /* Wait for finish the conversion */
+    while (!(ADGDR & (1 << 31))) ;
 
-  /* Return the value (10 bits) */
-  return ((ADGDR >> 6) & 0x3ff);
+    /* Return the value (10 bits) */
+    return ((ADGDR >> 6) & 0x3ff);
 }

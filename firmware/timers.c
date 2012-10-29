@@ -29,7 +29,7 @@ void __attribute__ ((interrupt("IRQ"))) timer0_int_handler (void)
   TIMER0_TC = 0; // reset timer 0 value
 
   /* Clear the interrupt flag */
-  TIMER0_IR = 1;
+  TIMER0_IR |= ((1 << 4) | (1 << 5) | (1 << 6));
   VICVECTADDR = 0xff;
 }
 
@@ -69,7 +69,7 @@ void timer0_capture_init (void)
   TIMER0_CCR = 0x1FF;
 
   /* Clear the interrupt flag */
-  TIMER0_IR = 1;
+  TIMER0_IR |= ((1 << 4) | (1 << 5) | (1 << 6));
   VICVECTADDR = 0xff;
 }
 
