@@ -12,11 +12,7 @@
 #include "main.h"
 
 void ios_init (void);
-void phase_a_disable_off (void);
-void phase_a_enable_off (void);
-void phase_b_disable_off (void);
-void phase_b_enable_off (void);
-void phase_c_disable_off (void);
-void phase_c_enable_off (void);
+unsigned char io_is_set (unsigned char io_number);
 void debug_on (void);
 void debug_off (void);
+unsigned char switch_is_set (void);

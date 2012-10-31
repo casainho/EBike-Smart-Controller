@@ -25,6 +25,7 @@ void initialize (void)
 {
   system_init (); // initialize the LPC2103 (clocks, flash memory, etc)
   ios_init (); // configure IO pins
+  while (switch_is_set ()) ; // wait
   adc_init (CURRENT); // init the ADC for current measure
   pwm_init (); // initialize PWM (uses timer1)
   timer0_capture_init (); // intialize Timer0, use it for capture the Hall sensors signal time and BLDC control
@@ -40,7 +41,7 @@ int main (void)
 
   initialize ();
 
-  initial_duty_cycle = duty_cycle = 333;
+  initial_duty_cycle = duty_cycle = 300;
   motor_set_duty_cycle (initial_duty_cycle);
   motor_start ();
 
@@ -65,5 +66,7 @@ int main (void)
       }
     }
 #endif
+
+    while (switch_is_set ()) ; // wait
   }
 }

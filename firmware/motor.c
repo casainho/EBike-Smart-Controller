@@ -23,10 +23,10 @@ unsigned int motor_get_speed (void)
   return motor_speed;
 }
 
-//unsigned int motor_set_speed (void)
-//{
-
-//}
+unsigned int motor_set_speed (void)
+{
+  return 0;
+}
 
 void motor_start (void)
 {
@@ -47,5 +47,19 @@ void motor_set_duty_cycle (unsigned int value)
 
 float motor_get_current (void)
 {
-  return (((float) adc_read (CURRENT)) * MOTOR_CURRENT_PER_ADC_STEP);
+  unsigned int adc_value;
+  float current_value;
+
+  adc_value = adc_read (CURRENT);
+  if (adc_value < 507)
+  {
+    adc_value = 0; // put to zero negative values of current readed by ACS756
+  }
+  else
+  {
+    adc_value -= 508; // shift value to zero
+  }
+
+  current_value = (float) (adc_value * MOTOR_CURRENT_PER_ADC_STEP);
+  return current_value;
 }
