@@ -10,4 +10,5 @@
  */
 
 void commutation_disable (void);
-void commutation (void);
+void commutation_sector (unsigned int sector);
+unsigned int rotor_find_position_sector (void);

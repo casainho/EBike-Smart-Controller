@@ -31,7 +31,7 @@ unsigned int motor_set_speed (void)
 void motor_start (void)
 {
   VICINTEN |= (1 << 4); /* Timer 0 interrupt enabled */
-  commutation (); // starts the commutation
+  //commutation (); // starts the commutation
 }
 
 void motor_coast (void)

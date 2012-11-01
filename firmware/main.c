@@ -26,10 +26,11 @@ void initialize (void)
   system_init (); // initialize the LPC2103 (clocks, flash memory, etc)
   ios_init (); // configure IO pins
   while (switch_is_set ()) ; // wait
-  adc_init (CURRENT); // init the ADC for current measure
+  //adc_init (CURRENT); // init the ADC for current measure
   pwm_init (); // initialize PWM (uses timer1)
-  timer0_capture_init (); // intialize Timer0, use it for capture the Hall sensors signal time and BLDC control
-  //timer3_init (); // intialize timer3 (used for delay function)
+  //timer0_capture_init (); // intialize Timer0, use it for capture the BEMF sensors signal time and BLDC control
+  //timer2_init ();
+  timer3_init (); // intialize timer3 (used for delay function)
   enableIRQ (); // enable interrupts
 }
 
@@ -41,9 +42,70 @@ int main (void)
 
   initialize ();
 
-  initial_duty_cycle = duty_cycle = 300;
-  motor_set_duty_cycle (initial_duty_cycle);
-  motor_start ();
+  //initial_duty_cycle = duty_cycle = 300;
+  //motor_set_duty_cycle (initial_duty_cycle);
+  //motor_start ();
+
+  motor_set_duty_cycle (1000);
+  static int sector = 0, i;
+  while (1)
+  {
+    sector = rotor_find_position_sector ();
+
+    for (i = 0; i < 500; i++)
+    {
+      delay_us (100);
+    }
+
+#if 0
+      commutation_sector_2 ();
+      delay_us (200);
+      commutation_disable ();
+      for (i = 0; i < 1000; i++)
+      {
+        delay_us (1000);
+      }
+
+      commutation_sector_3 ();
+      delay_us (200);
+      commutation_disable ();
+      for (i = 0; i < 1000; i++)
+      {
+        delay_us (1000);
+      }
+
+      commutation_sector_4 ();
+      delay_us (200);
+      commutation_disable ();
+      for (i = 0; i < 1000; i++)
+      {
+        delay_us (1000);
+      }
+
+      commutation_sector_5 ();
+      delay_us (200);
+      commutation_disable ();
+      for (i = 0; i < 1000; i++)
+      {
+        delay_us (1000);
+      }
+
+      commutation_sector_6 ();
+      delay_us (200);
+      commutation_disable ();
+      for (i = 0; i < 1000; i++)
+      {
+        delay_us (1000);
+      }
+
+#endif
+
+
+    while (switch_is_set ())
+    {
+      motor_set_duty_cycle (0);
+    }
+  }
 
   while (1)
   {
@@ -67,6 +129,9 @@ int main (void)
     }
 #endif
 
-    while (switch_is_set ()) ; // wait
+    while (switch_is_set ())
+    {
+      motor_set_duty_cycle (0);
+    }
   }
 }

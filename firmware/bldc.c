@@ -10,14 +10,16 @@
  */
 
 #include "lpc210x.h"
+#include "config.h"
 #include "pwm.h"
 #include "ios.h"
+#include "timers.h"
+#include "motor.h"
+#include "adc.h"
 
 #define PHASE_A 7
 #define PHASE_B 8
 #define PHASE_C 9
-
-#define HALL_SENSORS_MASK ((1<<6) | (1<<4) | (1<<2)) // P0.2, P0.4, P0.6
 
 //functions to control each of 6 PWM signals
 void phase_a_h_on (void)
@@ -200,68 +202,69 @@ void commutation_disable (void)
   phase_c_l_pwm_off ();
 }
 
-void commutation (void)
+void commutation_sector (unsigned int sector)
 {
-  unsigned int switch_sequence;
-
-  switch_sequence = (IOPIN & HALL_SENSORS_MASK); // mask other pins
-
-  switch (switch_sequence)
+  // commutate
+  switch (sector)
   {
-    /*
-     * P0.2 -- phase_a
-     * P0.4 -- phase_b
-     * P0.6 -- phase_c
-     *
-     *   c b a
-     *   0000100 = 4
-     */
-    case 4:
+    case 1:
     commutation_sector_1 ();
     break;
 
-    /*
-     *   c b a
-     *   1000100 = 68
-     */
-    case 68:
+    case 2:
     commutation_sector_2 ();
     break;
 
-    /*
-     *   c b a
-     *   1000000 = 64
-     */
-    case 64:
+    case 3:
     commutation_sector_3 ();
     break;
 
-    /*
-     *   c b a
-     *   1010000 = 80
-     */
-    case 80:
+    case 4:
     commutation_sector_4 ();
     break;
 
-    /*
-     *   c b a
-     *   0010000 = 16
-     */
-    case 16:
+    case 5:
     commutation_sector_5 ();
     break;
 
-    /*
-     *   c b a
-     *   0010100 = 20
-     */
-    case 20:
+    case 6:
     commutation_sector_6 ();
     break;
 
     default:
-    //commutation_disable ();
+    commutation_disable ();
     break;
   }
+}
+
+unsigned int rotor_find_position_sector (void)
+{
+  static unsigned int sector_current[6];
+  unsigned int max_current = 0;
+  unsigned int max_current_sector = 0;
+  unsigned int i;
+
+  motor_set_duty_cycle (1000);
+  for (i = 0; i < 6; i++)
+  {
+    commutation_sector (i + 1); // start energize the sector
+    delay_us (25); // wait 25us
+
+    // read the current, 4 samples and average/filter
+    sector_current[i] = 0;
+    //sector_current[i] += (adc_read (CURRENT) / 4);
+    //sector_current[i] += (adc_read (CURRENT) / 4);
+    //sector_current[i] += (adc_read (CURRENT) / 4);
+    //sector_current[i] += (adc_read (CURRENT) / 4);
+
+    // verify and save the higher current sector
+    if (sector_current[i] > max_current)
+    {
+      max_current = sector_current[i];
+      max_current_sector = i + 1;
+    }
+  }
+  commutation_disable ();
+
+  return max_current_sector;
 }

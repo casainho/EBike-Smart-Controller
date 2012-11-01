@@ -20,4 +20,3 @@
 #define MOTOR_CURRENT_PER_ADC_STEP 0.026f // 6K8/(6K8+3K6) = 0.654 --> sensor outputs 40mV/A --> 0.04/0.654 = 0.026
 #define THROTTLE_PERCENT_PER_ADC_STEP 0.092f // 6K8/(6K8+3K6) = 0.654 --> 5*0.654 = 3.27 --> 3.27/1023 = 0.003 --> 5V -> 100%, 0.003 -> 0.092
 
-//Phace C com PWM e Phase B com Low ligado.
