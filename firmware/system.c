@@ -38,13 +38,13 @@ void system_init (void)
     //
     // Zero LPC2103 board has a 12.000 mhz crystal
     //
-    // We'd like the LPC2103 to run at 53.2368 Mhz (has to be an even multiple of crystal)
+    // We'd like the LPC2103 to run at 48.000 Mhz (has to be an even multiple of crystal)
     //
     // According to the Philips LPC2103 manual:   M = cclk / Fosc   where:  M    = PLL multiplier (bits 0-4 of PLLCFG)
-    //                                                                      cclk = 53236800 hz
+    //                                                                      cclk = 48000000 hz
     //                                                                      Fosc = 12000000 hz
     //
-    // Solving: M = 53236800 / 12000000 = 4,4364
+    // Solving: M = 48000000 / 12000000 = 4
     // M = 4 (round up) --> real cclk =
     //                          = processor clock = 12000000 * 4 = 48000000 Hz.
     //

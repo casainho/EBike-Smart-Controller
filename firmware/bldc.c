@@ -239,7 +239,7 @@ void commutation_sector (unsigned int sector)
 
 unsigned int rotor_find_position_sector (void)
 {
-  static unsigned int sector_current[6];
+  unsigned int sector_current[6];
   unsigned int max_current = 0;
   unsigned int max_current_sector = 0;
   unsigned int i;
@@ -248,14 +248,17 @@ unsigned int rotor_find_position_sector (void)
   for (i = 0; i < 6; i++)
   {
     commutation_sector (i + 1); // start energize the sector
-    delay_us (25); // wait 25us
+    delay_us (50); // wait 50us
 
     // read the current, 4 samples and average/filter
     sector_current[i] = 0;
-    //sector_current[i] += (adc_read (CURRENT) / 4);
-    //sector_current[i] += (adc_read (CURRENT) / 4);
-    //sector_current[i] += (adc_read (CURRENT) / 4);
-    //sector_current[i] += (adc_read (CURRENT) / 4);
+    sector_current[i] += (adc_read (CURRENT) / 4);
+    sector_current[i] += (adc_read (CURRENT) / 4);
+    sector_current[i] += (adc_read (CURRENT) / 4);
+    sector_current[i] += (adc_read (CURRENT) / 4);
+
+    commutation_disable ();
+    delay_us (50); // wait 50us
 
     // verify and save the higher current sector
     if (sector_current[i] > max_current)
