@@ -26,7 +26,8 @@ void initialize (void)
   system_init (); // initialize the LPC2103 (clocks, flash memory, etc)
   ios_init (); // configure IO pins
   while (switch_is_set ()) ; // wait
-  //adc_init (CURRENT); // init the ADC for current measure
+  adc_init (CURRENT); // init the ADC for current measure
+  adc_init (VOLTAGE); // init the ADC for current measure
   pwm_init (); // initialize PWM (uses timer1)
   //timer0_capture_init (); // intialize Timer0, use it for capture the BEMF sensors signal time and BLDC control
   //timer2_init ();
@@ -34,11 +35,29 @@ void initialize (void)
   enableIRQ (); // enable interrupts
 }
 
+unsigned int sector_increment (unsigned int sector)
+{
+  if (sector < 6)
+    sector++;
+  else
+    sector = 1;
+
+  return sector;
+}
+
+unsigned int sector_decrement (unsigned int sector)
+{
+  if (sector > 1)
+    sector--;
+  else
+    sector = 6;
+
+  return sector;
+}
+
 int main (void)
 {
-  unsigned int initial_duty_cycle;
   unsigned int duty_cycle;
-  volatile float motor_current;
 
   initialize ();
 
@@ -46,16 +65,109 @@ int main (void)
   //motor_set_duty_cycle (initial_duty_cycle);
   //motor_start ();
 
-  motor_set_duty_cycle (1000);
-  static int sector = 0, i;
+  static unsigned int sector, i;
+
+  duty_cycle = 500;
+  motor_set_duty_cycle (duty_cycle);
   while (1)
   {
-    sector = rotor_find_position_sector ();
 
-    for (i = 0; i < 500; i++)
+    for (i = 0; i < 6; i++)
     {
-      delay_us (100);
+      // find sector
+      sector = rotor_find_position_sector ();
+
+      // increment, step+2
+      sector = sector_increment (sector);
+      sector = sector_increment (sector);
+
+      // step
+      motor_set_duty_cycle (250);
+      commutation_sector (sector);
+
+      // wait 5ms
+      delay_us (20000);
+      commutation_disable ();
+      delay_us (20000);
     }
+
+    // wait 1s
+    delay_us (1000000);
+
+
+
+
+
+
+
+
+
+
+
+#if 0
+    // wait 5ms
+    for (i = 0; i < 400; i++)
+    {
+      delay_us (10);
+
+      // verify max current
+      current = adc_read (CURRENT);
+      if (current > 650)
+      {
+        duty_cycle = 0;
+        end = 1;
+#if 0
+        if (duty_cycle > 25)
+        {
+          duty_cycle -= 25;
+        }
+        else if (duty_cycle > 0)
+        {
+          duty_cycle -= 1;
+        }
+#endif
+      }
+      else
+      {
+        if ((duty_cycle < 500) && (end = 0))
+        {
+          duty_cycle++;
+        }
+      }
+      motor_set_duty_cycle (duty_cycle);
+    }
+    commutation_disable ();
+
+    delay_us (1000);
+
+#endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #if 0
       commutation_sector_2 ();

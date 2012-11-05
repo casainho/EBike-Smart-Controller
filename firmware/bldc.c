@@ -120,11 +120,11 @@ void phase_c_l_pwm_off (void)
 
 void commutation_sector_1 (void)
 {
-  phase_a_h_off ();
-  phase_a_l_pwm_on ();
+  phase_a_l_pwm_off ();
+  phase_a_h_on ();
 
-  phase_b_l_pwm_off ();
-  phase_b_h_on ();
+  phase_b_h_off ();
+  phase_b_l_pwm_on ();
 
   phase_c_h_off ();
   phase_c_l_pwm_off ();
@@ -132,6 +132,18 @@ void commutation_sector_1 (void)
 
 void commutation_sector_2 (void)
 {
+  phase_a_l_pwm_off ();
+  phase_a_h_on ();
+
+  phase_b_h_off ();
+  phase_b_l_pwm_off ();
+
+  phase_c_h_off ();
+  phase_c_l_pwm_on ();
+}
+
+void commutation_sector_3 (void)
+{
   phase_a_h_off ();
   phase_a_l_pwm_off ();
 
@@ -142,25 +154,13 @@ void commutation_sector_2 (void)
   phase_c_l_pwm_on ();
 }
 
-void commutation_sector_3 (void)
-{
-  phase_a_l_pwm_off ();
-  phase_a_h_on ();
-
-  phase_b_h_off ();
-  phase_b_l_pwm_off ();
-
-  phase_c_h_off ();
-  phase_c_l_pwm_on ();
-}
-
 void commutation_sector_4 (void)
 {
-  phase_a_l_pwm_off ();
-  phase_a_h_on ();
+  phase_a_h_off ();
+  phase_a_l_pwm_on ();
 
-  phase_b_h_off ();
-  phase_b_l_pwm_on ();
+  phase_b_l_pwm_off ();
+  phase_b_h_on ();
 
   phase_c_h_off ();
   phase_c_l_pwm_off ();
@@ -169,10 +169,10 @@ void commutation_sector_4 (void)
 void commutation_sector_5 (void)
 {
   phase_a_h_off ();
-  phase_a_l_pwm_off ();
+  phase_a_l_pwm_on ();
 
   phase_b_h_off ();
-  phase_b_l_pwm_on ();
+  phase_b_l_pwm_off ();
 
   phase_c_l_pwm_off ();
   phase_c_h_on ();
@@ -181,10 +181,10 @@ void commutation_sector_5 (void)
 void commutation_sector_6 (void)
 {
   phase_a_h_off ();
-  phase_a_l_pwm_on ();
+  phase_a_l_pwm_off ();
 
   phase_b_h_off ();
-  phase_b_l_pwm_off ();
+  phase_b_l_pwm_on ();
 
   phase_c_l_pwm_off ();
   phase_c_h_on ();
@@ -239,7 +239,7 @@ void commutation_sector (unsigned int sector)
 
 unsigned int rotor_find_position_sector (void)
 {
-  unsigned int sector_current[6];
+  unsigned int sector_current;
   unsigned int max_current = 0;
   unsigned int max_current_sector = 0;
   unsigned int i;
@@ -251,19 +251,19 @@ unsigned int rotor_find_position_sector (void)
     delay_us (50); // wait 50us
 
     // read the current, 4 samples and average/filter
-    sector_current[i] = 0;
-    sector_current[i] += (adc_read (CURRENT) / 4);
-    sector_current[i] += (adc_read (CURRENT) / 4);
-    sector_current[i] += (adc_read (CURRENT) / 4);
-    sector_current[i] += (adc_read (CURRENT) / 4);
+    sector_current = adc_read (CURRENT);
+    sector_current += adc_read (CURRENT);
+    sector_current += adc_read (CURRENT);
+    sector_current += adc_read (CURRENT);
+    sector_current /= 4;
 
     commutation_disable ();
     delay_us (50); // wait 50us
 
     // verify and save the higher current sector
-    if (sector_current[i] > max_current)
+    if (sector_current > max_current)
     {
-      max_current = sector_current[i];
+      max_current = sector_current;
       max_current_sector = i + 1;
     }
   }
