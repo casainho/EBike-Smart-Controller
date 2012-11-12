@@ -65,21 +65,42 @@ int main (void)
   //motor_set_duty_cycle (initial_duty_cycle);
   //motor_start ();
 
-  static unsigned int sector, i;
-
-  duty_cycle = 500;
-  motor_set_duty_cycle (duty_cycle);
+  static float mcurrent = 0;
+  static unsigned int sector = 1, i;
   while (1)
   {
+    // find sector
+    //sector = rotor_find_position_sector ();
 
-    for (i = 0; i < 6; i++)
+    // sector + 2
+    sector = sector_decrement (sector);
+    sector = sector_decrement (sector);
+    sector = sector_decrement (sector);
+
+    // enable sector
+    commutation_sector (sector);
+    // delay with current control: 20ms, 8A max current
+    mcurrent = delay_with_current_control (20000, 5);
+
+    // disable sectors
+    commutation_disable ();
+
+    //delay_us (50000);
+
+    // wait 1s
+    //delay_us (1000000);
+
+
+
+#if 0
+    for (i = 0; i < 10; i++)
     {
       // find sector
       sector = rotor_find_position_sector ();
 
       // increment, step+2
-      sector = sector_increment (sector);
-      sector = sector_increment (sector);
+      sector = sector_decrement (sector);
+      sector = sector_decrement (sector);
 
       // step
       motor_set_duty_cycle (250);
@@ -88,20 +109,14 @@ int main (void)
       // wait 5ms
       delay_us (20000);
       commutation_disable ();
-      delay_us (20000);
+      //delay_us (20000);
     }
 
     // wait 1s
     delay_us (1000000);
 
 
-
-
-
-
-
-
-
+#endif
 
 
 #if 0

@@ -271,3 +271,41 @@ unsigned int rotor_find_position_sector (void)
 
   return max_current_sector;
 }
+
+float delay_with_current_control (unsigned long us, float current_max)
+{
+  unsigned long start = micros();
+  unsigned int duty_cycle = 0;
+  float current;
+
+  while (micros() - start < us) // while delay time, do...
+  {
+    current = motor_get_current ();
+    if (current < current_max) // if currente is lower than max current
+    {
+      if (duty_cycle < 999) // limit here the duty_cycle
+      {
+        duty_cycle += 1;
+      }
+    }
+    else if (current > current_max)
+    {
+      if (duty_cycle > 10)
+      {
+        duty_cycle -= 10;
+      }
+      else if (duty_cycle > 5)
+      {
+        duty_cycle -= 5;
+      }
+      else if (duty_cycle > 1)
+      {
+        duty_cycle -= 1;
+      }
+    }
+
+    motor_set_duty_cycle (duty_cycle);
+  }
+
+  return current;
+}
