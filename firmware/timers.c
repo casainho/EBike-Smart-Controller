@@ -22,7 +22,7 @@ unsigned int timer0_count;
 void __attribute__ ((interrupt("IRQ"))) timer0_int_handler (void)
 {
   /* "Read" all sensors sequence and execute the BLDC coils commutation */
-  //commutation ();
+  commutation ();
 
   /* Save current timer value (time between each hall sensor signal change) */
   timer0_count = TIMER0_TC;
@@ -72,62 +72,6 @@ void timer0_capture_init (void)
   TIMER0_IR |= ((1 << 4) | (1 << 5) | (1 << 6));
   VICVECTADDR = 0xff;
 }
-
-//just use it to increase the time
-void __attribute__ ((interrupt("IRQ"))) timer2_int_handler (void)
-{
-  /* Execute the BLDC coils commutation */
-  //commutation ();
-
-  /* Clear the interrupt flag */
-  TIMER2_IR = 1;
-  VICVECTADDR = 0xff;
-}
-
-void timer2_init (void)
-{
-  /* Initialize VIC */
-  VICINTSEL &= ~(1 << 26); /* Timer 2 selected as IRQ */
-  VICINTEN |= (1 << 26); /* Timer 2 interrupt enabled */
-  VICVECTCNTL0 = ((1<<5) | 26); /* Assign Timer2; IRQ. Higher priority */
-  VICVECTADDR0 = (unsigned long) timer2_int_handler; /* Address of the ISR */
-
-  /* Timer/Counter 2 power/clock enable */
-  PCONP |= (1 << 22);
-
-  /* Initialize Timer 2 */
-  TIMER2_TCR = 0;
-  TIMER2_TC = 0; /* Counter register: Clear counter */
-  TIMER2_PR = 47; /* Prescaler register: Timer2 Counter increments each 1us; 1us/(48MHz-1) */
-  TIMER2_PC = 0; /* Prescaler counter register: Clear prescaler counter */
-
-  /* Clear the interrupt flag */
-  TIMER2_IR = 1;
-  VICVECTADDR = 0xff;
-
-  TIMER2_MCR = 3; /* Reset and interrupt on match */
-}
-
-void timer2_start (void)
-{
-  /* Start timer */
-  TIMER2_TCR = 1;
-}
-
-void timer2_stop(void)
-{
-  /* Stop timer */
-  TIMER2_TCR = 0;
-}
-
-void timer2_set_us (unsigned long us)
-{
-  /* Match register 0:
-   * Fclk = 48000000Hz; 48MHz/48 = 1MHz -> 1us.
-   * x us * 1us = x us */
-  TIMER2_MR0 = us;
-}
-
 
 void timer3_init (void)
 {

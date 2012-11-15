@@ -11,5 +11,4 @@
 
 void commutation_disable (void);
 void commutation_sector (unsigned int sector);
-unsigned int rotor_find_position_sector (void);
-float delay_with_current_control (unsigned long us, float current_max);
+void commutation (void);

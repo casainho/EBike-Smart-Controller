@@ -16,6 +16,8 @@
 #include "timers.h"
 #include "adc.h"
 
+float _current_max = 0;
+
 unsigned int motor_get_speed (void)
 {
   unsigned int motor_speed;
@@ -23,15 +25,15 @@ unsigned int motor_get_speed (void)
   return motor_speed;
 }
 
-unsigned int motor_set_speed (void)
+void motor_set_speed (unsigned int speed)
 {
-  return 0;
+  (void) speed;
 }
 
 void motor_start (void)
 {
   VICINTEN |= (1 << 4); /* Timer 0 interrupt enabled */
-  //commutation (); // starts the commutation
+  commutation (); // starts the commutation
 }
 
 void motor_coast (void)
@@ -62,4 +64,43 @@ float motor_get_current (void)
 
   current_value = (float) (adc_value * MOTOR_CURRENT_PER_ADC_STEP);
   return current_value;
+}
+
+void motor_current_control (void)
+{
+  static unsigned int duty_cycle = 0;
+  float current;
+
+  current = motor_get_current ();
+  if (current < _current_max) // if currente is lower than max current
+  {
+    if (duty_cycle < 250) // limit here the duty_cycle
+    {
+      duty_cycle += 1;
+    }
+  }
+  else if (current > _current_max)
+  {
+    if (duty_cycle > 10)
+    {
+      duty_cycle -= 10;
+    }
+    else if (duty_cycle > 5)
+    {
+      duty_cycle -= 5;
+    }
+    else if (duty_cycle > 1)
+    {
+      duty_cycle -= 1;
+    }
+  }
+
+  motor_set_duty_cycle (duty_cycle);
+
+  return;
+}
+
+void motor_set_current_max (float current_max)
+{
+  _current_max = current_max;
 }

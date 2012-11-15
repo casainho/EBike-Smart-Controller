@@ -21,7 +21,8 @@
 #define PHASE_B 8
 #define PHASE_C 9
 
-//functions to control each of 6 PWM signals
+#define HALL_SENSORS_MASK ((1<<6) | (1<<4) | (1<<2)) // P0.2, P0.4, P0.6
+
 void phase_a_h_on (void)
 {
   /* LPC2103 P0.7 --> CPU1 */
@@ -120,11 +121,11 @@ void phase_c_l_pwm_off (void)
 
 void commutation_sector_1 (void)
 {
-  phase_a_l_pwm_off ();
-  phase_a_h_on ();
+  phase_a_h_off ();
+  phase_a_l_pwm_on ();
 
-  phase_b_h_off ();
-  phase_b_l_pwm_on ();
+  phase_b_l_pwm_off ();
+  phase_b_h_on ();
 
   phase_c_h_off ();
   phase_c_l_pwm_off ();
@@ -132,6 +133,18 @@ void commutation_sector_1 (void)
 
 void commutation_sector_2 (void)
 {
+  phase_a_h_off ();
+  phase_a_l_pwm_off ();
+
+  phase_b_l_pwm_off ();
+  phase_b_h_on ();
+
+  phase_c_h_off ();
+  phase_c_l_pwm_on ();
+}
+
+void commutation_sector_3 (void)
+{
   phase_a_l_pwm_off ();
   phase_a_h_on ();
 
@@ -142,25 +155,13 @@ void commutation_sector_2 (void)
   phase_c_l_pwm_on ();
 }
 
-void commutation_sector_3 (void)
-{
-  phase_a_h_off ();
-  phase_a_l_pwm_off ();
-
-  phase_b_l_pwm_off ();
-  phase_b_h_on ();
-
-  phase_c_h_off ();
-  phase_c_l_pwm_on ();
-}
-
 void commutation_sector_4 (void)
 {
-  phase_a_h_off ();
-  phase_a_l_pwm_on ();
+  phase_a_l_pwm_off ();
+  phase_a_h_on ();
 
-  phase_b_l_pwm_off ();
-  phase_b_h_on ();
+  phase_b_h_off ();
+  phase_b_l_pwm_on ();
 
   phase_c_h_off ();
   phase_c_l_pwm_off ();
@@ -169,10 +170,10 @@ void commutation_sector_4 (void)
 void commutation_sector_5 (void)
 {
   phase_a_h_off ();
-  phase_a_l_pwm_on ();
+  phase_a_l_pwm_off ();
 
   phase_b_h_off ();
-  phase_b_l_pwm_off ();
+  phase_b_l_pwm_on ();
 
   phase_c_l_pwm_off ();
   phase_c_h_on ();
@@ -181,10 +182,10 @@ void commutation_sector_5 (void)
 void commutation_sector_6 (void)
 {
   phase_a_h_off ();
-  phase_a_l_pwm_off ();
+  phase_a_l_pwm_on ();
 
   phase_b_h_off ();
-  phase_b_l_pwm_on ();
+  phase_b_l_pwm_off ();
 
   phase_c_l_pwm_off ();
   phase_c_h_on ();
@@ -202,32 +203,66 @@ void commutation_disable (void)
   phase_c_l_pwm_off ();
 }
 
-void commutation_sector (unsigned int sector)
+void commutation (void)
 {
-  // commutate
-  switch (sector)
+  unsigned int switch_sequence;
+
+  switch_sequence = (IOPIN & HALL_SENSORS_MASK); // mask other pins
+
+  switch (switch_sequence)
   {
-    case 1:
+    /*
+     * P0.2 -- phase_a
+     * P0.4 -- phase_b
+     * P0.6 -- phase_c
+     *
+     */
+
+    /*
+     *   c b a
+     *   0010000 = 16
+     */
+    case 16:
     commutation_sector_1 ();
     break;
 
-    case 2:
+    /*
+     *   c b a
+     *   1010000 = 80
+     */
+    case 80:
     commutation_sector_2 ();
     break;
 
-    case 3:
+    /*
+     *   c b a
+     *   1000000 = 64
+     */
+    case 64:
     commutation_sector_3 ();
     break;
 
-    case 4:
+    /*
+     *   c b a
+     *   1000100 = 68
+     */
+    case 68:
     commutation_sector_4 ();
     break;
 
-    case 5:
+    /*
+     *   c b a
+     *   0000100 = 4
+     */
+    case 4:
     commutation_sector_5 ();
     break;
 
-    case 6:
+    /*
+     *   c b a
+     *   0010100 = 20
+     */
+    case 20:
     commutation_sector_6 ();
     break;
 
@@ -235,77 +270,4 @@ void commutation_sector (unsigned int sector)
     commutation_disable ();
     break;
   }
-}
-
-unsigned int rotor_find_position_sector (void)
-{
-  unsigned int sector_current;
-  unsigned int max_current = 0;
-  unsigned int max_current_sector = 0;
-  unsigned int i;
-
-  motor_set_duty_cycle (1000);
-  for (i = 0; i < 6; i++)
-  {
-    commutation_sector (i + 1); // start energize the sector
-    delay_us (50); // wait 50us
-
-    // read the current, 4 samples and average/filter
-    sector_current = adc_read (CURRENT);
-    sector_current += adc_read (CURRENT);
-    sector_current += adc_read (CURRENT);
-    sector_current += adc_read (CURRENT);
-    sector_current /= 4;
-
-    commutation_disable ();
-    delay_us (50); // wait 50us
-
-    // verify and save the higher current sector
-    if (sector_current > max_current)
-    {
-      max_current = sector_current;
-      max_current_sector = i + 1;
-    }
-  }
-  commutation_disable ();
-
-  return max_current_sector;
-}
-
-float delay_with_current_control (unsigned long us, float current_max)
-{
-  unsigned long start = micros();
-  unsigned int duty_cycle = 0;
-  float current;
-
-  while (micros() - start < us) // while delay time, do...
-  {
-    current = motor_get_current ();
-    if (current < current_max) // if currente is lower than max current
-    {
-      if (duty_cycle < 999) // limit here the duty_cycle
-      {
-        duty_cycle += 1;
-      }
-    }
-    else if (current > current_max)
-    {
-      if (duty_cycle > 10)
-      {
-        duty_cycle -= 10;
-      }
-      else if (duty_cycle > 5)
-      {
-        duty_cycle -= 5;
-      }
-      else if (duty_cycle > 1)
-      {
-        duty_cycle -= 1;
-      }
-    }
-
-    motor_set_duty_cycle (duty_cycle);
-  }
-
-  return current;
 }
