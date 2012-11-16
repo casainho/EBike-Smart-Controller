@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sáb 27 Out 2012 18:03:45 WEST
+EESchema Schematic File Version 2  date Qui 15 Nov 2012 23:12:05 WET
 LIBS:Allegro_ACS754_ACS755_ACS756_HallCurrentSensor_RevA
 LIBS:ac-dc
 LIBS:conn
@@ -31,7 +31,7 @@ $Descr A3 16535 11700
 encoding utf-8
 Sheet 1 1
 Title "EBike Smart Controller"
-Date "27 oct 2012"
+Date "15 nov 2012"
 Rev "V0.1"
 Comp "Author: Jorge Pinto aka Casainho (casainho@gmail.com)"
 Comment1 "License: GPL V3"
@@ -39,6 +39,27 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Connection ~ 3450 4050
+$Comp
+L GND #PWR8
+U 1 1 50A57363
+P 3450 4400
+F 0 "#PWR8" H 3450 4400 30  0001 C CNN
+F 1 "GND" H 3450 4330 30  0001 C CNN
+	1    3450 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_MINI C5
+U 1 1 50A57362
+P 3450 4150
+F 0 "C5" V 3400 4190 30  0000 C CNN
+F 1 "100nF" V 3500 4220 25  0000 C CNN
+	1    3450 4150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3450 4400 3450 4250
 Text Notes 12150 7550 0    60   ~ 0
 solder to LPC2103 board Vcc input
 Wire Wire Line
@@ -317,54 +338,54 @@ Wire Wire Line
 Wire Notes Line
 	8900 7600 14500 7600
 $Comp
-L +5V #PWR?
+L +5V #PWR26
 U 1 1 508C1378
 P 12000 7500
-F 0 "#PWR?" H 12000 7590 20  0001 C CNN
+F 0 "#PWR26" H 12000 7590 20  0001 C CNN
 F 1 "+5V" H 12000 7590 30  0000 C CNN
 	1    12000 7500
 	0    1    1    0   
 $EndComp
 $Comp
-L +5V #PWR8
+L +5V #PWR9
 U 1 1 5084124F
 P 4000 6700
-F 0 "#PWR8" H 4000 6790 20  0001 C CNN
+F 0 "#PWR9" H 4000 6790 20  0001 C CNN
 F 1 "+5V" H 4000 6790 30  0000 C CNN
 	1    4000 6700
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR?
+L GND #PWR13
 U 1 1 508C12D8
 P 6450 3400
-F 0 "#PWR?" H 6450 3400 30  0001 C CNN
+F 0 "#PWR13" H 6450 3400 30  0001 C CNN
 F 1 "GND" H 6450 3330 30  0001 C CNN
 	1    6450 3400
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR?
+L GND #PWR14
 U 1 1 508C1271
 P 6450 4600
-F 0 "#PWR?" H 6450 4600 30  0001 C CNN
+F 0 "#PWR14" H 6450 4600 30  0001 C CNN
 F 1 "GND" H 6450 4530 30  0001 C CNN
 	1    6450 4600
 	1    0    0    -1  
 $EndComp
 Text Label 11200 6100 2    60   ~ 0
-PWM for mosfet phase_a high (LPC2103 P0.12)
+PWM for mosfet phase_a low (LPC2103 P0.12)
 Text Label 14450 6100 2    60   ~ 0
-PWM for mosfet phase_b high (LPC2103 P0.13)
+PWM for mosfet phase_b low (LPC2103 P0.13)
 NoConn ~ 11350 6600
 Text Label 11200 6600 2    60   ~ 0
-PWM for mosfet phase_c high (LPC2103 P0.19)
+PWM for mosfet phase_c low (LPC2103 P0.19)
 Text Label 8300 6900 2    60   ~ 0
-IO for mosfet phase_a low (LPC2103 P0.7)
+IO for mosfet phase_a high (LPC2103 P0.7)
 Text Label 11200 5900 2    60   ~ 0
-IO for mosfet phase_b low (LPC2103 P0.8)
+IO for mosfet phase_b high (LPC2103 P0.8)
 Text Label 14250 5900 2    60   ~ 0
-IO for mosfet phase_c low (LPC2103 P0.9)
+IO for mosfet phase_c high (LPC2103 P0.9)
 Text Notes 3800 6800 2    50   ~ 0
 Note: 5V power source is from KU63 controller.
 Text Notes 1850 6600 0    30   ~ 0
@@ -420,35 +441,35 @@ EBike Smart Controller main board
 Text Notes 10450 5200 0    150  ~ 0
 Zero LPC2103 board
 Text Label 8500 7200 2    60   ~ 0
-PWM for mosfet phase_a high (LPC2103 P0.12)
+PWM for mosfet phase_a low (LPC2103 P0.12)
 Text Label 8500 7000 2    60   ~ 0
-PWM for mosfet phase_c high (LPC2103 P0.19)
+PWM for mosfet phase_c low (LPC2103 P0.19)
 Text Label 8300 6800 2    60   ~ 0
-IO for mosfet phase_b low (LPC2103 P0.8)
+IO for mosfet phase_b high (LPC2103 P0.8)
 Text Label 8300 6700 2    60   ~ 0
-IO for mosfet phase_c low (LPC2103 P0.9)
+IO for mosfet phase_c high (LPC2103 P0.9)
 $Comp
-L +5V #PWR19
+L +5V #PWR18
 U 1 1 50846743
 P 6550 6600
-F 0 "#PWR19" H 6550 6690 20  0001 C CNN
+F 0 "#PWR18" H 6550 6690 20  0001 C CNN
 F 1 "+5V" H 6550 6690 30  0000 C CNN
 	1    6550 6600
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR16
+L GND #PWR17
 U 1 1 50846742
 P 6450 6350
-F 0 "#PWR16" H 6450 6350 30  0001 C CNN
+F 0 "#PWR17" H 6450 6350 30  0001 C CNN
 F 1 "GND" H 6450 6280 30  0001 C CNN
 	1    6450 6350
 	-1   0    0    1   
 $EndComp
 Text Label 14250 5800 2    60   ~ 0
-IO for mosfet phase_a low (LPC2103 P0.7)
+IO for mosfet phase_a high (LPC2103 P0.7)
 Text Label 8500 7100 2    60   ~ 0
-PWM for mosfet phase_b high (LPC2103 P0.13)
+PWM for mosfet phase_b low (LPC2103 P0.13)
 Text Label 7800 7300 2    60   ~ 0
 Current_signal (LPC2103 P0.23)
 Text Notes 8650 6500 2    50   ~ 0
@@ -534,53 +555,53 @@ $EndComp
 Text Label 2750 6000 0    60   ~ 0
 Current_signal (LPC2103 P0.23)
 Text Label 2050 6200 0    60   ~ 0
-PWM for mosfet phase_b high (LPC2103 P0.13)
+PWM for mosfet phase_b low (LPC2103 P0.13)
 Text Label 2250 6400 0    60   ~ 0
-IO for mosfet phase_a low (LPC2103 P0.7)
+IO for mosfet phase_a high (LPC2103 P0.7)
 $Comp
-L GND #PWR9
+L GND #PWR10
 U 1 1 50841255
 P 4100 6950
-F 0 "#PWR9" H 4100 6950 30  0001 C CNN
+F 0 "#PWR10" H 4100 6950 30  0001 C CNN
 F 1 "GND" H 4100 6880 30  0001 C CNN
 	1    4100 6950
 	1    0    0    -1  
 $EndComp
 Text Label 2250 6600 0    60   ~ 0
-IO for mosfet phase_c low (LPC2103 P0.9)
+IO for mosfet phase_c high (LPC2103 P0.9)
 Text Label 2250 6500 0    60   ~ 0
-IO for mosfet phase_b low (LPC2103 P0.8)
+IO for mosfet phase_b high (LPC2103 P0.8)
 Text Label 2050 6300 0    60   ~ 0
-PWM for mosfet phase_c high (LPC2103 P0.19)
+PWM for mosfet phase_c low (LPC2103 P0.19)
 Text Label 2050 6100 0    60   ~ 0
-PWM for mosfet phase_a high (LPC2103 P0.12)
+PWM for mosfet phase_a low (LPC2103 P0.12)
 Text Label 3350 4050 0    60   ~ 0
 Current_signal (LPC2103 P0.23)
 Text Notes 2450 2900 0    150  ~ 30
 KU63 controller
 $Comp
-L +5V #PWR22
+L +5V #PWR23
 U 1 1 508410D2
 P 7150 2450
-F 0 "#PWR22" H 7150 2540 20  0001 C CNN
+F 0 "#PWR23" H 7150 2540 20  0001 C CNN
 F 1 "+5V" H 7150 2540 30  0000 C CNN
 	1    7150 2450
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR21
+L +5V #PWR22
 U 1 1 508410CE
 P 6900 2450
-F 0 "#PWR21" H 6900 2540 20  0001 C CNN
+F 0 "#PWR22" H 6900 2540 20  0001 C CNN
 F 1 "+5V" H 6900 2540 30  0000 C CNN
 	1    6900 2450
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR17
+L +5V #PWR19
 U 1 1 508410CC
 P 6650 2450
-F 0 "#PWR17" H 6650 2540 20  0001 C CNN
+F 0 "#PWR19" H 6650 2540 20  0001 C CNN
 F 1 "+5V" H 6650 2540 30  0000 C CNN
 	1    6650 2450
 	1    0    0    -1  
@@ -630,19 +651,19 @@ Throttle_signal (LPC2103 P0.24)
 Text Label 9700 6800 0    60   ~ 0
 Current_signal (LPC2103 P0.23)
 $Comp
-L +3.3V #PWR26
+L +3.3V #PWR28
 U 1 1 5083CE03
 P 12350 7300
-F 0 "#PWR26" H 12350 7260 30  0001 C CNN
+F 0 "#PWR28" H 12350 7260 30  0001 C CNN
 F 1 "+3.3V" H 12350 7410 30  0000 C CNN
 	1    12350 7300
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR25
+L GND #PWR27
 U 1 1 5083CDAD
 P 12350 6550
-F 0 "#PWR25" H 12350 6550 30  0001 C CNN
+F 0 "#PWR27" H 12350 6550 30  0001 C CNN
 F 1 "GND" H 12350 6480 30  0001 C CNN
 	1    12350 6550
 	1    0    0    -1  
@@ -661,19 +682,19 @@ UART TX (LPC2103 P0.0)
 Text Label 10500 2850 0    60   ~ 0
 UART RX (LPC2103 P0.1)
 $Comp
-L +3.3V #PWR23
+L +3.3V #PWR24
 U 1 1 5083C9AC
 P 11650 3850
-F 0 "#PWR23" H 11650 3810 30  0001 C CNN
+F 0 "#PWR24" H 11650 3810 30  0001 C CNN
 F 1 "+3.3V" H 11650 3960 30  0000 C CNN
 	1    11650 3850
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR24
+L GND #PWR25
 U 1 1 5083C9A1
 P 11650 4200
-F 0 "#PWR24" H 11650 4200 30  0001 C CNN
+F 0 "#PWR25" H 11650 4200 30  0001 C CNN
 F 1 "GND" H 11650 4130 30  0001 C CNN
 	1    11650 4200
 	1    0    0    -1  
@@ -816,10 +837,10 @@ F 1 "GND" H 2250 5480 30  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR14
+L +3.3V #PWR15
 U 1 1 5083200B
 P 6450 5150
-F 0 "#PWR14" H 6450 5110 30  0001 C CNN
+F 0 "#PWR15" H 6450 5110 30  0001 C CNN
 F 1 "+3.3V" H 6450 5260 30  0000 C CNN
 	1    6450 5150
 	1    0    0    -1  
@@ -845,10 +866,10 @@ F 1 "10K" H 6450 5400 25  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR15
+L GND #PWR16
 U 1 1 50831F3E
 P 6450 5850
-F 0 "#PWR15" H 6450 5850 30  0001 C CNN
+F 0 "#PWR16" H 6450 5850 30  0001 C CNN
 F 1 "GND" H 6450 5780 30  0001 C CNN
 	1    6450 5850
 	1    0    0    -1  
@@ -874,10 +895,10 @@ F 1 "10nF" H 6900 4470 25  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR20
+L GND #PWR21
 U 1 1 50831E6E
 P 6850 4600
-F 0 "#PWR20" H 6850 4600 30  0001 C CNN
+F 0 "#PWR21" H 6850 4600 30  0001 C CNN
 F 1 "GND" H 6850 4530 30  0001 C CNN
 	1    6850 4600
 	1    0    0    -1  
@@ -892,10 +913,10 @@ F 1 "Throttle" V 6000 4050 40  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L +5V #PWR10
+L +5V #PWR12
 U 1 1 50831D0B
 P 6400 4050
-F 0 "#PWR10" H 6400 4140 20  0001 C CNN
+F 0 "#PWR12" H 6400 4140 20  0001 C CNN
 F 1 "+5V" H 6400 4140 30  0000 C CNN
 	1    6400 4050
 	0    1    1    0   
@@ -919,10 +940,10 @@ F 1 "6K8 1%" H 6650 4450 25  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR18
+L GND #PWR20
 U 1 1 50831D04
 P 6650 4600
-F 0 "#PWR18" H 6650 4600 30  0001 C CNN
+F 0 "#PWR20" H 6650 4600 30  0001 C CNN
 F 1 "GND" H 6650 4530 30  0001 C CNN
 	1    6650 4600
 	1    0    0    -1  
