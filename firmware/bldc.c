@@ -205,6 +205,66 @@ void commutation_disable (void)
 
 void commutation (void)
 {
+  static unsigned int table[6] =
+  {
+      // roda ao em sentido contrário mas roda perfeitamente e reage bem, como esperado, ao aumento do pwm!
+      4,
+      68,
+      64,
+      80,
+      16,
+      20
+  };
+
+  static unsigned int hall_sensors = 0;
+  unsigned int switch_sequence = 99; // 99 for an invalide sequence number at start
+  unsigned int i;
+
+  hall_sensors = (IOPIN & HALL_SENSORS_MASK); // mask other pins
+
+  for (i = 0; i < 6; i++)
+  {
+    if (table[i] == hall_sensors)
+    {
+      switch_sequence = i + 1;
+    }
+  }
+
+  switch (switch_sequence)
+  {
+    case 1:
+    commutation_sector_1 ();
+    break;
+
+    case 2:
+    commutation_sector_2 ();
+    break;
+
+    case 3:
+    commutation_sector_3 ();
+    break;
+
+    case 4:
+    commutation_sector_4 ();
+    break;
+
+    case 5:
+    commutation_sector_5 ();
+    break;
+
+    case 6:
+    commutation_sector_6 ();
+    break;
+
+    default:
+    commutation_disable ();
+    break;
+  }
+}
+
+#if 0
+void commutation (void)
+{
   unsigned int switch_sequence;
 
   switch_sequence = (IOPIN & HALL_SENSORS_MASK); // mask other pins
@@ -271,3 +331,4 @@ void commutation (void)
     break;
   }
 }
+#endif

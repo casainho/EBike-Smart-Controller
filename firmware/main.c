@@ -36,13 +36,15 @@ void initialize (void)
 
 int main (void)
 {
+  unsigned int duty_cycle = 150;
+
   initialize ();
 
   motor_start (); // initialize the needed interrupt and sets the outpus as needed
-  motor_set_current_max (2); // max average current of 2 amps
+  motor_set_current_max (3); // max average current of 3 amps
 
   while (1)
   {
-    motor_current_control (); // keep controlling the max current
+    motor_current_control (duty_cycle); // keep controlling the max current
   }
 }

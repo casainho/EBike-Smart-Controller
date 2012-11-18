@@ -66,36 +66,36 @@ float motor_get_current (void)
   return current_value;
 }
 
-void motor_current_control (void)
+void motor_current_control (unsigned int duty_cycle)
 {
-  static unsigned int duty_cycle = 0;
+  static unsigned int _duty_cycle = 0;
   float current;
 
   current = motor_get_current ();
-  if (current < _current_max) // if currente is lower than max current
+  if (current > _current_max)
   {
-    if (duty_cycle < 250) // limit here the duty_cycle
+    if (_duty_cycle > 10)
     {
-      duty_cycle += 1;
+      _duty_cycle -= 10;
+    }
+    else if (_duty_cycle > 5)
+    {
+      _duty_cycle -= 5;
+    }
+    else if (_duty_cycle > 1)
+    {
+      _duty_cycle -= 1;
     }
   }
-  else if (current > _current_max)
+  else // (current < _current_max)
   {
-    if (duty_cycle > 10)
+    if (_duty_cycle < duty_cycle)
     {
-      duty_cycle -= 10;
-    }
-    else if (duty_cycle > 5)
-    {
-      duty_cycle -= 5;
-    }
-    else if (duty_cycle > 1)
-    {
-      duty_cycle -= 1;
+      _duty_cycle++;
     }
   }
 
-  motor_set_duty_cycle (duty_cycle);
+  motor_set_duty_cycle (_duty_cycle);
 
   return;
 }

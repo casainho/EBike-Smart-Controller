@@ -5,7 +5,7 @@
 <stringAttribute key="com.zylin.embeddedcdt.debugger_run_commands" value="monitor reset&#10;monitor halt&#10;monitor flash write_image erase unlock ./main.bin&#10;monitor sleep 500&#10;monitor reset&#10;monitor halt&#10;monitor gdb_breakpoint_override hard&#10;symbol-file main.out"/>
 <stringAttribute key="org.eclipse.cdt.debug.mi.core.DEBUG_NAME" value="/home/cas/arm/toolchain/code_sourcery-arm-2010q1/bin/arm-none-eabi-gdb"/>
 <stringAttribute key="org.eclipse.cdt.debug.mi.core.GDB_INIT" value=""/>
-<booleanAttribute key="org.eclipse.cdt.debug.mi.core.breakpointsFullPath" value="false"/>
+<booleanAttribute key="org.eclipse.cdt.debug.mi.core.breakpointsFullPath" value="true"/>
 <stringAttribute key="org.eclipse.cdt.debug.mi.core.commandFactory" value="org.eclipse.cdt.debug.mi.core.standardCommandFactory"/>
 <stringAttribute key="org.eclipse.cdt.debug.mi.core.protocol" value="mi"/>
 <booleanAttribute key="org.eclipse.cdt.debug.mi.core.verboseMode" value="false"/>
