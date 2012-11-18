@@ -26,7 +26,7 @@ ODFLAGS	= -x --syms
 
 clean:
 	-rm crt.lst crt.o main.o main.out main.map main.dmp main.bin \
-	system.o timers.o isrsupport.o pwm.o ios.o bldc.o adc.o throttle.o motor.o \
+	system.o timers.o isrsupport.o pwm.o ios.o bldc_hall.o adc.o throttle.o motor.o \
 
 all: main.out
 	@ echo "...copying"
@@ -35,11 +35,11 @@ all: main.out
 	$(SIZE) main.out
 
 main.out: crt.o main.o system.o timers.o isrsupport.o \
-	pwm.o ios.o bldc.o adc.o throttle.o motor.o \
+	pwm.o ios.o bldc_hall.o adc.o throttle.o motor.o \
 	linker_script-flash_memory.cmd
 	@ echo "..linking"
 	$(LD) $(LDFLAGS) -o main.out crt.o main.o system.o timers.o \
-	isrsupport.o pwm.o ios.o bldc.o adc.o throttle.o motor.o libc.a libgcc.a libm.a
+	isrsupport.o pwm.o ios.o bldc_hall.o adc.o throttle.o motor.o libc.a libgcc.a libm.a
 
 crt.o: crt.s
 	$(AS) $(AFLAGS) crt.s > crt.lst
@@ -62,8 +62,8 @@ pwm.o: pwm.c
 ios.o: ios.c
 	$(CC) $(CFLAGS) ios.c
 	
-bldc.o: bldc.c
-	$(CC) $(CFLAGS) bldc.c
+bldc_hall.o: bldc_hall.c
+	$(CC) $(CFLAGS) bldc_hall.c
 	
 motor.o: motor.c
 	$(CC) $(CFLAGS) motor.c

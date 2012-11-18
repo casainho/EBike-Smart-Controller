@@ -18,7 +18,7 @@
 #include "config.h"
 #include "ios.h"
 #include "adc.h"
-#include "bldc.h"
+#include "bldc_hall.h"
 #include "motor.h"
 
 void initialize (void)
@@ -36,15 +36,27 @@ void initialize (void)
 
 int main (void)
 {
-  unsigned int duty_cycle = 150;
+  static unsigned int duty_cycle = 500;
+  static unsigned int sector = 1;
+  static float current;
 
   initialize ();
 
-  motor_start (); // initialize the needed interrupt and sets the outpus as needed
+  //motor_start (); // initialize the needed interrupt and sets the outpus as needed
   motor_set_current_max (3); // max average current of 3 amps
 
   while (1)
   {
-    motor_current_control (duty_cycle); // keep controlling the max current
+    //motor_current_control (duty_cycle); // keep controlling the max current
+
+    sector = get_current_sector ();
+    sector = increment_sector (sector);
+    commutation_sector (sector);
+
+    current = delay_with_current_control (6000, 5);
+
+    commutation_disable ();
+
+    delay_us (500000);
   }
 }

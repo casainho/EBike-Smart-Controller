@@ -11,7 +11,7 @@
 
 #include "lpc210x.h"
 #include "config.h"
-#include "bldc.h"
+#include "bldc_hall.h"
 #include "pwm.h"
 #include "timers.h"
 #include "adc.h"
@@ -33,7 +33,7 @@ void motor_set_speed (unsigned int speed)
 void motor_start (void)
 {
   VICINTEN |= (1 << 4); /* Timer 0 interrupt enabled */
-  commutation (); // starts the commutation
+  commutate (); // starts the commutation
 }
 
 void motor_coast (void)

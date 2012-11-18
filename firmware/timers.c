@@ -14,7 +14,7 @@
 #include "main.h"
 #include "pwm.h"
 #include "ios.h"
-#include "bldc.h"
+#include "bldc_hall.h"
 
 unsigned int timer0_count;
 
@@ -22,7 +22,7 @@ unsigned int timer0_count;
 void __attribute__ ((interrupt("IRQ"))) timer0_int_handler (void)
 {
   /* "Read" all sensors sequence and execute the BLDC coils commutation */
-  commutation ();
+  commutate ();
 
   /* Save current timer value (time between each hall sensor signal change) */
   timer0_count = TIMER0_TC;
