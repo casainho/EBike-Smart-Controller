@@ -89,33 +89,39 @@ void timer3_init (void)
 }
 
 /* Atomic */
-unsigned long micros(void)
+unsigned int micros(void)
 {
   return TIMER3_TC;
 }
 
 void delay_us(unsigned long us)
 {
-  // There is some bug. Seems the delay is not consistent.
+  unsigned int a = us / 65536;
+  unsigned int b = us - (a * 65536);
+  unsigned int c;
 
-  unsigned long a = us / 65535;
-  unsigned long b = us - (a * 65535);
-
-  while (a > 0)
+  for ( ; a > 0; a--)
   {
-    a--;
+    // 2 X 32768 loops of us = 65536us
+    c = micros() + 32768;
+    if (c > 65536)
+    {
+      c -= 65536;
+    }
+    while (micros() != c) ;
 
-    unsigned long start = micros();
-
-    while (micros() - start < 65535)
-      ;
+    c = micros() + 32768;
+    if (c > 65536)
+    {
+      c -= 65536;
+    }
+    while (micros() != c) ;
   }
 
-  if (b > 0)
+  c = micros() + b;
+  if (c > 65536)
   {
-    unsigned long start = micros();
-
-    while (micros() - start < b)
-      ;
+    c -= 65536;
   }
+  while (micros() != c) ;
 }

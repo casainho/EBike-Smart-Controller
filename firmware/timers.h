@@ -16,5 +16,5 @@ void timer2_set_us (unsigned long us);
 void timer2_start (void);
 void timer2_stop (void);
 void timer3_init (void);
-unsigned long micros(void);
+unsigned int micros(void);
 void delay_us(unsigned long us);

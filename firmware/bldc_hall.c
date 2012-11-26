@@ -369,3 +369,39 @@ float delay_with_current_control (unsigned long us, float current_max)
 
   return current;
 }
+
+void phase_a_full (void)
+{
+  phase_a_h_on ();
+  phase_a_l_pwm_off ();
+
+  phase_b_h_off ();
+  phase_b_l_pwm_on ();
+
+  phase_c_h_off ();
+  phase_c_l_pwm_on ();
+}
+
+void phase_b_full (void)
+{
+  phase_b_h_on ();
+  phase_b_l_pwm_off ();
+
+  phase_c_h_off ();
+  phase_c_l_pwm_on ();
+
+  phase_c_h_off ();
+  phase_c_l_pwm_on ();
+}
+
+void phase_c_full (void)
+{
+  phase_c_h_on ();
+  phase_c_l_pwm_off ();
+
+  phase_b_h_off ();
+  phase_b_l_pwm_on ();
+
+  phase_a_h_off ();
+  phase_a_l_pwm_on ();
+}
