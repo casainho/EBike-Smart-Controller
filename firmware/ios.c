@@ -23,8 +23,8 @@ void ios_init (void)
 {
   /*
     phase_a --> P0.7
-    phase_b --> P0.8
-    phase_c --> P0.9
+    phase_b --> P0.9
+    phase_c --> P0.8
 
     debug --> P0.4
   */

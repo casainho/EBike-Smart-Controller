@@ -36,48 +36,15 @@ void initialize (void)
 
 int main (void)
 {
-  static unsigned int duty_cycle = 500;
-  static unsigned int sector = 1;
-  static float current;
+  unsigned int duty_cycle = 200;
 
   initialize ();
 
-  //motor_start (); // initialize the needed interrupt and sets the outpus as needed
+  motor_start (); // initialize the needed interrupt and sets the outpus as needed
   motor_set_current_max (3); // max average current of 3 amps
 
   while (1)
   {
-    //motor_current_control (duty_cycle); // keep controlling the max current
-
-    phase_a_full ();
-    current = delay_with_current_control (100000, 8);
-    //sector = increment_sector (sector);
-
-    // dead time
-    commutation_disable ();
-    delay_us (25);
-
-    delay_us (333000);
-
-    phase_b_full ();
-    current = delay_with_current_control (100000, 8);
-    //sector = increment_sector (sector);
-
-    // dead time
-    commutation_disable ();
-    delay_us (25);
-
-    delay_us (333000);
-
-
-    phase_c_full ();
-    current = delay_with_current_control (100000, 8);
-    //sector = increment_sector (sector);
-
-    // dead time
-    commutation_disable ();
-    delay_us (25);
-
-    delay_us (333000);
+    motor_current_control (duty_cycle); // keep controlling the max current
   }
 }

@@ -24,9 +24,9 @@ void pwm_init(void)
   TIMER1_MCR |= (1<<10); // reset timer1 on MR3 match
   TIMER1_MR3 = (1000 - 1); // PWM frequency = 16MHz / 1000 = 16kHz
 
-  TIMER1_MR0 = 0; // duty cycle for channel 0 = 0%
-  TIMER1_MR1 = 0; // duty cycle for channel 1 = 0%
-  TIMER1_MR2 = 0; // duty cycle for channel 2 = 0%
+  TIMER1_MR0 = 1000; // duty cycle for channel 0 = 0%
+  TIMER1_MR1 = 1000; // duty cycle for channel 1 = 0%
+  TIMER1_MR2 = 1000; // duty cycle for channel 2 = 0%
 
   TIMER1_PWMCON = (1<<0) | (1<<1) | (1<<2); // enable PWM mode for MAT1.0, MAT1.1, MAT1.2
 
@@ -42,7 +42,7 @@ void update_duty_cycle(unsigned int value)
    */
 
   // Setup the value to the correspondent channel
-  TIMER1_MR0 = value;
-  TIMER1_MR1 = value;
-  TIMER1_MR2 = value;
+  TIMER1_MR0 = 1000 - value;
+  TIMER1_MR1 = 1000 - value;
+  TIMER1_MR2 = 1000 - value;
 }

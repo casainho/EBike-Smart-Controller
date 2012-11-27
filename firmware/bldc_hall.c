@@ -17,9 +17,9 @@
 #include "motor.h"
 #include "adc.h"
 
-#define PHASE_A 7
-#define PHASE_B 8
-#define PHASE_C 9
+#define PHASE_A 7 // green
+#define PHASE_B 9 // yellow
+#define PHASE_C 8 // blue
 
 #define HALL_SENSORS_MASK ((1<<6) | (1<<4) | (1<<2)) // P0.2, P0.4, P0.6
 
@@ -28,7 +28,7 @@ void phase_a_h_on (void)
   /* LPC2103 P0.7 --> CPU1 */
   /* set to output */
   IODIR |= (1 << PHASE_A);
-  IOSET = (1 << PHASE_A);
+  IOCLR = (1 << PHASE_A);
 }
 
 void phase_a_h_off (void)
@@ -36,7 +36,7 @@ void phase_a_h_off (void)
   /* LPC2103 P0.7 --> CPU1 */
   /* set to output */
   IODIR |= (1 << PHASE_A);
-  IOCLR = (1 << PHASE_A);
+  IOSET = (1 << PHASE_A);
 }
 
 void phase_a_l_pwm_on (void)
@@ -49,7 +49,7 @@ void phase_a_l_pwm_off (void)
 {
   /* set to output */
   IODIR |= (1 << 12);
-  IOSET = (1 << 12); /* inverted logic */
+  IOCLR = (1 << 12);
 
   /* LPC2103 P0.12 (PWM; MAT1.2) --> CPU44 */
   PINSEL0 &= ~(1 << 25);
@@ -57,66 +57,66 @@ void phase_a_l_pwm_off (void)
 
 void phase_b_h_on (void)
 {
-  /* LPC2103 P0.8 --> CPU3 */
-  /* set to output */
-  IODIR |= (1 << PHASE_B);
-  IOSET = (1 << PHASE_B);
-}
-
-void phase_b_h_off (void)
-{
-  /* LPC2103 P0.8 --> CPU3 */
+  /* LPC2103 P0.9 --> CPU5 */
   /* set to output */
   IODIR |= (1 << PHASE_B);
   IOCLR = (1 << PHASE_B);
 }
 
+void phase_b_h_off (void)
+{
+  /* LPC2103 P0.9 --> CPU5 */
+  /* set to output */
+  IODIR |= (1 << PHASE_B);
+  IOSET = (1 << PHASE_B);
+}
+
 void phase_b_l_pwm_on (void)
-{
-  /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
-  PINSEL0 |= (1 << 27);
-}
-
-void phase_b_l_pwm_off (void)
-{
-  /* set to output */
-  IODIR |= (1 << 13);
-  IOSET = (1 << 13); /* inverted logic */
-
-  /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
-  PINSEL0 &= ~(1 << 27);
-}
-
-void phase_c_h_on (void)
-{
-  /* LPC2103 P0.9 --> CPU5 */
-  /* set to output */
-  IODIR |= (1 << PHASE_C);
-  IOSET = (1 << PHASE_C);
-}
-
-void phase_c_h_off (void)
-{
-  /* LPC2103 P0.9 --> CPU5 */
-  /* set to output */
-  IODIR |= (1 << PHASE_C);
-  IOCLR = (1 << PHASE_C);
-}
-
-void phase_c_l_pwm_on (void)
 {
   /* LPC2103 P0.19 (PWM; MAT1.0) --> CPU4 */
   PINSEL1 |= (1 << 7);
 }
 
-void phase_c_l_pwm_off (void)
+void phase_b_l_pwm_off (void)
 {
   /* set to output */
   IODIR |= (1 << 19);
-  IOSET = (1 << 19); /* inverted logic */
+  IOCLR = (1 << 19);
 
   /* LPC2103 P0.19 (PWM; MAT1.0) --> CPU4 */
   PINSEL1 &= ~(1 << 7);
+}
+
+void phase_c_h_on (void)
+{
+  /* LPC2103 P0.8 --> CPU3 */
+  /* set to output */
+  IODIR |= (1 << PHASE_C);
+  IOCLR = (1 << PHASE_C);
+}
+
+void phase_c_h_off (void)
+{
+  /* LPC2103 P0.8 --> CPU3 */
+  /* set to output */
+  IODIR |= (1 << PHASE_C);
+  IOSET = (1 << PHASE_C);
+}
+
+void phase_c_l_pwm_on (void)
+{
+  /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
+  PINSEL0 |= (1 << 27);
+}
+
+void phase_c_l_pwm_off (void)
+{
+  /* set to output */
+  IODIR |= (1 << 13);
+  IOCLR = (1 << 13);
+
+  /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
+  PINSEL0 &= ~(1 << 27);
 }
 
 void commutation_sector_1 (void)
@@ -210,12 +210,13 @@ unsigned int get_current_sector (void)
 
   static unsigned int table[6] =
   {
-    4,
-    68,
-    64,
-    80,
-    16,
-    20
+        //  c b a
+    64, //  1000000 == 64
+    80, //  1010000 == 80
+    16, //  0010000 == 16
+    20, //  0010100 == 20
+     4, //  0000100 == 4
+    68  //  1000100 == 68
   };
 
   hall_sensors = (IOPIN & HALL_SENSORS_MASK); // mask other pins
@@ -336,7 +337,7 @@ float delay_with_current_control (unsigned long us, float current_max)
 {
   unsigned long start = micros();
   unsigned int duty_cycle = 0;
-  float current;
+  float current = 0;
 
   while (micros() - start < us) // while delay time, do...
   {
