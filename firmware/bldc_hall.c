@@ -211,12 +211,12 @@ unsigned int get_current_sector (void)
   static unsigned int table[6] =
   {
         //  c b a
-    64, //  1000000 == 64
-    80, //  1010000 == 80
     16, //  0010000 == 16
-    20, //  0010100 == 20
+    80, //  1010000 == 80
+    64, //  1000000 == 64
+    68, //  1000100 == 68
      4, //  0000100 == 4
-    68  //  1000100 == 68
+    20  //  0010100 == 20
   };
 
   hall_sensors = (IOPIN & HALL_SENSORS_MASK); // mask other pins
