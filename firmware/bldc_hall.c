@@ -208,6 +208,68 @@ unsigned int get_current_sector (void)
   static unsigned int hall_sensors = 0;
   unsigned int i;
 
+  // motor seems to run perfectly but not everytime is able to start and I can start by hand this times
+  static unsigned int table[6] =
+  {
+        //  c b a
+    80, //  1010000 == 80
+    64, //  1000000 == 64
+    68, //  1000100 == 68
+     4, //  0000100 == 4
+    20,  //  0010100 == 20
+    16 //  0010000 == 16
+  };
+
+#if 0
+  // rotates to backwards after I start with the hand, makes noise and current rise a lot!!
+  static unsigned int table[6] =
+  {
+        //  c b a
+    68, //  1000100 == 68
+     4, //  0000100 == 4
+    20, //  0010100 == 20
+    16, //  0010000 == 16
+    80, //  1010000 == 80
+    64  //  1000000 == 64
+  };
+
+  // rotates to backwards after I start with the hand, makes noise and current rise a lot!!
+  static unsigned int table[6] =
+  {
+        //  c b a
+    20,  //  0010100 == 20
+    16, //  0010000 == 16
+    80, //  1010000 == 80
+    64, //  1000000 == 64
+    68, //  1000100 == 68
+     4 //  0000100 == 4
+  };
+
+  // doesn't work. The current quickly starts to rise!
+  static unsigned int table[6] =
+    {
+          //  c b a
+      64, //  1000000 == 64
+      68, //  1000100 == 68
+       4, //  0000100 == 4
+      20,  //  0010100 == 20
+      16, //  0010000 == 16
+      80 //  1010000 == 80
+    };
+
+  // motor seems to run perfectly but not everytime is able to start and I can start by hand this times
+  static unsigned int table[6] =
+  {
+        //  c b a
+    80, //  1010000 == 80
+    64, //  1000000 == 64
+    68, //  1000100 == 68
+     4, //  0000100 == 4
+    20,  //  0010100 == 20
+    16 //  0010000 == 16
+  };
+
+  // rotates after I start with the hand, makes noise and current rise.
   static unsigned int table[6] =
   {
         //  c b a
@@ -218,6 +280,8 @@ unsigned int get_current_sector (void)
      4, //  0000100 == 4
     20  //  0010100 == 20
   };
+#endif
+
 
   hall_sensors = (IOPIN & HALL_SENSORS_MASK); // mask other pins
 
