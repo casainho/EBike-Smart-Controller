@@ -97,31 +97,32 @@ unsigned int micros(void)
 void delay_us(unsigned long us)
 {
   unsigned int a = us / 65536;
-  unsigned int b = us - (a * 65536);
+  static unsigned int b;
+  b = us - (a * 65536);
   unsigned int c;
 
   for ( ; a > 0; a--)
   {
     // 2 X 32768 loops of us = 65536us
     c = micros() + 32768;
-    if (c > 65536)
+    if (c > 65535)
     {
-      c -= 65536;
+      c -= 65535;
     }
     while (micros() != c) ;
 
     c = micros() + 32768;
-    if (c > 65536)
+    if (c > 65535)
     {
-      c -= 65536;
+      c -= 65535;
     }
     while (micros() != c) ;
   }
 
   c = micros() + b;
-  if (c > 65536)
+  if (c > 65535)
   {
-    c -= 65536;
+    c -= 65535;
   }
   while (micros() != c) ;
 }
