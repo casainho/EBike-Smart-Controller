@@ -28,7 +28,7 @@ void phase_a_h_on (void)
   /* LPC2103 P0.7 --> CPU1 */
   /* set to output */
   IODIR |= (1 << PHASE_A);
-  IOCLR = (1 << PHASE_A);
+  IOSET = (1 << PHASE_A);
 }
 
 void phase_a_h_off (void)
@@ -36,7 +36,7 @@ void phase_a_h_off (void)
   /* LPC2103 P0.7 --> CPU1 */
   /* set to output */
   IODIR |= (1 << PHASE_A);
-  IOSET = (1 << PHASE_A);
+  IOCLR = (1 << PHASE_A);
 }
 
 void phase_a_l_pwm_on (void)
@@ -49,7 +49,7 @@ void phase_a_l_pwm_off (void)
 {
   /* set to output */
   IODIR |= (1 << 12);
-  IOCLR = (1 << 12);
+  IOSET = (1 << 12); // inverted logic
 
   /* LPC2103 P0.12 (PWM; MAT1.2) --> CPU44 */
   PINSEL0 &= ~(1 << 25);
@@ -60,7 +60,7 @@ void phase_b_h_on (void)
   /* LPC2103 P0.9 --> CPU5 */
   /* set to output */
   IODIR |= (1 << PHASE_B);
-  IOCLR = (1 << PHASE_B);
+  IOSET = (1 << PHASE_B);
 }
 
 void phase_b_h_off (void)
@@ -68,7 +68,7 @@ void phase_b_h_off (void)
   /* LPC2103 P0.9 --> CPU5 */
   /* set to output */
   IODIR |= (1 << PHASE_B);
-  IOSET = (1 << PHASE_B);
+  IOCLR = (1 << PHASE_B);
 }
 
 void phase_b_l_pwm_on (void)
@@ -81,7 +81,7 @@ void phase_b_l_pwm_off (void)
 {
   /* set to output */
   IODIR |= (1 << 19);
-  IOCLR = (1 << 19);
+  IOSET = (1 << 19); // inverted logic
 
   /* LPC2103 P0.19 (PWM; MAT1.0) --> CPU4 */
   PINSEL1 &= ~(1 << 7);
@@ -92,7 +92,7 @@ void phase_c_h_on (void)
   /* LPC2103 P0.8 --> CPU3 */
   /* set to output */
   IODIR |= (1 << PHASE_C);
-  IOCLR = (1 << PHASE_C);
+  IOSET = (1 << PHASE_C);
 }
 
 void phase_c_h_off (void)
@@ -100,7 +100,7 @@ void phase_c_h_off (void)
   /* LPC2103 P0.8 --> CPU3 */
   /* set to output */
   IODIR |= (1 << PHASE_C);
-  IOSET = (1 << PHASE_C);
+  IOCLR = (1 << PHASE_C);
 }
 
 void phase_c_l_pwm_on (void)
@@ -113,7 +113,7 @@ void phase_c_l_pwm_off (void)
 {
   /* set to output */
   IODIR |= (1 << 13);
-  IOCLR = (1 << 13);
+  IOSET = (1 << 13); // inverted logic
 
   /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
   PINSEL0 &= ~(1 << 27);
