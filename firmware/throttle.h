@@ -9,8 +9,5 @@
  * Released under the GPL License, Version 3
  */
 
-void motor_start (void);
-void motor_coast (void);
-void motor_set_duty_cycle (unsigned int value);
-unsigned int motor_get_speed (void);
-float motor_get_current (void);
+void throttle_init (void);
+unsigned int throttle_get_percent (void);

@@ -18,5 +18,8 @@
 
 #define BATTERY_VOLTAGE_PER_ADC_STEP 0.035f // 10K/(10K+100K) = 0.091 --> 3.3/0.091 = 36.264 --> 36.264/1023 = 0.035
 #define MOTOR_CURRENT_PER_ADC_STEP 0.124f // 6K8/(6K8+3K6) = 0.654 --> sensor outputs 40mV/A --> 0.04/0.654 = 0.026; 3.3V/1023 = 0.003226; 0.003226/0.026 = 0.124
-#define THROTTLE_PERCENT_PER_ADC_STEP 0.092f // 6K8/(6K8+3K6) = 0.654 --> 5*0.654 = 3.27 --> 3.27/1023 = 0.003 --> 5V -> 100%, 0.003 -> 0.092
 
+// Throttle config
+#define THROTTLE_ADC_MAX 837 // 2.7V (rounded to lower so throttle will always get there)
+#define THROTTLE_ADC_MIN 217 // 0.7V (rounded to higher)
+#define THROTTLE_ADC_AMPLITUDE (THROTTLE_ADC_MAX - THROTTLE_ADC_MIN)

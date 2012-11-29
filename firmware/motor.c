@@ -89,9 +89,14 @@ void motor_current_control (unsigned int duty_cycle)
   }
   else // (current < _current_max)
   {
-    if (_duty_cycle < duty_cycle)
+    if ((_duty_cycle < duty_cycle) && (_duty_cycle < 1000))
     {
       _duty_cycle++;
+    }
+
+    if ((_duty_cycle > duty_cycle) && (_duty_cycle > 0))
+    {
+      _duty_cycle--;
     }
   }
 

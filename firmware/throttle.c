@@ -19,5 +19,29 @@ void throttle_init (void)
 
 unsigned int throttle_get_percent (void)
 {
-  return ((unsigned int) (adc_read (THROTTLE) * THROTTLE_PERCENT_PER_ADC_STEP));
+  unsigned int value;
+
+  // get ADC value
+  value = adc_read(THROTTLE);
+
+  // limit maximum
+  if (value > THROTTLE_ADC_MAX)
+  {
+    value = THROTTLE_ADC_MAX;
+    return 1000;
+  }
+
+  // limit minimum
+  if (value < THROTTLE_ADC_MIN)
+  {
+    value = THROTTLE_ADC_MIN;
+    return 0;
+  }
+
+  // shift minimum value to 0
+  value = value - THROTTLE_ADC_MIN;
+  // calc value in percent * 10 [0 - 1000]
+  value = (value * 1000) / THROTTLE_ADC_AMPLITUDE;
+
+  return value;
 }
