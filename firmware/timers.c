@@ -17,12 +17,28 @@
 #include "bldc_hall.h"
 
 unsigned int timer0_count;
+unsigned int motor_status;
 
 //just use it to increase the time
 void __attribute__ ((interrupt("IRQ"))) timer0_int_handler (void)
 {
-  /* "Read" all sensors sequence and execute the BLDC coils commutation */
-  commutate ();
+  static unsigned int c = 0;
+
+  // detect motor movement
+  if (motor_status == 0)
+  {
+    c++;
+    if (c > 2500)
+    {
+      motor_status = 1; // motor is running
+      c = 0;
+    }
+  }
+  else if (motor_status == 1)
+  {
+    /* "Read" all sensors sequence and execute the BLDC coils commutation */
+    commutate ();
+  }
 
   /* Save current timer value (time between each hall sensor signal change) */
   timer0_count = TIMER0_TC;
@@ -81,7 +97,7 @@ void timer3_init (void)
   /* Initialize Timer 3 */
   TIMER3_TCR = 0;
   TIMER3_TC = 0; /* Counter register: Clear counter */
-  TIMER3_PR = 47; /* Prescaler register: Timer3 Counter increments each 1us; 1us/(48MHz-1) */
+  TIMER3_PR = 479; /* Prescaler register: Timer3 Counter increments each 10us; 1us/((48*10)-1) */
   TIMER3_PC = 0; /* Prescaler counter register: Clear prescaler counter */
 
   /* Start timer */
@@ -89,40 +105,45 @@ void timer3_init (void)
 }
 
 /* Atomic */
-unsigned int micros(void)
+void micros10_clear(void)
+{
+  TIMER3_TC = 0;
+}
+
+unsigned int micros10(void)
 {
   return TIMER3_TC;
 }
 
-void delay_us(unsigned long us)
+void delay_us10(unsigned long us10)
 {
-  unsigned int a = us / 65536;
+  unsigned int a = us10 / 65536;
   static unsigned int b;
-  b = us - (a * 65536);
+  b = us10 - (a * 65536);
   unsigned int c;
 
   for ( ; a > 0; a--)
   {
     // 2 X 32768 loops of us = 65536us
-    c = micros() + 32768;
+    c = micros10() + 32768;
     if (c > 65535)
     {
       c -= 65535;
     }
-    while (micros() != c) ;
+    while (micros10() != c) ;
 
-    c = micros() + 32768;
+    c = micros10() + 32768;
     if (c > 65535)
     {
       c -= 65535;
     }
-    while (micros() != c) ;
+    while (micros10() != c) ;
   }
 
-  c = micros() + b;
+  c = micros10() + b;
   if (c > 65535)
   {
     c -= 65535;
   }
-  while (micros() != c) ;
+  while (micros10() != c) ;
 }

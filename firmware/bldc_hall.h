@@ -22,3 +22,4 @@ void phase_c_full (void);
 void phase_a_h_on (void);
 void phase_b_h_on (void);
 void phase_c_h_on (void);
+void bldc_align (void);

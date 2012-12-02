@@ -216,72 +216,9 @@ unsigned int get_current_sector (void)
     64, //  1000000 == 64
     68, //  1000100 == 68
      4, //  0000100 == 4
-    20,  //  0010100 == 20
-    16 //  0010000 == 16
-  };
-
-#if 0
-  // rotates to backwards after I start with the hand, makes noise and current rise a lot!!
-  static unsigned int table[6] =
-  {
-        //  c b a
-    68, //  1000100 == 68
-     4, //  0000100 == 4
     20, //  0010100 == 20
-    16, //  0010000 == 16
-    80, //  1010000 == 80
-    64  //  1000000 == 64
+    16  //  0010000 == 16
   };
-
-  // rotates to backwards after I start with the hand, makes noise and current rise a lot!!
-  static unsigned int table[6] =
-  {
-        //  c b a
-    20,  //  0010100 == 20
-    16, //  0010000 == 16
-    80, //  1010000 == 80
-    64, //  1000000 == 64
-    68, //  1000100 == 68
-     4 //  0000100 == 4
-  };
-
-  // doesn't work. The current quickly starts to rise!
-  static unsigned int table[6] =
-    {
-          //  c b a
-      64, //  1000000 == 64
-      68, //  1000100 == 68
-       4, //  0000100 == 4
-      20,  //  0010100 == 20
-      16, //  0010000 == 16
-      80 //  1010000 == 80
-    };
-
-  // motor seems to run perfectly but not everytime is able to start and I can start by hand this times
-  static unsigned int table[6] =
-  {
-        //  c b a
-    80, //  1010000 == 80
-    64, //  1000000 == 64
-    68, //  1000100 == 68
-     4, //  0000100 == 4
-    20,  //  0010100 == 20
-    16 //  0010000 == 16
-  };
-
-  // rotates after I start with the hand, makes noise and current rise.
-  static unsigned int table[6] =
-  {
-        //  c b a
-    16, //  0010000 == 16
-    80, //  1010000 == 80
-    64, //  1000000 == 64
-    68, //  1000100 == 68
-     4, //  0000100 == 4
-    20  //  0010100 == 20
-  };
-#endif
-
 
   hall_sensors = (IOPIN & HALL_SENSORS_MASK); // mask other pins
 
@@ -299,7 +236,7 @@ unsigned int get_current_sector (void)
 
 void commutate (void)
 {
-  unsigned int sector;
+  volatile unsigned int sector;
 
   sector = get_current_sector ();
 
@@ -397,13 +334,14 @@ unsigned int decrement_sector (unsigned int sector)
   return sector;
 }
 
-float delay_with_current_control (unsigned long us, float current_max)
+float delay_with_current_control (unsigned int us10, float current_max)
 {
-  unsigned long start = micros();
   unsigned int duty_cycle = 0;
   float current = 0;
 
-  while (micros() - start < us) // while delay time, do...
+  // 100ms align time
+  micros10_clear (); // micros () = 0
+  while (micros10() < us10) // while delay time, do...
   {
     current = motor_get_current ();
     if (current < current_max) // if currente is lower than max current
@@ -469,4 +407,126 @@ void phase_c_full (void)
 
   phase_a_h_off ();
   phase_a_l_pwm_on ();
+}
+
+void bldc_align (void)
+{
+  /* disable all mosfets */
+  commutation_disable ();
+
+  /* First, enable phase b and c low */
+  // phase_b_l_on
+  // set to output
+  IODIR |= (1 << 19);
+  IOCLR = (1 << 19); // inverted logic
+  // LPC2103 P0.19 (PWM; MAT1.0) --> CPU4
+  PINSEL1 &= ~(1 << 7);
+
+  // phase_c_l_on
+  // set to output
+  IODIR |= (1 << 13);
+  IOCLR = (1 << 13); // inverted logic
+  // LPC2103 P0.13 (PWM; MAT1.1) --> CPU2
+  PINSEL0 &= ~(1 << 27);
+
+  /* Second, enable phase a for 100ms but control the current! */
+  float current = 0;
+  float current_max = 4;
+
+  // 100ms align time
+  micros10_clear (); // micros () = 0
+  while (micros10() < 65000) // while delay time, do...
+  {
+    current = motor_get_current ();
+    if (current < current_max) // if current is lower than max current
+    {
+      /* enable phase a high */
+      phase_a_h_on ();
+    }
+    else if (current > current_max)
+    {
+      /* disable phase a high */
+      phase_a_h_off ();
+    }
+  }
+
+  // Align is done, disable all mosfets
+  commutation_disable ();
+
+  /*****************************************/
+
+  /* First, enable phase a and c low */
+  // phase_a_l_on
+  /* set to output */
+  IODIR |= (1 << 12);
+  IOCLR = (1 << 12); // inverted logic
+  /* LPC2103 P0.12 (PWM; MAT1.2) --> CPU44 */
+  PINSEL0 &= ~(1 << 25);
+
+  // phase_c_l_on
+  // set to output
+  IODIR |= (1 << 13);
+  IOCLR = (1 << 13); // inverted logic
+  // LPC2103 P0.13 (PWM; MAT1.1) --> CPU2
+  PINSEL0 &= ~(1 << 27);
+
+  // 100ms align time
+  micros10_clear (); // micros () = 0
+  while (micros10() < 65000) // while delay time, do...
+  {
+    current = motor_get_current ();
+    if (current < current_max) // if current is lower than max current
+    {
+      /* enable phase a high */
+      phase_b_h_on ();
+    }
+    else if (current > current_max)
+    {
+      /* disable phase a high */
+      phase_b_h_off ();
+    }
+  }
+
+  // Align is done, disable all mosfets
+  commutation_disable ();
+
+
+  /*****************************************/
+
+  /* First, enable phase a and b low */
+  // phase_a_l_on
+  /* set to output */
+  IODIR |= (1 << 12);
+  IOCLR = (1 << 12); // inverted logic
+  /* LPC2103 P0.12 (PWM; MAT1.2) --> CPU44 */
+  PINSEL0 &= ~(1 << 25);
+
+  // phase_b_l_on
+  // set to output
+  /* set to output */
+  IODIR |= (1 << 19);
+  IOCLR = (1 << 19); // inverted logic
+  /* LPC2103 P0.19 (PWM; MAT1.0) --> CPU4 */
+  PINSEL1 &= ~(1 << 7);
+
+  // 100ms align time
+  micros10_clear (); // micros () = 0
+  while (micros10() < 65000) // while delay time, do...
+  {
+    current = motor_get_current ();
+    if (current < current_max) // if current is lower than max current
+    {
+      /* enable phase a high */
+      phase_c_h_on ();
+    }
+    else if (current > current_max)
+    {
+      /* disable phase a high */
+      phase_c_h_off ();
+    }
+  }
+
+  // Align is done, disable all mosfets
+  commutation_disable ();
+
 }
