@@ -45,7 +45,7 @@ int main (void)
 
   initialize ();
 
-  motor_set_current_max (10); // max average current of 5 amps
+  motor_set_current_max (5); // max average current of 5 amps
   //motor_start (); // initialize the needed interrupt
 
   motor_status = 1;
@@ -68,7 +68,7 @@ int main (void)
         duty_cycle = 0;
       }
 
-      if ((duty_cycle < 50) && (coast == 0)) // coast...
+      if ((duty_cycle == 0) && (coast == 0)) // coast...
       {
         motor_coast ();
         coast = 1;
@@ -77,10 +77,11 @@ int main (void)
       {
         // motor will start
         motor_status = 0;
+        motor_set_duty_cycle (0);
         motor_start (); // initialize the needed interrupt
         coast = 0;
       }
-      else //if ((duty_cycle != 0) && (coast == 0)) // keep motor running...
+      else // keep motor running...
       {
         motor_current_control (duty_cycle); // keep controlling the max current
       }

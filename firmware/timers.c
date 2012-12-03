@@ -28,7 +28,7 @@ void __attribute__ ((interrupt("IRQ"))) timer0_int_handler (void)
   if (motor_status == 0)
   {
     c++;
-    if (c > 2500)
+    if (c > 6)
     {
       motor_status = 1; // motor is running
       c = 0;
