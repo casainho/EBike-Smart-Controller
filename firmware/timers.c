@@ -75,7 +75,7 @@ void timer0_capture_init (void)
   /* Initialize Timer 0 */
   TIMER0_TCR = 0;
   TIMER0_TC = 0; /* Counter register: Clear counter */
-  TIMER0_PR = 47; /* Prescaler register: Timer0 Counter increments each 1us; 1us/(48MHz-1) */
+  TIMER0_PR = 59; /* Prescaler register: Timer0 Counter increments each 1us; 1us/(60MHz-1) */
   TIMER0_PC = 0; /* Prescaler counter register: Clear prescaler counter */
 
   /* Start timer */
@@ -97,7 +97,7 @@ void timer3_init (void)
   /* Initialize Timer 3 */
   TIMER3_TCR = 0;
   TIMER3_TC = 0; /* Counter register: Clear counter */
-  TIMER3_PR = 479; /* Prescaler register: Timer3 Counter increments each 10us; 1us/((48*10)-1) */
+  TIMER3_PR = 599; /* Prescaler register: Timer3 Counter increments each 10us; 1us/((60*10)-1) */
   TIMER3_PC = 0; /* Prescaler counter register: Clear prescaler counter */
 
   /* Start timer */
