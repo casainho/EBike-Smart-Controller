@@ -38,15 +38,15 @@ void system_init (void)
     //
     // Zero LPC2103 board has a 12.000 mhz crystal
     //
-    // We'd like the LPC2103 to run at 48.000 Mhz (has to be an even multiple of crystal)
+    // We'd like the LPC2103 to run at 70.000 Mhz (has to be an even multiple of crystal)
     //
     // According to the Philips LPC2103 manual:   M = cclk / Fosc   where:  M    = PLL multiplier (bits 0-4 of PLLCFG)
-    //                                                                      cclk = 48000000 hz
+    //                                                                      cclk = 70000000 hz
     //                                                                      Fosc = 12000000 hz
     //
-    // Solving: M = 48000000 / 12000000 = 4
-    // M = 4 (round up) --> real cclk =
-    //                          = processor clock = 12000000 * 4 = 48000000 Hz.
+    // Solving: M = 70000000 / 12000000 = 5.8(3)
+    // M = 5 (round up) --> real cclk =
+    //                          = processor clock = 12000000 * 5 = 60000000 Hz (CPU clock can't be more than 60MHz).
     //
     //          Note: M - 1 must be entered into bits 0-4 of PLLCFG (assign 3 to these bits)
     //
@@ -54,24 +54,24 @@ void system_init (void)
     // The Current Controlled Oscilator (CCO) must operate in the range 156 mhz to 320 mhz
     //
     // According to the Philips LPC2106 manual: Fcco = cclk * 2 * P    where:   Fcco = CCO frequency
-    //                                                                          cclk = 48000000 hz
+    //                                                                          cclk = 60000000 hz
     //                                                                          P = PLL divisor (bits 5-6 of PLLCFG)
     //
-    // Solving: Fcco = 48000000 * 2 * P
+    // Solving: Fcco = 60000000 * 2 * P
     //          P = 2  (trial value)
-    //          Fcco = 48000000 * 2 * 2
-    //          Fcc0 = 192000000 hz    (good choice for P since it's within the 156 mhz to 320 mhz range
+    //          Fcco = 60000000 * 2 * 2
+    //          Fcc0 = 240000000 hz    (good choice for P since it's within the 156 mhz to 320 mhz range
     //
     // From Table 19 (page 48) of Philips LPC2106 manual    P = 2, PLLCFG bits 5-6 = 1  (assign 1 to these bits)
     //
-    // Finally:      PLLCFG = 0  01  00011  =  0x23
+    // Finally:      PLLCFG = 0  01  00011  =  0x24
     //
     // Final note: to load PLLCFG register, we must use the 0xAA followed 0x55 write sequence to the PLLFEED register
     //             this is done in the short function feed() below
     //
 
     // Setting Multiplier and Divider values
-    PLLCFG=0x23;
+    PLLCFG=0x24;
     feed();
 
     // Enabling the PLL */
