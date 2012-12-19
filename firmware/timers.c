@@ -44,8 +44,17 @@ void __attribute__ ((interrupt("IRQ"))) timer0_int_handler (void)
   timer0_count = TIMER0_TC;
   TIMER0_TC = 0; // reset timer 0 value
 
-  /* Clear the interrupt flag */
+  /* Interrupt on CR0, CR1 and CR2 */
   TIMER0_IR |= ((1 << 4) | (1 << 5) | (1 << 6));
+  VICVECTADDR = 0xff;
+}
+
+void __attribute__ ((interrupt("IRQ"))) timer2_int_handler (void)
+{
+  // FIXME - make current control here
+
+  // Interrupt is generated on match channel 0
+  TIMER2_IR = (1 << 0);
   VICVECTADDR = 0xff;
 }
 
@@ -66,8 +75,9 @@ void timer0_capture_init (void)
 
   /* Initialize VIC */
   VICINTSEL &= ~(1 << 4); /* Timer 0 selected as IRQ */
-  VICVECTCNTL0 = ((1<<5) | 4); /* Assign Timer0; IRQ. Higher priority */
-  VICVECTADDR0 = (unsigned long) timer0_int_handler; /* Address of the ISR */
+  VICINTEN |= (1 << 4); /* Timer 0 interrupt enabled */
+  VICVECTCNTL1 = ((1<<5) | 4); /* Assign Timer0; IRQ. (Higher priority - 1)  */
+  VICVECTADDR1 = (unsigned long) timer0_int_handler; /* Address of the ISR */
 
   /* Timer/Counter 0 power/clock enable */
   PCONP |= (1 << 1);
@@ -84,9 +94,36 @@ void timer0_capture_init (void)
   // Interrupt is generated on each hall sensors signal change (CAP0.0; CAP0.1and CAP0.2)
   TIMER0_CCR = 0x1FF;
 
-  /* Clear the interrupt flag */
+  /* Interrupt on CR0, CR1 and CR2 */
   TIMER0_IR |= ((1 << 4) | (1 << 5) | (1 << 6));
   VICVECTADDR = 0xff;
+}
+
+void timer2_init (void)
+{
+  /* Initialize VIC */
+  VICINTSEL &= ~(1 << 26); /* Timer 2 selected as IRQ */
+  VICINTEN |= (1 << 26); /* Timer 2 interrupt enabled */
+  VICVECTCNTL0 = ((1<<5) | 26); /* Assign Timer2; IRQ. Higher priority */
+  VICVECTADDR0 = (unsigned long) timer2_int_handler; /* Address of the ISR */
+
+  /* Timer/Counter 2 power/clock enable */
+  PCONP |= (1 << 22);
+
+  /* Initialize Timer 2 */
+  TIMER2_TCR = 0;
+  TIMER2_TC = 0; /* Counter register: Clear counter */
+  TIMER2_PR = 59; /* Prescaler register: 1us */
+  TIMER2_PC = 0; /* Prescaler counter register: Clear prescaler counter */
+  TIMER2_MCR = ((1 << 0) | (1 << 1)); /* Interrupt and reset counter on match */
+  TIMER2_MR0 = 50; /* Timer2 Counter increments up to 50us; 50us/(60MHz-1) */
+
+  // Interrupt is generated on match channel 0
+  TIMER2_IR = (1 << 0);
+  VICVECTADDR = 0xff;
+
+  /* Start timer */
+  TIMER2_TCR = 1;
 }
 
 void timer3_init (void)

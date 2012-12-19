@@ -47,7 +47,6 @@ void adc_init (unsigned char channel)
 
 unsigned int adc_read (unsigned char channel)
 {
-
   volatile unsigned int adc, adc_adrc;
 
   adc = *((volatile unsigned long *) (0xE0034010 + (channel*4)));

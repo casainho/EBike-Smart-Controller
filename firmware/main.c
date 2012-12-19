@@ -35,9 +35,9 @@ void initialize (void)
   while (switch_is_set ()) ; // wait
   adc_init (CURRENT); // init the ADC for current measure
   throttle_init (); // init the ADC for thottle
-  //pwm_init (); // initialize PWM (uses timer1) (PWM output pins will be disable)
+  pwm_init (); // initialize PWM (uses timer1) (PWM output pins will be disable)
   timer0_capture_init (); // intialize Timer0, use it for capture the BEMF sensors signal time and BLDC control
-  //timer2_init (); // intialize timer2 (used for tick/current control function)
+  timer2_init (); // intialize timer2 (used for tick/current control function)
   timer3_init (); // intialize timer3 (used for delay function)
   enableIRQ (); // enable interrupts
 }
@@ -49,13 +49,6 @@ int main (void)
   volatile unsigned int coast = 1;
 
   initialize ();
-
-  volatile unsigned int adc;
-  while (1)
-    {
-      adc = adc_read (THROTTLE);
-      motor_set_duty_cycle (adc);
-    }
 
   motor_set_current_max (5); // max average current of 5 amps
   //motor_start (); // initialize the needed interrupt
@@ -87,13 +80,11 @@ int main (void)
       }
       else if ((duty_cycle != 0) && (coast == 1)) // start motor...
       {
-#if 0
         // motor will start
         motor_status = 0;
         motor_set_duty_cycle (0);
         motor_start (); // initialize the needed interrupt
         coast = 0;
-#endif
       }
       else // keep motor running...
       {
