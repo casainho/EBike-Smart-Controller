@@ -17,6 +17,15 @@ void adc_init (unsigned char channel)
   /* Enable the ADC pheripherial power */
   PCONP |= (1 << 12);
 
+  /* Enable ADC; configure the clock; 10 bits resolution; configure channel */
+  /* Clock = 60MHZ; CLKDIV = 16 => 4MHz the clock for ADC */
+  /* Each conversion should take about 3us */
+  /* Enable BURST mode */
+  ADCR |= ((15 << 8) // clock
+        | (1 << 16) // 4MHz
+        | (1 << 21) // burst mode
+        | (1 << channel)); // channel select
+
   switch (channel)
   {
     case VOLTAGE:
@@ -38,14 +47,11 @@ void adc_init (unsigned char channel)
 
 unsigned int adc_read (unsigned char channel)
 {
-  /* Enable ADC; configure the clock; 10 bits resolution; configure channel */
-  /* CLKDIV = 12 => 4MHz the clock for ADC */
-  /* Each conversion should take about 3us */
-  ADCR = ((12 << 8) | (1 << 21) | (1 << 24) | (1 << channel));
 
-  /* Wait for finish the conversion */
-  while (!(ADGDR & (1 << 31))) ;
+  volatile unsigned int adc, adc_adrc;
+
+  adc = *((volatile unsigned long *) (0xE0034010 + (channel*4)));
 
   /* Return the value (10 bits) */
-  return ((ADGDR >> 6) & 0x3ff);
+  return ((adc >> 6) & 0x3ff);
 }
