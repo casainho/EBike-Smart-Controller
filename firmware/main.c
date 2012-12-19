@@ -22,11 +22,10 @@
 #include "motor.h"
 #include "throttle.h"
 
-// TODO
-// TESTAR: 1º colocar ADC em BURST mode e a fazer medição de todos os canais. As adc_reads() serão imediatas.
-// 1º Colocar interrupt de 50ms em 50ms para ler ADC e controlar corrente do motor.
+// XXX Current control seems to work BUT I am not sure it works as needed.
 
 extern unsigned int motor_status;
+extern unsigned int duty_cycle;
 
 void initialize (void)
 {
@@ -44,7 +43,6 @@ void initialize (void)
 
 int main (void)
 {
-  volatile unsigned int duty_cycle = 0;
   volatile unsigned int sector = 1;
   volatile unsigned int coast = 1;
 
@@ -77,6 +75,7 @@ int main (void)
       {
         motor_coast ();
         coast = 1;
+        motor_stop_current_control (); // stop motor current control
       }
       else if ((duty_cycle != 0) && (coast == 1)) // start motor...
       {
@@ -88,7 +87,7 @@ int main (void)
       }
       else // keep motor running...
       {
-        motor_current_control (duty_cycle); // keep controlling the max current
+        motor_start_current_control (); // start motor current control
       }
     }
   }

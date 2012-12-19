@@ -109,3 +109,15 @@ void motor_set_current_max (float current_max)
 {
   _current_max = current_max;
 }
+
+void motor_start_current_control (void)
+{
+  /* Start timer */
+  TIMER2_TCR = 1;
+}
+
+void motor_stop_current_control (void)
+{
+  /* Stop timer */
+  TIMER2_TCR = 0;
+}

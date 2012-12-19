@@ -15,9 +15,11 @@
 #include "pwm.h"
 #include "ios.h"
 #include "bldc_hall.h"
+#include "motor.h"
 
 unsigned int timer0_count;
 unsigned int motor_status;
+unsigned int duty_cycle = 0;
 
 //just use it to increase the time
 void __attribute__ ((interrupt("IRQ"))) timer0_int_handler (void)
@@ -51,7 +53,7 @@ void __attribute__ ((interrupt("IRQ"))) timer0_int_handler (void)
 
 void __attribute__ ((interrupt("IRQ"))) timer2_int_handler (void)
 {
-  // FIXME - make current control here
+  motor_current_control (duty_cycle); // keep controlling the max current
 
   // Interrupt is generated on match channel 0
   TIMER2_IR = (1 << 0);
@@ -121,9 +123,6 @@ void timer2_init (void)
   // Interrupt is generated on match channel 0
   TIMER2_IR = (1 << 0);
   VICVECTADDR = 0xff;
-
-  /* Start timer */
-  TIMER2_TCR = 1;
 }
 
 void timer3_init (void)
