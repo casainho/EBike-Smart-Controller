@@ -11,6 +11,933 @@
   <g style="fill:black; stroke:black; stroke-width:1">
 </g>
 <g style="fill:#A00000; fill-opacity:0.0; 
+  stroke:#A00000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6550 6350 L6600 6400" /> 
+<path d="M6600 6400 L6650 6350" /> 
+<path d="M6650 6350 L6550 6350" /> 
+<path d="M6150 6350 L6200 6400" /> 
+<path d="M6200 6400 L6250 6350" /> 
+<path d="M6250 6350 L6150 6350" /> 
+</g>
+<g style="fill:#A00000; fill-opacity:0.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6600 6100 L6600 6350" /> 
+<path d="M6200 6250 L6200 6350" /> 
+<path d="M6200 8050 L6200 8150" /> 
+<path d="M6600 7900 L6600 8150" /> 
+<path d="M6600 4300 L6600 4550" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6600" cy="1900" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6600 1900 L6600 2100" /> 
+<path d="M9450 5100 L9450 4950" /> 
+<path d="M9900 6400 L9250 6400" /> 
+<path d="M9250 6400 L9250 6000" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="2300" cy="2250" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M2050 2250 L2300 2250" /> 
+<path d="M2300 2250 L2800 2250" /> 
+<path d="M2800 2250 L2800 2150" /> 
+<path d="M8150 9150 L6000 9150" /> 
+<path d="M6000 9150 L5800 9150" /> 
+<path d="M6000 9500 L6000 9400" /> 
+<path d="M5800 9400 L5800 9500" /> 
+<path d="M5800 8900 L5800 8850" /> 
+<path d="M5800 8850 L5450 8850" /> 
+<path d="M5800 9100 L5800 9150" /> 
+<path d="M5800 9150 L5800 9200" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="5800" cy="9150" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6000 9200 L6000 9150" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6000" cy="9150" rx="16" ry="16"  /> 
+<ellipse cx="4200" cy="8850" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M4200 8750 L4200 8850" /> 
+<path d="M4200 8850 L4200 9150" /> 
+<path d="M4200 9600 L4200 9350" /> 
+<path d="M4900 9550 L4900 9600" /> 
+<path d="M6600 3200 L6600 3050" /> 
+<path d="M6600 3600 L6600 3800" /> 
+<path d="M6600 3800 L6600 3900" /> 
+<path d="M6300 4200 L6200 4200" /> 
+<path d="M6200 4200 L6050 4200" /> 
+<path d="M1400 3800 L3700 3800" /> 
+<path d="M3700 3800 L4150 3800" /> 
+<path d="M5300 3700 L5750 3700" /> 
+<path d="M5600 3650 L5600 3800" /> 
+<path d="M5300 3800 L5600 3800" /> 
+<path d="M5600 3800 L6200 3800" /> 
+<path d="M6200 3800 L6600 3800" /> 
+<path d="M6600 3800 L7400 3800" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="4000" cy="3350" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M4550 3350 L4000 3350" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="4000" cy="3600" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M4000 3300 L4000 3350" /> 
+<path d="M4000 3350 L4000 3600" /> 
+<path d="M4000 3600 L4000 3650" /> 
+<path d="M4150 3900 L4000 3900" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="7700" cy="1900" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M7700 1800 L7700 1900" /> 
+<path d="M7700 1900 L7700 2000" /> 
+<path d="M7150 2200 L7150 2550" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6250" cy="1900" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6250 1800 L6250 1900" /> 
+<path d="M6250 1900 L6250 2000" /> 
+<path d="M6000 2450 L6000 2550" /> 
+<path d="M6000 2150 L6000 2200" /> 
+<path d="M6000 2200 L6000 2250" /> 
+<path d="M5500 2250 L5500 2300" /> 
+<path d="M5250 1700 L5150 1700" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="3800" cy="1700" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M3800 1700 L3800 1900" /> 
+<path d="M3800 1900 L3900 1900" /> 
+<path d="M3900 2100 L3800 2100" /> 
+<path d="M5250 2550 L5250 2300" /> 
+<path d="M3800 2550 L3800 2300" /> 
+<path d="M3800 2300 L3900 2300" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="3500" cy="1700" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M3500 2150 L3500 2250" /> 
+<path d="M3500 1750 L3500 1700" /> 
+<path d="M3400 1700 L3500 1700" /> 
+<path d="M3500 1700 L3800 1700" /> 
+<path d="M3800 1700 L3900 1700" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="10950" cy="1600" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M10950 1700 L10950 1600" /> 
+<path d="M10950 2000 L10950 1900" /> 
+<path d="M10800 2000 L10800 1900" /> 
+<path d="M10650 2000 L10650 1900" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="10450" cy="5800" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M10450 6150 L10450 6000" /> 
+<path d="M12200 9550 L12200 9600" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#0000FF; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M9800 7350 L14950 7350" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M11800 8200 L9450 8200" /> 
+<path d="M11800 8700 L9450 8700" /> 
+<path d="M12600 7900 L14700 7900" /> 
+<path d="M14700 8000 L12600 8000" /> 
+<path d="M9350 4050 L9500 4050" /> 
+<path d="M9500 4050 L9600 4050" /> 
+<path d="M10000 2800 L9900 2800" /> 
+<path d="M9900 2800 L9700 2800" /> 
+<path d="M10450 1600 L10950 1600" /> 
+<path d="M10950 1600 L12750 1600" /> 
+<path d="M10450 1400 L10650 1400" /> 
+<path d="M10650 1400 L12750 1400" /> 
+<path d="M9400 1500 L9900 1500" /> 
+<path d="M9900 1500 L10250 1500" /> 
+<path d="M2100 9200 L3700 9200" /> 
+<path d="M10150 5800 L10050 5800" /> 
+<path d="M1900 9200 L1800 9200" /> 
+<path d="M1800 9200 L1550 9200" /> 
+<path d="M10500 7600 L11800 7600" /> 
+<path d="M9950 7700 L11800 7700" /> 
+<path d="M9950 7900 L11800 7900" /> 
+<path d="M12800 9400 L12800 9500" /> 
+<path d="M12600 8500 L12800 8500" /> 
+<path d="M12550 3100 L13900 3100" /> 
+<path d="M13700 4000 L13700 4100" /> 
+<path d="M13900 4200 L13700 4200" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="9900" cy="1500" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M9900 1300 L9900 1500" /> 
+<path d="M10100 1000 L10100 1100" /> 
+<path d="M9900 1000 L9900 1100" /> 
+<path d="M9700 1000 L9700 1100" /> 
+<path d="M9450 1700 L9400 1700" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="1800" cy="9200" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M1800 9250 L1800 9200" /> 
+<path d="M1550 8950 L1550 8850" /> 
+<path d="M9500 4000 L9500 4050" /> 
+<path d="M9500 4050 L9500 4100" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="9900" cy="2800" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M9900 2850 L9900 2800" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="9700" cy="2800" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M9700 2750 L9700 2800" /> 
+<path d="M9700 2800 L9700 2850" /> 
+<path d="M9450 2600 L9350 2600" /> 
+<path d="M9350 2500 L9700 2500" /> 
+<path d="M9700 2500 L9700 2550" /> 
+<path d="M9700 3050 L9700 3150" /> 
+<path d="M10050 6050 L10050 6150" /> 
+<path d="M10050 5550 L10050 5500" /> 
+<path d="M10050 5500 L9500 5500" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="9650" cy="5700" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M9500 5700 L9650 5700" /> 
+<path d="M9500 5600 L9850 5600" /> 
+<path d="M9850 5600 L9850 6150" /> 
+<path d="M9650 5350 L9650 5700" /> 
+<path d="M9650 5700 L9650 5750" /> 
+<path d="M9650 6150 L9650 5950" /> 
+<path d="M10050 5750 L10050 5800" /> 
+<path d="M10050 5800 L10050 5850" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="10050" cy="5800" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M9900 3150 L9900 3050" /> 
+<path d="M9500 4300 L9500 4350" /> 
+<path d="M9500 4350 L9500 4400" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="9500" cy="4050" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M9500 3700 L9500 3800" /> 
+<path d="M9350 4250 L9400 4250" /> 
+<path d="M9400 4250 L9400 4350" /> 
+<path d="M9400 4350 L9500 4350" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="9500" cy="4350" rx="16" ry="16"  /> 
+<ellipse cx="1550" cy="9200" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M1550 9150 L1550 9200" /> 
+<path d="M1550 9200 L1550 9250" /> 
+<path d="M1550 9450 L1550 9550" /> 
+<path d="M1800 9550 L1800 9450" /> 
+<path d="M9700 1300 L9700 1400" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="9700" cy="1400" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M10100 1300 L10100 1600" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="10100" cy="1600" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M13700 4200 L13700 4350" /> 
+<path d="M13700 4100 L13900 4100" /> 
+<path d="M12550 3000 L13900 3000" /> 
+<path d="M12800 8500 L12800 8650" /> 
+<path d="M12800 9500 L12600 9500" /> 
+<path d="M10150 8900 L11800 8900" /> 
+<path d="M12600 8900 L14250 8900" /> 
+<path d="M12600 8100 L14250 8100" /> 
+<path d="M12600 8800 L14250 8800" /> 
+<path d="M9950 7800 L11800 7800" /> 
+<path d="M14200 7600 L12600 7600" /> 
+<path d="M1550 8850 L2850 8850" /> 
+<path d="M10350 5800 L10450 5800" /> 
+<path d="M10450 5800 L11800 5800" /> 
+<path d="M9400 1400 L9700 1400" /> 
+<path d="M9700 1400 L10250 1400" /> 
+<path d="M9400 1600 L10100 1600" /> 
+<path d="M10100 1600 L10250 1600" /> 
+<path d="M10450 1500 L10800 1500" /> 
+<path d="M10800 1500 L12750 1500" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#0000FF; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M14950 7350 L14950 9700" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#0000FF; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M9350 7350 L9350 9700" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M10200 2800 L11750 2800" /> 
+<path d="M9800 4050 L11300 4050" /> 
+<path d="M9650 8000 L11800 8000" /> 
+<path d="M12600 8200 L14900 8200" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#0000FF; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M9350 7350 L9850 7350" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M9350 2700 L9500 2700" /> 
+<path d="M9500 2700 L9500 3150" /> 
+<path d="M9500 1950 L9500 1800" /> 
+<path d="M9500 1800 L9400 1800" /> 
+<path d="M12200 9600 L12450 9600" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#0000FF; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M9350 9700 L14950 9700" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M10650 1700 L10650 1400" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="10650" cy="1400" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M10800 1700 L10800 1500" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="10800" cy="1500" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M5250 2300 L5150 2300" /> 
+<path d="M5500 1900 L5500 1950" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="5250" cy="1900" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M5150 1900 L5250 1900" /> 
+<path d="M5250 1900 L5500 1900" /> 
+<path d="M5500 1900 L5650 1900" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="5500" cy="1900" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6250 2400 L6250 2550" /> 
+<path d="M6000 1950 L6000 1900" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6000" cy="1900" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M5150 2100 L5350 2100" /> 
+<path d="M5350 2100 L5350 2450" /> 
+<path d="M5350 2450 L5750 2450" /> 
+<path d="M5750 2450 L5750 2200" /> 
+<path d="M5750 2200 L6000 2200" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6000" cy="2200" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M5850 1900 L6000 1900" /> 
+<path d="M6000 1900 L6250 1900" /> 
+<path d="M6250 1900 L6600 1900" /> 
+<path d="M6600 1900 L6750 1900" /> 
+<path d="M7550 1900 L7700 1900" /> 
+<path d="M7700 2400 L7700 2550" /> 
+<path d="M1900 1700 L2300 1700" /> 
+<path d="M2300 1700 L2800 1700" /> 
+<path d="M2800 1700 L3100 1700" /> 
+<path d="M4150 3600 L4000 3600" /> 
+<path d="M4000 3850 L4000 3900" /> 
+<path d="M4000 3900 L4000 4150" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="4000" cy="3900" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M5400 3350 L5400 3600" /> 
+<path d="M5400 3600 L5300 3600" /> 
+<path d="M5600 3450 L5600 3350" /> 
+<path d="M5600 3350 L5400 3350" /> 
+<path d="M5400 3350 L4850 3350" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="5400" cy="3350" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M5300 3900 L5750 3900" /> 
+<path d="M1400 3700 L3850 3700" /> 
+<path d="M3850 3700 L4150 3700" /> 
+<path d="M6050 3500 L6050 3700" /> 
+<path d="M6050 3500 L6200 3500" /> 
+<path d="M6200 3500 L6300 3500" /> 
+<path d="M6050 4200 L6050 3900" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6600" cy="3800" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6600 3050 L7800 3050" /> 
+<path d="M1400 5500 L3850 5500" /> 
+<path d="M3850 5500 L4150 5500" /> 
+<path d="M5300 5700 L5750 5700" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="5400" cy="5150" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M4850 5150 L5400 5150" /> 
+<path d="M5400 5150 L5600 5150" /> 
+<path d="M5600 5150 L5600 5250" /> 
+<path d="M5300 5400 L5400 5400" /> 
+<path d="M5400 5400 L5400 5150" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="4000" cy="5700" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M4000 5650 L4000 5700" /> 
+<path d="M4000 5700 L4000 5950" /> 
+<path d="M4000 5400 L4150 5400" /> 
+<path d="M4150 5700 L4000 5700" /> 
+<path d="M4000 5100 L4000 5150" /> 
+<path d="M4000 5150 L4000 5400" /> 
+<path d="M4000 5400 L4000 5450" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="4000" cy="5400" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M4000 5150 L4550 5150" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="4000" cy="5150" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M5600 5450 L5600 5600" /> 
+<path d="M5300 5500 L5750 5500" /> 
+<path d="M1400 5600 L3700 5600" /> 
+<path d="M3700 5600 L4150 5600" /> 
+<path d="M1400 7400 L3700 7400" /> 
+<path d="M3700 7400 L4150 7400" /> 
+<path d="M5300 7300 L5750 7300" /> 
+<path d="M5600 7250 L5600 7400" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="4000" cy="6950" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M4550 6950 L4000 6950" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="4000" cy="7200" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M4000 6900 L4000 6950" /> 
+<path d="M4000 6950 L4000 7200" /> 
+<path d="M4000 7200 L4000 7250" /> 
+<path d="M4150 7500 L4000 7500" /> 
+<path d="M4150 7200 L4000 7200" /> 
+<path d="M4000 7450 L4000 7500" /> 
+<path d="M4000 7500 L4000 7750" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="4000" cy="7500" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M5400 6950 L5400 7200" /> 
+<path d="M5400 7200 L5300 7200" /> 
+<path d="M5600 7050 L5600 6950" /> 
+<path d="M5600 6950 L5400 6950" /> 
+<path d="M5400 6950 L4850 6950" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="5400" cy="6950" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M5300 7500 L5750 7500" /> 
+<path d="M1400 7300 L3850 7300" /> 
+<path d="M3850 7300 L4150 7300" /> 
+<path d="M4300 8850 L4200 8850" /> 
+<path d="M9550 9000 L11800 9000" /> 
+<path d="M3850 4050 L3850 4150" /> 
+<path d="M3700 4050 L3700 4150" /> 
+<path d="M3700 3850 L3700 3800" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="3700" cy="3800" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M3850 3850 L3850 3700" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="3850" cy="3700" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M3850 5850 L3850 5950" /> 
+<path d="M3700 5850 L3700 5950" /> 
+<path d="M3700 5650 L3700 5600" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="3700" cy="5600" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M3850 5650 L3850 5500" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="3850" cy="5500" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M3850 7650 L3850 7750" /> 
+<path d="M3700 7650 L3700 7750" /> 
+<path d="M3700 7450 L3700 7400" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="3700" cy="7400" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M3850 7450 L3850 7300" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="3850" cy="7300" rx="16" ry="16"  /> 
+<ellipse cx="5600" cy="3800" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6050 3900 L5950 3900" /> 
+<path d="M6050 3700 L5950 3700" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="5600" cy="5600" rx="16" ry="16"  /> 
+<ellipse cx="5600" cy="7400" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M2300 2150 L2300 2250" /> 
+<path d="M2300 1700 L2300 1750" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="2300" cy="1700" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M2800 1750 L2800 1700" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="2800" cy="1700" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6200 3550 L6200 3500" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6200" cy="3500" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6200 4250 L6200 4200" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6200" cy="4200" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6200 4450 L6200 4550" /> 
+<path d="M6200 3800 L6200 3750" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6200" cy="3800" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6600 5000 L6600 4850" /> 
+<path d="M6600 5400 L6600 5600" /> 
+<path d="M6600 5600 L6600 5700" /> 
+<path d="M6300 6000 L6200 6000" /> 
+<path d="M6200 6000 L6050 6000" /> 
+<path d="M5300 5600 L5600 5600" /> 
+<path d="M5600 5600 L6200 5600" /> 
+<path d="M6200 5600 L6600 5600" /> 
+<path d="M6600 5600 L7400 5600" /> 
+<path d="M6050 5300 L6050 5500" /> 
+<path d="M6050 5300 L6200 5300" /> 
+<path d="M6200 5300 L6300 5300" /> 
+<path d="M6050 6000 L6050 5700" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6600" cy="5600" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6600 4850 L7800 4850" /> 
+<path d="M6050 5700 L5950 5700" /> 
+<path d="M6050 5500 L5950 5500" /> 
+<path d="M6200 5350 L6200 5300" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6200" cy="5300" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6200 6050 L6200 6000" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6200" cy="6000" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6200 5600 L6200 5550" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6200" cy="5600" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6600 6800 L6600 6650" /> 
+<path d="M6600 7200 L6600 7400" /> 
+<path d="M6600 7400 L6600 7500" /> 
+<path d="M6300 7800 L6200 7800" /> 
+<path d="M6200 7800 L6050 7800" /> 
+<path d="M5300 7400 L5600 7400" /> 
+<path d="M5600 7400 L6200 7400" /> 
+<path d="M6200 7400 L6600 7400" /> 
+<path d="M6600 7400 L7400 7400" /> 
+<path d="M6050 7100 L6050 7300" /> 
+<path d="M6050 7100 L6200 7100" /> 
+<path d="M6200 7100 L6300 7100" /> 
+<path d="M6050 7800 L6050 7500" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6600" cy="7400" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6600 6650 L7800 6650" /> 
+<path d="M6050 7500 L5950 7500" /> 
+<path d="M6050 7300 L5950 7300" /> 
+<path d="M6200 7150 L6200 7100" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6200" cy="7100" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6200 7850 L6200 7800" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6200" cy="7800" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6200 7400 L6200 7350" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="6200" cy="7400" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M1900 1900 L2050 1900" /> 
+<path d="M2050 1900 L2050 2250" /> 
+<path d="M2050 2250 L2050 2450" /> 
+<path d="M2050 2450 L2700 2450" /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
+   transform="translate(0 0) scale(1 1)">
+<ellipse cx="2050" cy="2250" rx="16" ry="16"  /> 
+</g>
+<g style="fill:#00A000; fill-opacity:1.0; 
+  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M9250 5200 L9250 4950" /> 
+<path d="M9250 4950 L9450 4950" /> 
+<path d="M6600 2300 L6600 2550" /> 
+</g>
+<g style="fill:#A00000; fill-opacity:0.0; 
+  stroke:#A00000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
+   transform="translate(0 0) scale(1 1)">
+<path d="M6150 8150 L6200 8200" /> 
+<path d="M6200 8200 L6250 8150" /> 
+<path d="M6250 8150 L6150 8150" /> 
+<path d="M6550 8150 L6600 8200" /> 
+<path d="M6600 8200 L6650 8150" /> 
+<path d="M6650 8150 L6550 8150" /> 
+<path d="M6550 4550 L6600 4600" /> 
+<path d="M6600 4600 L6650 4550" /> 
+<path d="M6650 4550 L6550 4550" /> 
+<path d="M6150 4550 L6200 4600" /> 
+<path d="M6200 4600 L6250 4550" /> 
+<path d="M6250 4550 L6150 4550" /> 
+</g>
+<g style="fill:#A00000; fill-opacity:0.0; 
   stroke:#A00000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:5" 
    transform="translate(0 0) scale(1 1)">
 <path d="M6587 6833 L6557 6833" /> 
@@ -2637,936 +3564,6 @@ points="6675,7675
 <g style = "stroke-linecap:round;" > 
 <path d="M7044 7862 L7044 7862" /> 
 </g></g>
-<g style="fill:#00A0A0; fill-opacity:0.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6600 2300 L6600 2550" /> 
-<path d="M9250 4950 L9450 4950" /> 
-<path d="M9250 4950 L9250 5200" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="2050" cy="2250" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M2700 2450 L2050 2450" /> 
-<path d="M2050 2450 L2050 2250" /> 
-<path d="M2050 2250 L2050 1900" /> 
-<path d="M2050 1900 L1900 1900" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6200" cy="7400" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6200 7400 L6200 7350" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6600" cy="8100" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6200 8050 L6200 8100" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6200" cy="7800" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6200 7850 L6200 7800" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6200" cy="7100" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6200 7150 L6200 7100" /> 
-<path d="M5950 7300 L6050 7300" /> 
-<path d="M5950 7500 L6050 7500" /> 
-<path d="M7800 6650 L6600 6650" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6600" cy="7400" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6600 7900 L6600 8100" /> 
-<path d="M6050 7500 L6050 7800" /> 
-<path d="M6300 7100 L6200 7100" /> 
-<path d="M6200 7100 L6050 7100" /> 
-<path d="M6050 7100 L6050 7300" /> 
-<path d="M7400 7400 L6600 7400" /> 
-<path d="M6600 7400 L6200 7400" /> 
-<path d="M6200 7400 L5600 7400" /> 
-<path d="M5600 7400 L5300 7400" /> 
-<path d="M6050 7800 L6200 7800" /> 
-<path d="M6200 7800 L6300 7800" /> 
-<path d="M6600 7500 L6600 7400" /> 
-<path d="M6600 7400 L6600 7200" /> 
-<path d="M6600 6650 L6600 6800" /> 
-<path d="M6200 8100 L6600 8100" /> 
-<path d="M6600 8100 L7150 8100" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6200" cy="5600" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6200 5600 L6200 5550" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6600" cy="6300" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6200 6250 L6200 6300" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6200" cy="6000" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6200 6050 L6200 6000" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6200" cy="5300" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6200 5350 L6200 5300" /> 
-<path d="M5950 5500 L6050 5500" /> 
-<path d="M5950 5700 L6050 5700" /> 
-<path d="M7800 4850 L6600 4850" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6600" cy="5600" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6600 6100 L6600 6300" /> 
-<path d="M6050 5700 L6050 6000" /> 
-<path d="M6300 5300 L6200 5300" /> 
-<path d="M6200 5300 L6050 5300" /> 
-<path d="M6050 5300 L6050 5500" /> 
-<path d="M7400 5600 L6600 5600" /> 
-<path d="M6600 5600 L6200 5600" /> 
-<path d="M6200 5600 L5600 5600" /> 
-<path d="M5600 5600 L5300 5600" /> 
-<path d="M6050 6000 L6200 6000" /> 
-<path d="M6200 6000 L6300 6000" /> 
-<path d="M6600 5700 L6600 5600" /> 
-<path d="M6600 5600 L6600 5400" /> 
-<path d="M6600 4850 L6600 5000" /> 
-<path d="M6200 6300 L6600 6300" /> 
-<path d="M6600 6300 L7150 6300" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6200" cy="3800" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6200 3800 L6200 3750" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6600" cy="4500" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6200 4450 L6200 4500" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6200" cy="4200" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6200 4250 L6200 4200" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6200" cy="3500" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6200 3550 L6200 3500" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="2800" cy="1700" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M2800 1750 L2800 1700" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="2300" cy="1700" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M2300 1700 L2300 1750" /> 
-<path d="M2300 2150 L2300 2250" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="5600" cy="7400" rx="16" ry="16"  /> 
-<ellipse cx="5600" cy="5600" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M5950 3700 L6050 3700" /> 
-<path d="M5950 3900 L6050 3900" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="5600" cy="3800" rx="16" ry="16"  /> 
-<ellipse cx="3850" cy="7300" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M3850 7450 L3850 7300" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="3700" cy="7400" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M3700 7450 L3700 7400" /> 
-<path d="M3700 7650 L3700 7750" /> 
-<path d="M3850 7650 L3850 7750" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="3850" cy="5500" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M3850 5650 L3850 5500" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="3700" cy="5600" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M3700 5650 L3700 5600" /> 
-<path d="M3700 5850 L3700 5950" /> 
-<path d="M3850 5850 L3850 5950" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="3850" cy="3700" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M3850 3850 L3850 3700" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="3700" cy="3800" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M3700 3850 L3700 3800" /> 
-<path d="M3700 4050 L3700 4150" /> 
-<path d="M3850 4050 L3850 4150" /> 
-<path d="M9550 9000 L11800 9000" /> 
-<path d="M4300 8850 L4200 8850" /> 
-<path d="M4150 7300 L3850 7300" /> 
-<path d="M3850 7300 L1400 7300" /> 
-<path d="M5300 7500 L5750 7500" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="5400" cy="6950" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M4850 6950 L5400 6950" /> 
-<path d="M5400 6950 L5600 6950" /> 
-<path d="M5600 6950 L5600 7050" /> 
-<path d="M5300 7200 L5400 7200" /> 
-<path d="M5400 7200 L5400 6950" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="4000" cy="7500" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M4000 7750 L4000 7500" /> 
-<path d="M4000 7500 L4000 7450" /> 
-<path d="M4150 7200 L4000 7200" /> 
-<path d="M4150 7500 L4000 7500" /> 
-<path d="M4000 7250 L4000 7200" /> 
-<path d="M4000 7200 L4000 6950" /> 
-<path d="M4000 6950 L4000 6900" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="4000" cy="7200" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M4550 6950 L4000 6950" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="4000" cy="6950" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M5600 7250 L5600 7400" /> 
-<path d="M5300 7300 L5750 7300" /> 
-<path d="M4150 7400 L3700 7400" /> 
-<path d="M3700 7400 L1400 7400" /> 
-<path d="M4150 5600 L3700 5600" /> 
-<path d="M3700 5600 L1400 5600" /> 
-<path d="M5300 5500 L5750 5500" /> 
-<path d="M5600 5450 L5600 5600" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="4000" cy="5150" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M4000 5150 L4550 5150" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="4000" cy="5400" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M4000 5450 L4000 5400" /> 
-<path d="M4000 5400 L4000 5150" /> 
-<path d="M4000 5150 L4000 5100" /> 
-<path d="M4150 5700 L4000 5700" /> 
-<path d="M4000 5400 L4150 5400" /> 
-<path d="M4000 5950 L4000 5700" /> 
-<path d="M4000 5700 L4000 5650" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="4000" cy="5700" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M5400 5150 L5400 5400" /> 
-<path d="M5400 5400 L5300 5400" /> 
-<path d="M5600 5250 L5600 5150" /> 
-<path d="M5600 5150 L5400 5150" /> 
-<path d="M5400 5150 L4850 5150" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="5400" cy="5150" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M5300 5700 L5750 5700" /> 
-<path d="M4150 5500 L3850 5500" /> 
-<path d="M3850 5500 L1400 5500" /> 
-<path d="M7800 3050 L6600 3050" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6600" cy="3800" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6600 4300 L6600 4500" /> 
-<path d="M6050 3900 L6050 4200" /> 
-<path d="M6300 3500 L6200 3500" /> 
-<path d="M6200 3500 L6050 3500" /> 
-<path d="M6050 3500 L6050 3700" /> 
-<path d="M4150 3700 L3850 3700" /> 
-<path d="M3850 3700 L1400 3700" /> 
-<path d="M5300 3900 L5750 3900" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="5400" cy="3350" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M4850 3350 L5400 3350" /> 
-<path d="M5400 3350 L5600 3350" /> 
-<path d="M5600 3350 L5600 3450" /> 
-<path d="M5300 3600 L5400 3600" /> 
-<path d="M5400 3600 L5400 3350" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="4000" cy="3900" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M4000 4150 L4000 3900" /> 
-<path d="M4000 3900 L4000 3850" /> 
-<path d="M4150 3600 L4000 3600" /> 
-<path d="M3100 1700 L2800 1700" /> 
-<path d="M2800 1700 L2300 1700" /> 
-<path d="M2300 1700 L1900 1700" /> 
-<path d="M7700 2400 L7700 2550" /> 
-<path d="M7550 1900 L7700 1900" /> 
-<path d="M6750 1900 L6600 1900" /> 
-<path d="M6600 1900 L6250 1900" /> 
-<path d="M6250 1900 L6000 1900" /> 
-<path d="M6000 1900 L5850 1900" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6000" cy="2200" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6000 2200 L5750 2200" /> 
-<path d="M5750 2200 L5750 2450" /> 
-<path d="M5750 2450 L5350 2450" /> 
-<path d="M5350 2450 L5350 2100" /> 
-<path d="M5350 2100 L5150 2100" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6000" cy="1900" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6000 1950 L6000 1900" /> 
-<path d="M6250 2400 L6250 2550" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="5500" cy="1900" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M5650 1900 L5500 1900" /> 
-<path d="M5500 1900 L5250 1900" /> 
-<path d="M5250 1900 L5150 1900" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="5250" cy="1900" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M5500 1900 L5500 1950" /> 
-<path d="M5150 2300 L5250 2300" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="10800" cy="1500" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M10800 1700 L10800 1500" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="10650" cy="1400" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M10650 1700 L10650 1400" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#0000FF; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M9350 9700 L14950 9700" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M12450 9600 L12200 9600" /> 
-<path d="M9400 1800 L9500 1800" /> 
-<path d="M9500 1800 L9500 1950" /> 
-<path d="M9500 3150 L9500 2700" /> 
-<path d="M9500 2700 L9350 2700" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#0000FF; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M9850 7350 L9350 7350" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M12600 8200 L14900 8200" /> 
-<path d="M9650 8000 L11800 8000" /> 
-<path d="M9800 4050 L11300 4050" /> 
-<path d="M10200 2800 L11750 2800" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#0000FF; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M9350 7350 L9350 9700" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#0000FF; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M14950 9700 L14950 7350" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M12750 1500 L10800 1500" /> 
-<path d="M10800 1500 L10450 1500" /> 
-<path d="M10250 1600 L10100 1600" /> 
-<path d="M10100 1600 L9400 1600" /> 
-<path d="M10250 1400 L9700 1400" /> 
-<path d="M9700 1400 L9400 1400" /> 
-<path d="M11800 5800 L10450 5800" /> 
-<path d="M10450 5800 L10350 5800" /> 
-<path d="M2850 8850 L1550 8850" /> 
-<path d="M14200 7600 L12600 7600" /> 
-<path d="M9950 7800 L11800 7800" /> 
-<path d="M12600 8800 L14250 8800" /> 
-<path d="M12600 8100 L14250 8100" /> 
-<path d="M12600 8900 L14250 8900" /> 
-<path d="M10150 8900 L11800 8900" /> 
-<path d="M12600 9500 L12800 9500" /> 
-<path d="M12800 8650 L12800 8500" /> 
-<path d="M12550 3000 L13900 3000" /> 
-<path d="M13900 4100 L13700 4100" /> 
-<path d="M13700 4350 L13700 4200" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="10100" cy="1600" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M10100 1300 L10100 1600" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="9700" cy="1400" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M9700 1300 L9700 1400" /> 
-<path d="M1800 9550 L1800 9450" /> 
-<path d="M1550 9450 L1550 9550" /> 
-<path d="M1550 9250 L1550 9200" /> 
-<path d="M1550 9200 L1550 9150" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="1550" cy="9200" rx="16" ry="16"  /> 
-<ellipse cx="9500" cy="4350" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M9500 4350 L9400 4350" /> 
-<path d="M9400 4350 L9400 4250" /> 
-<path d="M9400 4250 L9350 4250" /> 
-<path d="M9500 3700 L9500 3800" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="9500" cy="4050" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M9500 4400 L9500 4350" /> 
-<path d="M9500 4350 L9500 4300" /> 
-<path d="M9900 3150 L9900 3050" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="10050" cy="5800" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M10050 5850 L10050 5800" /> 
-<path d="M10050 5800 L10050 5750" /> 
-<path d="M9650 6150 L9650 5950" /> 
-<path d="M9650 5750 L9650 5700" /> 
-<path d="M9650 5700 L9650 5350" /> 
-<path d="M9850 6150 L9850 5600" /> 
-<path d="M9850 5600 L9500 5600" /> 
-<path d="M9500 5700 L9650 5700" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="9650" cy="5700" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M9500 5500 L10050 5500" /> 
-<path d="M10050 5500 L10050 5550" /> 
-<path d="M10050 6050 L10050 6150" /> 
-<path d="M9700 3050 L9700 3150" /> 
-<path d="M9700 2550 L9700 2500" /> 
-<path d="M9700 2500 L9350 2500" /> 
-<path d="M9450 2600 L9350 2600" /> 
-<path d="M9700 2850 L9700 2800" /> 
-<path d="M9700 2800 L9700 2750" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="9700" cy="2800" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M9900 2850 L9900 2800" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="9900" cy="2800" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M9500 4100 L9500 4050" /> 
-<path d="M9500 4050 L9500 4000" /> 
-<path d="M1550 8850 L1550 8950" /> 
-<path d="M1800 9250 L1800 9200" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="1800" cy="9200" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M9450 1700 L9400 1700" /> 
-<path d="M9700 1000 L9700 1100" /> 
-<path d="M9900 1000 L9900 1100" /> 
-<path d="M10100 1000 L10100 1100" /> 
-<path d="M9900 1300 L9900 1500" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="9900" cy="1500" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M13700 4200 L13900 4200" /> 
-<path d="M13700 4100 L13700 4000" /> 
-<path d="M12550 3100 L13900 3100" /> 
-<path d="M12800 8500 L12600 8500" /> 
-<path d="M12800 9500 L12800 9400" /> 
-<path d="M9950 7900 L11800 7900" /> 
-<path d="M9950 7700 L11800 7700" /> 
-<path d="M10500 7600 L11800 7600" /> 
-<path d="M1550 9200 L1800 9200" /> 
-<path d="M1800 9200 L1900 9200" /> 
-<path d="M10150 5800 L10050 5800" /> 
-<path d="M2100 9200 L3700 9200" /> 
-<path d="M10250 1500 L9900 1500" /> 
-<path d="M9900 1500 L9400 1500" /> 
-<path d="M12750 1400 L10650 1400" /> 
-<path d="M10650 1400 L10450 1400" /> 
-<path d="M12750 1600 L10950 1600" /> 
-<path d="M10950 1600 L10450 1600" /> 
-<path d="M9700 2800 L9900 2800" /> 
-<path d="M9900 2800 L10000 2800" /> 
-<path d="M9600 4050 L9500 4050" /> 
-<path d="M9500 4050 L9350 4050" /> 
-<path d="M14700 8000 L12600 8000" /> 
-<path d="M12600 7900 L14700 7900" /> 
-<path d="M11800 8700 L9450 8700" /> 
-<path d="M11800 8200 L9450 8200" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#0000FF; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M14950 7350 L9800 7350" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M12200 9600 L12200 9550" /> 
-<path d="M10450 6150 L10450 6000" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="10450" cy="5800" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M10650 2000 L10650 1900" /> 
-<path d="M10800 2000 L10800 1900" /> 
-<path d="M10950 2000 L10950 1900" /> 
-<path d="M10950 1700 L10950 1600" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="10950" cy="1600" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M3900 1700 L3800 1700" /> 
-<path d="M3800 1700 L3500 1700" /> 
-<path d="M3500 1700 L3400 1700" /> 
-<path d="M3500 1750 L3500 1700" /> 
-<path d="M3500 2150 L3500 2250" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="3500" cy="1700" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M3900 2300 L3800 2300" /> 
-<path d="M3800 2300 L3800 2550" /> 
-<path d="M5250 2300 L5250 2550" /> 
-<path d="M3900 2100 L3800 2100" /> 
-<path d="M3900 1900 L3800 1900" /> 
-<path d="M3800 1900 L3800 1700" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="3800" cy="1700" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M5250 1700 L5150 1700" /> 
-<path d="M5500 2250 L5500 2300" /> 
-<path d="M6000 2250 L6000 2200" /> 
-<path d="M6000 2200 L6000 2150" /> 
-<path d="M6000 2450 L6000 2550" /> 
-<path d="M6250 2000 L6250 1900" /> 
-<path d="M6250 1900 L6250 1800" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6250" cy="1900" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M7150 2200 L7150 2550" /> 
-<path d="M7700 2000 L7700 1900" /> 
-<path d="M7700 1900 L7700 1800" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="7700" cy="1900" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M4150 3900 L4000 3900" /> 
-<path d="M4000 3650 L4000 3600" /> 
-<path d="M4000 3600 L4000 3350" /> 
-<path d="M4000 3350 L4000 3300" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="4000" cy="3600" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M4550 3350 L4000 3350" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="4000" cy="3350" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M7400 3800 L6600 3800" /> 
-<path d="M6600 3800 L6200 3800" /> 
-<path d="M6200 3800 L5600 3800" /> 
-<path d="M5600 3800 L5300 3800" /> 
-<path d="M5600 3650 L5600 3800" /> 
-<path d="M5300 3700 L5750 3700" /> 
-<path d="M4150 3800 L3700 3800" /> 
-<path d="M3700 3800 L1400 3800" /> 
-<path d="M6050 4200 L6200 4200" /> 
-<path d="M6200 4200 L6300 4200" /> 
-<path d="M6600 3900 L6600 3800" /> 
-<path d="M6600 3800 L6600 3600" /> 
-<path d="M6600 3050 L6600 3200" /> 
-<path d="M6200 4500 L6600 4500" /> 
-<path d="M6600 4500 L7150 4500" /> 
-<path d="M4900 9550 L4900 9600" /> 
-<path d="M4200 9600 L4200 9350" /> 
-<path d="M4200 9150 L4200 8850" /> 
-<path d="M4200 8850 L4200 8750" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="4200" cy="8850" rx="16" ry="16"  /> 
-<ellipse cx="6000" cy="9150" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M6000 9200 L6000 9150" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="5800" cy="9150" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M5800 9200 L5800 9150" /> 
-<path d="M5800 9150 L5800 9100" /> 
-<path d="M5450 8850 L5800 8850" /> 
-<path d="M5800 8850 L5800 8900" /> 
-<path d="M5800 9400 L5800 9500" /> 
-<path d="M6000 9500 L6000 9400" /> 
-<path d="M5800 9150 L6000 9150" /> 
-<path d="M6000 9150 L8150 9150" /> 
-<path d="M2800 2150 L2800 2250" /> 
-<path d="M2800 2250 L2300 2250" /> 
-<path d="M2300 2250 L2050 2250" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="2300" cy="2250" rx="16" ry="16"  /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
-   transform="translate(0 0) scale(1 1)">
-<path d="M9250 6000 L9250 6400" /> 
-<path d="M9250 6400 L9900 6400" /> 
-<path d="M9450 4950 L9450 5100" /> 
-<path d="M6600 2100 L6600 1900" /> 
-</g>
-<g style="fill:#00A000; fill-opacity:1.0; 
-  stroke:#00A000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:0" 
-   transform="translate(0 0) scale(1 1)">
-<ellipse cx="6600" cy="1900" rx="16" ry="16"  /> 
-</g>
 <g style="fill:#A00000; fill-opacity:0.0; 
   stroke:#A00000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
    transform="translate(0 0) scale(1 1)">
@@ -10406,98 +10403,7 @@ points="5550,5325
 <path d="M7771 2969 L7769 2966" /> 
 <g style = "stroke-linecap:round;" > 
 <path d="M7769 2966 L7769 2966" /> 
-</g><path d="M6687 4484 L6687 4424" /> 
-<path d="M6687 4424 L6707 4467" /> 
-<path d="M6707 4467 L6727 4424" /> 
-<path d="M6727 4424 L6727 4484" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6727 4484 L6727 4484" /> 
-</g><path d="M6765 4484 L6759 4481" /> 
-<path d="M6759 4481 L6756 4479" /> 
-<path d="M6756 4479 L6753 4473" /> 
-<path d="M6753 4473 L6753 4456" /> 
-<path d="M6753 4456 L6756 4450" /> 
-<path d="M6756 4450 L6759 4447" /> 
-<path d="M6759 4447 L6765 4444" /> 
-<path d="M6765 4444 L6773 4444" /> 
-<path d="M6773 4444 L6779 4447" /> 
-<path d="M6779 4447 L6782 4450" /> 
-<path d="M6782 4450 L6785 4456" /> 
-<path d="M6785 4456 L6785 4473" /> 
-<path d="M6785 4473 L6782 4479" /> 
-<path d="M6782 4479 L6779 4481" /> 
-<path d="M6779 4481 L6773 4484" /> 
-<path d="M6773 4484 L6765 4484" /> 
-<path d="M6802 4444 L6825 4444" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6825 4444 L6825 4444" /> 
-</g><path d="M6810 4424 L6810 4476" /> 
-<path d="M6810 4476 L6813 4481" /> 
-<path d="M6813 4481 L6819 4484" /> 
-<path d="M6819 4484 L6825 4484" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6825 4484 L6825 4484" /> 
-</g><path d="M6853 4484 L6847 4481" /> 
-<path d="M6847 4481 L6844 4479" /> 
-<path d="M6844 4479 L6841 4473" /> 
-<path d="M6841 4473 L6841 4456" /> 
-<path d="M6841 4456 L6844 4450" /> 
-<path d="M6844 4450 L6847 4447" /> 
-<path d="M6847 4447 L6853 4444" /> 
-<path d="M6853 4444 L6861 4444" /> 
-<path d="M6861 4444 L6867 4447" /> 
-<path d="M6867 4447 L6870 4450" /> 
-<path d="M6870 4450 L6873 4456" /> 
-<path d="M6873 4456 L6873 4473" /> 
-<path d="M6873 4473 L6870 4479" /> 
-<path d="M6870 4479 L6867 4481" /> 
-<path d="M6867 4481 L6861 4484" /> 
-<path d="M6861 4484 L6853 4484" /> 
-<path d="M6898 4484 L6898 4444" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6898 4444 L6898 4444" /> 
-</g><path d="M6898 4456 L6901 4450" /> 
-<path d="M6901 4450 L6904 4447" /> 
-<path d="M6904 4447 L6910 4444" /> 
-<path d="M6910 4444 L6915 4444" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6915 4444 L6915 4444" /> 
-</g><path d="M7013 4427 L7007 4424" /> 
-<path d="M7007 4424 L6998 4424" /> 
-<path d="M6998 4424 L6990 4427" /> 
-<path d="M6990 4427 L6984 4433" /> 
-<path d="M6984 4433 L6981 4439" /> 
-<path d="M6981 4439 L6978 4450" /> 
-<path d="M6978 4450 L6978 4459" /> 
-<path d="M6978 4459 L6981 4470" /> 
-<path d="M6981 4470 L6984 4476" /> 
-<path d="M6984 4476 L6990 4481" /> 
-<path d="M6990 4481 L6998 4484" /> 
-<path d="M6998 4484 L7004 4484" /> 
-<path d="M7004 4484 L7013 4481" /> 
-<path d="M7013 4481 L7016 4479" /> 
-<path d="M7016 4479 L7016 4459" /> 
-<path d="M7016 4459 L7004 4459" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M7004 4459 L7004 4459" /> 
-</g><path d="M7041 4484 L7041 4424" /> 
-<path d="M7041 4424 L7076 4484" /> 
-<path d="M7076 4484 L7076 4424" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M7076 4424 L7076 4424" /> 
-</g><path d="M7104 4484 L7104 4424" /> 
-<path d="M7104 4424 L7119 4424" /> 
-<path d="M7119 4424 L7127 4427" /> 
-<path d="M7127 4427 L7133 4433" /> 
-<path d="M7133 4433 L7136 4439" /> 
-<path d="M7136 4439 L7139 4450" /> 
-<path d="M7139 4450 L7139 4459" /> 
-<path d="M7139 4459 L7136 4470" /> 
-<path d="M7136 4470 L7133 4476" /> 
-<path d="M7133 4476 L7127 4481" /> 
-<path d="M7127 4481 L7119 4484" /> 
-<path d="M7119 4484 L7104 4484" /> 
-<path d="M1464 3784 L1464 3724" /> 
+</g><path d="M1464 3784 L1464 3724" /> 
 <path d="M1464 3724 L1487 3724" /> 
 <path d="M1487 3724 L1493 3727" /> 
 <path d="M1493 3727 L1496 3730" /> 
@@ -35782,98 +35688,7 @@ points="2250,1900
 <path d="M7771 4769 L7769 4766" /> 
 <g style = "stroke-linecap:round;" > 
 <path d="M7769 4766 L7769 4766" /> 
-</g><path d="M6687 6284 L6687 6224" /> 
-<path d="M6687 6224 L6707 6267" /> 
-<path d="M6707 6267 L6727 6224" /> 
-<path d="M6727 6224 L6727 6284" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6727 6284 L6727 6284" /> 
-</g><path d="M6765 6284 L6759 6281" /> 
-<path d="M6759 6281 L6756 6279" /> 
-<path d="M6756 6279 L6753 6273" /> 
-<path d="M6753 6273 L6753 6256" /> 
-<path d="M6753 6256 L6756 6250" /> 
-<path d="M6756 6250 L6759 6247" /> 
-<path d="M6759 6247 L6765 6244" /> 
-<path d="M6765 6244 L6773 6244" /> 
-<path d="M6773 6244 L6779 6247" /> 
-<path d="M6779 6247 L6782 6250" /> 
-<path d="M6782 6250 L6785 6256" /> 
-<path d="M6785 6256 L6785 6273" /> 
-<path d="M6785 6273 L6782 6279" /> 
-<path d="M6782 6279 L6779 6281" /> 
-<path d="M6779 6281 L6773 6284" /> 
-<path d="M6773 6284 L6765 6284" /> 
-<path d="M6802 6244 L6825 6244" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6825 6244 L6825 6244" /> 
-</g><path d="M6810 6224 L6810 6276" /> 
-<path d="M6810 6276 L6813 6281" /> 
-<path d="M6813 6281 L6819 6284" /> 
-<path d="M6819 6284 L6825 6284" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6825 6284 L6825 6284" /> 
-</g><path d="M6853 6284 L6847 6281" /> 
-<path d="M6847 6281 L6844 6279" /> 
-<path d="M6844 6279 L6841 6273" /> 
-<path d="M6841 6273 L6841 6256" /> 
-<path d="M6841 6256 L6844 6250" /> 
-<path d="M6844 6250 L6847 6247" /> 
-<path d="M6847 6247 L6853 6244" /> 
-<path d="M6853 6244 L6861 6244" /> 
-<path d="M6861 6244 L6867 6247" /> 
-<path d="M6867 6247 L6870 6250" /> 
-<path d="M6870 6250 L6873 6256" /> 
-<path d="M6873 6256 L6873 6273" /> 
-<path d="M6873 6273 L6870 6279" /> 
-<path d="M6870 6279 L6867 6281" /> 
-<path d="M6867 6281 L6861 6284" /> 
-<path d="M6861 6284 L6853 6284" /> 
-<path d="M6898 6284 L6898 6244" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6898 6244 L6898 6244" /> 
-</g><path d="M6898 6256 L6901 6250" /> 
-<path d="M6901 6250 L6904 6247" /> 
-<path d="M6904 6247 L6910 6244" /> 
-<path d="M6910 6244 L6915 6244" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6915 6244 L6915 6244" /> 
-</g><path d="M7013 6227 L7007 6224" /> 
-<path d="M7007 6224 L6998 6224" /> 
-<path d="M6998 6224 L6990 6227" /> 
-<path d="M6990 6227 L6984 6233" /> 
-<path d="M6984 6233 L6981 6239" /> 
-<path d="M6981 6239 L6978 6250" /> 
-<path d="M6978 6250 L6978 6259" /> 
-<path d="M6978 6259 L6981 6270" /> 
-<path d="M6981 6270 L6984 6276" /> 
-<path d="M6984 6276 L6990 6281" /> 
-<path d="M6990 6281 L6998 6284" /> 
-<path d="M6998 6284 L7004 6284" /> 
-<path d="M7004 6284 L7013 6281" /> 
-<path d="M7013 6281 L7016 6279" /> 
-<path d="M7016 6279 L7016 6259" /> 
-<path d="M7016 6259 L7004 6259" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M7004 6259 L7004 6259" /> 
-</g><path d="M7041 6284 L7041 6224" /> 
-<path d="M7041 6224 L7076 6284" /> 
-<path d="M7076 6284 L7076 6224" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M7076 6224 L7076 6224" /> 
-</g><path d="M7104 6284 L7104 6224" /> 
-<path d="M7104 6224 L7119 6224" /> 
-<path d="M7119 6224 L7127 6227" /> 
-<path d="M7127 6227 L7133 6233" /> 
-<path d="M7133 6233 L7136 6239" /> 
-<path d="M7136 6239 L7139 6250" /> 
-<path d="M7139 6250 L7139 6259" /> 
-<path d="M7139 6259 L7136 6270" /> 
-<path d="M7136 6270 L7133 6276" /> 
-<path d="M7133 6276 L7127 6281" /> 
-<path d="M7127 6281 L7119 6284" /> 
-<path d="M7119 6284 L7104 6284" /> 
-</g>
+</g></g>
 <g style="fill:#A00000; fill-opacity:0.0; 
   stroke:#A00000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
    transform="translate(0 0) scale(1 1)">
@@ -36733,98 +36548,7 @@ points="2250,1900
 <path d="M7771 6569 L7769 6566" /> 
 <g style = "stroke-linecap:round;" > 
 <path d="M7769 6566 L7769 6566" /> 
-</g><path d="M6687 8084 L6687 8024" /> 
-<path d="M6687 8024 L6707 8067" /> 
-<path d="M6707 8067 L6727 8024" /> 
-<path d="M6727 8024 L6727 8084" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6727 8084 L6727 8084" /> 
-</g><path d="M6765 8084 L6759 8081" /> 
-<path d="M6759 8081 L6756 8079" /> 
-<path d="M6756 8079 L6753 8073" /> 
-<path d="M6753 8073 L6753 8056" /> 
-<path d="M6753 8056 L6756 8050" /> 
-<path d="M6756 8050 L6759 8047" /> 
-<path d="M6759 8047 L6765 8044" /> 
-<path d="M6765 8044 L6773 8044" /> 
-<path d="M6773 8044 L6779 8047" /> 
-<path d="M6779 8047 L6782 8050" /> 
-<path d="M6782 8050 L6785 8056" /> 
-<path d="M6785 8056 L6785 8073" /> 
-<path d="M6785 8073 L6782 8079" /> 
-<path d="M6782 8079 L6779 8081" /> 
-<path d="M6779 8081 L6773 8084" /> 
-<path d="M6773 8084 L6765 8084" /> 
-<path d="M6802 8044 L6825 8044" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6825 8044 L6825 8044" /> 
-</g><path d="M6810 8024 L6810 8076" /> 
-<path d="M6810 8076 L6813 8081" /> 
-<path d="M6813 8081 L6819 8084" /> 
-<path d="M6819 8084 L6825 8084" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6825 8084 L6825 8084" /> 
-</g><path d="M6853 8084 L6847 8081" /> 
-<path d="M6847 8081 L6844 8079" /> 
-<path d="M6844 8079 L6841 8073" /> 
-<path d="M6841 8073 L6841 8056" /> 
-<path d="M6841 8056 L6844 8050" /> 
-<path d="M6844 8050 L6847 8047" /> 
-<path d="M6847 8047 L6853 8044" /> 
-<path d="M6853 8044 L6861 8044" /> 
-<path d="M6861 8044 L6867 8047" /> 
-<path d="M6867 8047 L6870 8050" /> 
-<path d="M6870 8050 L6873 8056" /> 
-<path d="M6873 8056 L6873 8073" /> 
-<path d="M6873 8073 L6870 8079" /> 
-<path d="M6870 8079 L6867 8081" /> 
-<path d="M6867 8081 L6861 8084" /> 
-<path d="M6861 8084 L6853 8084" /> 
-<path d="M6898 8084 L6898 8044" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6898 8044 L6898 8044" /> 
-</g><path d="M6898 8056 L6901 8050" /> 
-<path d="M6901 8050 L6904 8047" /> 
-<path d="M6904 8047 L6910 8044" /> 
-<path d="M6910 8044 L6915 8044" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M6915 8044 L6915 8044" /> 
-</g><path d="M7013 8027 L7007 8024" /> 
-<path d="M7007 8024 L6998 8024" /> 
-<path d="M6998 8024 L6990 8027" /> 
-<path d="M6990 8027 L6984 8033" /> 
-<path d="M6984 8033 L6981 8039" /> 
-<path d="M6981 8039 L6978 8050" /> 
-<path d="M6978 8050 L6978 8059" /> 
-<path d="M6978 8059 L6981 8070" /> 
-<path d="M6981 8070 L6984 8076" /> 
-<path d="M6984 8076 L6990 8081" /> 
-<path d="M6990 8081 L6998 8084" /> 
-<path d="M6998 8084 L7004 8084" /> 
-<path d="M7004 8084 L7013 8081" /> 
-<path d="M7013 8081 L7016 8079" /> 
-<path d="M7016 8079 L7016 8059" /> 
-<path d="M7016 8059 L7004 8059" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M7004 8059 L7004 8059" /> 
-</g><path d="M7041 8084 L7041 8024" /> 
-<path d="M7041 8024 L7076 8084" /> 
-<path d="M7076 8084 L7076 8024" /> 
-<g style = "stroke-linecap:round;" > 
-<path d="M7076 8024 L7076 8024" /> 
-</g><path d="M7104 8084 L7104 8024" /> 
-<path d="M7104 8024 L7119 8024" /> 
-<path d="M7119 8024 L7127 8027" /> 
-<path d="M7127 8027 L7133 8033" /> 
-<path d="M7133 8033 L7136 8039" /> 
-<path d="M7136 8039 L7139 8050" /> 
-<path d="M7139 8050 L7139 8059" /> 
-<path d="M7139 8059 L7136 8070" /> 
-<path d="M7136 8070 L7133 8076" /> 
-<path d="M7133 8076 L7127 8081" /> 
-<path d="M7127 8081 L7119 8084" /> 
-<path d="M7119 8084 L7104 8084" /> 
-</g>
+</g></g>
 <g style="fill:#A00000; fill-opacity:0.0; 
   stroke:#A00000; stroke-linecap:round; stroke-linejoin:round; stroke-opacity:1.0; stroke-opacity:1.0; stroke-width:6" 
    transform="translate(0 0) scale(1 1)">
