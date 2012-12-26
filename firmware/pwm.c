@@ -37,12 +37,8 @@ void pwm_init(void)
 
 void update_duty_cycle(unsigned int value)
 {
-  /* Duty-cycle state is inverted on hardware,
-   * the output of PWM is also inverted.
-   */
-
   // Setup the value to the correspondent channel
-  TIMER1_MR0 = value;
-  TIMER1_MR1 = value;
-  TIMER1_MR2 = value;
+  TIMER1_MR0 = 1000 - value;
+  TIMER1_MR1 = 1000 - value;
+  TIMER1_MR2 = 1000 - value;
 }

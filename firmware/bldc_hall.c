@@ -49,7 +49,7 @@ void phase_a_l_pwm_off (void)
 {
   /* set to output */
   IODIR |= (1 << 12);
-  IOSET = (1 << 12); // inverted logic
+  IOCLR = (1 << 12);
 
   /* LPC2103 P0.12 (PWM; MAT1.2) --> CPU44 */
   PINSEL0 &= ~(1 << 25);
@@ -81,7 +81,7 @@ void phase_b_l_pwm_off (void)
 {
   /* set to output */
   IODIR |= (1 << 19);
-  IOSET = (1 << 19); // inverted logic
+  IOCLR = (1 << 19);
 
   /* LPC2103 P0.19 (PWM; MAT1.0) --> CPU4 */
   PINSEL1 &= ~(1 << 7);
@@ -113,7 +113,7 @@ void phase_c_l_pwm_off (void)
 {
   /* set to output */
   IODIR |= (1 << 13);
-  IOSET = (1 << 13); // inverted logic
+  IOCLR = (1 << 13);
 
   /* LPC2103 P0.13 (PWM; MAT1.1) --> CPU2 */
   PINSEL0 &= ~(1 << 27);

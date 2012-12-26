@@ -17,28 +17,12 @@
 #include "bldc_hall.h"
 
 unsigned int timer0_count;
-unsigned int motor_status;
 
 //just use it to increase the time
 void __attribute__ ((interrupt("IRQ"))) timer0_int_handler (void)
 {
-  static unsigned int c = 0;
-
-  // detect motor movement
-  if (motor_status == 0)
-  {
-    c++;
-    if (c > 6)
-    {
-      motor_status = 1; // motor is running
-      c = 0;
-    }
-  }
-  else if (motor_status == 1)
-  {
-    /* "Read" all sensors sequence and execute the BLDC coils commutation */
-    commutate ();
-  }
+  /* "Read" all sensors sequence and execute the BLDC coils commutation */
+  commutate ();
 
   /* Save current timer value (time between each hall sensor signal change) */
   timer0_count = TIMER0_TC;
