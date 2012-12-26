@@ -1,4 +1,4 @@
-update=Sex 14 Dez 2012 17:56:43 WET
+update=Qua 26 Dez 2012 11:17:54 WET
 version=1
 last_client=eeschema
 [cvpcb]
@@ -98,3 +98,5 @@ LibName25=kicad_libs/R2C2_bluetooth
 LibName26=max5035
 LibName27=ir2181
 LibName28=lm50
+LibName29=mosfet
+LibName30=PSMN6R5
