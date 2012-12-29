@@ -74,6 +74,7 @@ void motor_current_control (unsigned int duty_cycle)
   current = motor_get_current ();
   if (current > _current_max)
   {
+#if 0
     if (_duty_cycle > 10)
     {
       _duty_cycle -= 10;
@@ -85,6 +86,15 @@ void motor_current_control (unsigned int duty_cycle)
     else if (_duty_cycle > 1)
     {
       _duty_cycle -= 1;
+    }
+#endif
+
+    if (current > _current_max)
+    {
+      if (_duty_cycle > 1)
+      {
+        _duty_cycle -= 1;
+      }
     }
   }
   else // (current < _current_max)
