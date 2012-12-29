@@ -18,11 +18,11 @@ void pwm_init(void)
   /* Enable power for TIMER1 */
   PCONP |= (1 << 2);
 
-  /* CPU clock = peripheral clock = 48000000Hz */
-  TIMER1_PR = 2; //timer1 clock will be 16MHz = peripheral clock / (2 + 1)
+  /* CPU clock = peripheral clock = 60000000Hz */
+  TIMER1_PR = 2; //timer1 clock will be 20MHz = peripheral clock / (2 + 1)
 
   TIMER1_MCR |= (1<<10); // reset timer1 on MR3 match
-  TIMER1_MR3 = (1000 - 1); // PWM frequency = 16MHz / 1000 = 16kHz
+  TIMER1_MR3 = (1000 - 1); // PWM frequency = 20MHz / 1000 = 20kHz
 
   TIMER1_MR0 = 0; // duty cycle for channel 0 = 0%
   TIMER1_MR1 = 0; // duty cycle for channel 1 = 0%
