@@ -44,7 +44,6 @@ void initialize (void)
 int main (void)
 {
   volatile unsigned int duty_cycle = 0;
-  volatile unsigned int sector = 1;
   volatile unsigned int coast = 1;
 
   initialize ();
