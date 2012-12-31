@@ -71,7 +71,7 @@ int main (void)
     }
     else // keep motor running...
     {
-      motor_current_control (duty_cycle); // keep controlling the max current
+      motor_set_duty_cycle (duty_cycle);
     }
   }
 }

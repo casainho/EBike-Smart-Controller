@@ -13,3 +13,4 @@
 
 void pwm_init(void);
 void update_duty_cycle(unsigned int value);
+void pwm_set_max_current_adc (unsigned int max_current_adc);

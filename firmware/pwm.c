@@ -14,8 +14,10 @@
 #include "ios.h"
 #include "config.h"
 #include "adc.h"
+#include "bldc_hall.h"
 
-unsigned int pwm_duty_cycle = 1000;
+unsigned int pwm_duty_cycle = 1000; // 0% duty_cycle
+unsigned int _max_current_adc = 548;
 
 //just use it to increase the time
 void __attribute__ ((interrupt("IRQ"))) pwm_int_handler (void)
@@ -27,33 +29,32 @@ void __attribute__ ((interrupt("IRQ"))) pwm_int_handler (void)
   TIMER1_MR2 = pwm_duty_cycle;
 
   // 4us delay to avoid ringing (measured on oscilloscope)
+  // and to match the current signal delay
   unsigned int i;
   for (i = 0; i < 30; i++)
   {
     asm("");
   }
 
-  debug_on ();
+#if 0
   // read current
   adc_value = adc_read (CURRENT);
-  if (adc_value > 548) // 5 amps
+  if (adc_value > _max_current_adc)
   {
-    phase_a_l_pwm_off ();
+    phase_a_l_pwm_off (); // takes 1.1us
     phase_b_l_pwm_off ();
     phase_c_l_pwm_off ();
   }
-  debug_off ();
 
-  debug_on ();
   // read current
   adc_value = adc_read (CURRENT);
-  if (adc_value > 548) // 5 amps
+  if (adc_value > _max_current_adc);
   {
     phase_a_l_pwm_off ();
     phase_b_l_pwm_off ();
     phase_c_l_pwm_off ();
   }
-  debug_off ();
+#endif
 
   /* Clear the interrupt flag */
   TIMER1_IR |= (1 << 2); // Interrupt flag for match channel 3
@@ -96,7 +97,7 @@ void pwm_init(void)
 
 void update_duty_cycle(unsigned int value)
 {
-  if (pwm_duty_cycle == 1000)
+  if (pwm_duty_cycle == 1000) // setup inital value of duty_cycle (low one)
   {
     TIMER1_MR0 = 1000 - value;
     TIMER1_MR1 = 1000 - value;
@@ -106,4 +107,9 @@ void update_duty_cycle(unsigned int value)
   {
     pwm_duty_cycle = 1000 - value;
   }
+}
+
+void pwm_set_max_current_adc (unsigned int max_current_adc)
+{
+  _max_current_adc = max_current_adc;
 }

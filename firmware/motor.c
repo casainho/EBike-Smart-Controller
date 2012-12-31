@@ -117,5 +117,9 @@ void motor_current_control (unsigned int duty_cycle)
 
 void motor_set_current_max (float current_max)
 {
-  _current_max = current_max;
+  volatile unsigned int max_current_adc;
+
+  max_current_adc = 508.0f + (current_max / MOTOR_CURRENT_PER_ADC_STEP);
+
+  pwm_set_max_current_adc (max_current_adc);
 }

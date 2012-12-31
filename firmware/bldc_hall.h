@@ -23,3 +23,6 @@ void phase_a_h_on (void);
 void phase_b_h_on (void);
 void phase_c_h_on (void);
 void bldc_align (void);
+void phase_a_l_pwm_off (void);
+void phase_b_l_pwm_off (void);
+void phase_c_l_pwm_off (void);

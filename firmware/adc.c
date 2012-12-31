@@ -50,7 +50,7 @@ unsigned int adc_read (unsigned char channel)
 
   volatile unsigned int adc;
 
-  adc = *((volatile unsigned long *) (0xE0034010 + (channel*4)));
+  adc = *((unsigned long *) (0xE0034010 + (channel*4)));
 
   /* Return the value (10 bits) */
   return ((adc >> 6) & 0x3ff);
