@@ -15,9 +15,10 @@
 #include "config.h"
 #include "adc.h"
 #include "bldc_hall.h"
+#include "motor.h"
 
-unsigned int pwm_duty_cycle = 1000; // 0% duty_cycle
-unsigned int _max_current_adc = 548;
+unsigned int pwm_duty_cycle = 1000;
+unsigned int motor_disable = 0;
 
 //just use it to increase the time
 void __attribute__ ((interrupt("IRQ"))) pwm_int_handler (void)
@@ -28,33 +29,42 @@ void __attribute__ ((interrupt("IRQ"))) pwm_int_handler (void)
   TIMER1_MR1 = pwm_duty_cycle;
   TIMER1_MR2 = pwm_duty_cycle;
 
+  if (motor_disable)
+  {
+    motor_start (); // initialize the needed interrupt
+    motor_disable = 0;
+  }
+
   // 4us delay to avoid ringing (measured on oscilloscope)
-  // and to match the current signal delay
   unsigned int i;
   for (i = 0; i < 30; i++)
   {
     asm("");
   }
 
-#if 0
+  debug_on ();
   // read current
   adc_value = adc_read (CURRENT);
-  if (adc_value > _max_current_adc)
-  {
-    phase_a_l_pwm_off (); // takes 1.1us
-    phase_b_l_pwm_off ();
-    phase_c_l_pwm_off ();
-  }
-
-  // read current
-  adc_value = adc_read (CURRENT);
-  if (adc_value > _max_current_adc);
+  if (adc_value > 548) // 5 amps
   {
     phase_a_l_pwm_off ();
     phase_b_l_pwm_off ();
     phase_c_l_pwm_off ();
+    motor_disable = 1;
   }
-#endif
+  debug_off ();
+
+  debug_on ();
+  // read current
+  adc_value = adc_read (CURRENT);
+  if (adc_value > 548) // 5 amps
+  {
+    phase_a_l_pwm_off ();
+    phase_b_l_pwm_off ();
+    phase_c_l_pwm_off ();
+    motor_disable = 1;
+  }
+  debug_off ();
 
   /* Clear the interrupt flag */
   TIMER1_IR |= (1 << 2); // Interrupt flag for match channel 3
@@ -97,19 +107,15 @@ void pwm_init(void)
 
 void update_duty_cycle(unsigned int value)
 {
-  if (pwm_duty_cycle == 1000) // setup inital value of duty_cycle (low one)
+  if (pwm_duty_cycle == 1000)
   {
     TIMER1_MR0 = 1000 - value;
     TIMER1_MR1 = 1000 - value;
     TIMER1_MR2 = 1000 - value;
+    pwm_duty_cycle = 1000 - value;
   }
   else
   {
     pwm_duty_cycle = 1000 - value;
   }
-}
-
-void pwm_set_max_current_adc (unsigned int max_current_adc)
-{
-  _max_current_adc = max_current_adc;
 }

@@ -22,10 +22,6 @@
 #include "motor.h"
 #include "throttle.h"
 
-// TODO
-// TESTAR:
-// 1º Colocar interrupt de 50ms em 50ms para ler ADC e controlar corrente do motor.
-
 extern unsigned int motor_status;
 
 void initialize (void)
@@ -48,12 +44,10 @@ int main (void)
 
   initialize ();
 
-  motor_set_current_max (5); // max average current of 5 amps
-
   while (1)
   {
     duty_cycle = throttle_get_percent (); // get throttle value
-    if (duty_cycle < 100)
+    if (duty_cycle < 250)
     {
       duty_cycle = 0;
     }
@@ -69,7 +63,7 @@ int main (void)
       motor_start (); // initialize the needed interrupt
       coast = 0;
     }
-    else // keep motor running...
+    else // keep motor running, duty_cycle = throttle
     {
       motor_set_duty_cycle (duty_cycle);
     }

@@ -19,7 +19,7 @@ void throttle_init (void)
 
 unsigned int throttle_get_percent (void)
 {
-  unsigned int value;
+  volatile unsigned int value;
 
   // get ADC value
   value = adc_read(THROTTLE);
