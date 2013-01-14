@@ -40,7 +40,6 @@ void initialize (void)
 int main (void)
 {
   volatile unsigned int duty_cycle = 0;
-  volatile unsigned int coast = 1;
 
   initialize ();
 
@@ -52,18 +51,19 @@ int main (void)
       duty_cycle = 0;
     }
 
-    if (duty_cycle == 0) // coast...
+    // if throttle is off, coast
+    if (duty_cycle == 0)
     {
       motor_coast ();
-      coast = 1;
     }
-    else if (duty_cycle != 0 && coast == 1) // start motor...
+    // if throttle is active with some value and motor was in coast state, start the motor!!
+    else if (duty_cycle != 0 && motor_is_coast())
     {
       motor_set_duty_cycle (duty_cycle);
-      motor_start (); // initialize the needed interrupt
-      coast = 0;
+      motor_start ();
     }
-    else // keep motor running, duty_cycle = throttle
+    // if throttle is active with some value and motor is running, keep it running and update duty_cycle = throttle value
+    else
     {
       motor_set_duty_cycle (duty_cycle);
     }

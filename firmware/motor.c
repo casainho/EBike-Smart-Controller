@@ -17,6 +17,7 @@
 #include "adc.h"
 
 float _current_max = 0;
+unsigned int _motor_coast = 1;
 
 unsigned int motor_get_speed (void)
 {
@@ -32,14 +33,21 @@ void motor_set_speed (unsigned int speed)
 
 void motor_start (void)
 {
-  VICINTEN |= (1 << 4); /* Timer 0 interrupt enabled */
-  commutate (); // starts the commutation
+  VICINTEN |= (1 << 4); // starts hall sensor capture interrupt
+  commutate (); // this will enable the PWM with current duty cycle on current motor sector
+  _motor_coast = 0;
 }
 
 void motor_coast (void)
 {
-  VICINTEN &= ~(1 << 4); /* Timer 0 interrupt disabled, stops the commutation */
-  commutation_disable ();  // disable PWM
+  VICINTEN &= ~(1 << 4); // stops hall sensor capture interrupt
+  commutation_disable (); // disable PWM
+  _motor_coast = 1;
+}
+
+unsigned int motor_is_coast (void)
+{
+  return _motor_coast;
 }
 
 void motor_set_duty_cycle (unsigned int value)

@@ -16,3 +16,4 @@ unsigned int motor_get_speed (void);
 float motor_get_current (void);
 void motor_current_control (unsigned int duty_cycle);
 void motor_set_current_max (float current_max);
+unsigned int motor_is_coast (void);

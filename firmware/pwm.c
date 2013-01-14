@@ -17,7 +17,6 @@
 #include "bldc_hall.h"
 #include "motor.h"
 
-unsigned int pwm_duty_cycle = 1000;
 unsigned int motor_disable = 0;
 
 //just use it to increase the time
@@ -25,13 +24,9 @@ void __attribute__ ((interrupt("IRQ"))) pwm_int_handler (void)
 {
   unsigned int adc_value = 0;
 
-  TIMER1_MR0 = pwm_duty_cycle;
-  TIMER1_MR1 = pwm_duty_cycle;
-  TIMER1_MR2 = pwm_duty_cycle;
-
   if (motor_disable)
   {
-    motor_start (); // initialize the needed interrupt
+    commutate (); // this will enable the PWM with current duty cycle on current motor sector
     motor_disable = 0;
   }
 
@@ -43,7 +38,7 @@ void __attribute__ ((interrupt("IRQ"))) pwm_int_handler (void)
   }
 
   debug_on ();
-  // read current
+  // read current and if > MAX, disable PWM output
   adc_value = adc_read (CURRENT);
   if (adc_value > 548) // 5 amps
   {
@@ -55,7 +50,7 @@ void __attribute__ ((interrupt("IRQ"))) pwm_int_handler (void)
   debug_off ();
 
   debug_on ();
-  // read current
+  // read current and if > MAX, disable PWM output
   adc_value = adc_read (CURRENT);
   if (adc_value > 548) // 5 amps
   {
@@ -107,15 +102,7 @@ void pwm_init(void)
 
 void update_duty_cycle(unsigned int value)
 {
-  if (pwm_duty_cycle == 1000)
-  {
-    TIMER1_MR0 = 1000 - value;
-    TIMER1_MR1 = 1000 - value;
-    TIMER1_MR2 = 1000 - value;
-    pwm_duty_cycle = 1000 - value;
-  }
-  else
-  {
-    pwm_duty_cycle = 1000 - value;
-  }
+  TIMER1_MR0 = 1000 - value;
+  TIMER1_MR1 = 1000 - value;
+  TIMER1_MR2 = 1000 - value;
 }

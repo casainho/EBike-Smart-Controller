@@ -19,3 +19,5 @@ void timer3_init (void);
 void micros10_clear(void);
 unsigned int micros10(void);
 void delay_us10(unsigned long us);
+void timer0_capture_disable (void);
+void timer0_capture_enable (void);

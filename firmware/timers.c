@@ -14,6 +14,7 @@
 #include "main.h"
 #include "pwm.h"
 #include "ios.h"
+#include "motor.h"
 #include "bldc_hall.h"
 
 unsigned int timer0_count;
@@ -21,8 +22,12 @@ unsigned int timer0_count;
 //just use it to increase the time
 void __attribute__ ((interrupt("IRQ"))) timer0_int_handler (void)
 {
-  /* "Read" all sensors sequence and execute the BLDC coils commutation */
-  commutate ();
+  // if motor state is running, execute the coild commutation
+  if (motor_is_coast () == 0)
+  {
+    /* "Read" all sensors sequence and execute the BLDC coils commutation */
+    commutate ();
+  }
 
   /* Save current timer value (time between each hall sensor signal change) */
   timer0_count = TIMER0_TC;
@@ -71,6 +76,16 @@ void timer0_capture_init (void)
   /* Clear the interrupt flag */
   TIMER0_IR |= ((1 << 4) | (1 << 5) | (1 << 6));
   VICVECTADDR = 0xff;
+}
+
+void timer0_capture_disable (void)
+{
+  VICINTEN &= ~(1 << 4);
+}
+
+void timer0_capture_enable (void)
+{
+  VICINTEN |= (1 << 4);
 }
 
 void timer3_init (void)
