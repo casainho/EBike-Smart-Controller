@@ -1,0 +1,166 @@
+--- system_stm32f10x.c	Fri Apr 23 08:40:22 2010
++++ system_stm32f10x_mt.c	Fri Mar 19 21:44:33 2010
+@@ -15,6 +15,10 @@
+   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+   *
+   * <h2><center>&copy; COPYRIGHT 2010 STMicroelectronics</center></h2>
++  * 
++  * Modifications by Martin Thomas:
++  * If MOD_MTHOMAS_STMLIB is defined HSE_Value 8000000 (8MHz) and 400000 (4MHz)
++  * is taken into account for some system-frequencies.
+   ******************************************************************************
+   */
+ 
+@@ -75,19 +79,21 @@
+ /* #define SYSCLK_FREQ_HSE    HSE_Value */
+  #define SYSCLK_FREQ_24MHz  24000000
+ #else
++#ifndef MOD_MTHOMAS_STMLIB
+ /* #define SYSCLK_FREQ_HSE    HSE_Value */
+ /* #define SYSCLK_FREQ_24MHz  24000000 */ 
+ /* #define SYSCLK_FREQ_36MHz  36000000 */
+ /* #define SYSCLK_FREQ_48MHz  48000000 */
+ /* #define SYSCLK_FREQ_56MHz  56000000 */
+ #define SYSCLK_FREQ_72MHz  72000000
++#endif /* MOD_MTHOMAS_STMLIB */
+ #endif
+ 
+ /*!< Uncomment the following line if you need to use external SRAM mounted
+-     on STM3210E-EVAL board (STM32 High density and XL-density devices) as data memory  */ 
+-#if defined (STM32F10X_HD) || (defined STM32F10X_XL)
++     on STM3210E-EVAL board (STM32 High density devices) as data memory  */ 
++#ifdef STM32F10X_HD
+ /* #define DATA_IN_ExtSRAM */
+-#endif
++#endif /* STM32F10X_HD */
+ 
+ /**
+   * @}
+@@ -211,15 +217,16 @@
+   RCC->CIR = 0x009F0000;
+ #endif /* STM32F10X_CL */
+     
+-#if defined (STM32F10X_HD) || (defined STM32F10X_XL)
++  /* Configure the System clock frequency, HCLK, PCLK2 and PCLK1 prescalers */
++  /* Configure the Flash Latency cycles and enable prefetch buffer */
++  SetSysClock();
++
++#ifdef STM32F10X_HD
+   #ifdef DATA_IN_ExtSRAM
+     SystemInit_ExtMemCtl(); 
+   #endif /* DATA_IN_ExtSRAM */
+-#endif 
++#endif /* STM32F10X_HD */  
+ 
+-  /* Configure the System clock frequency, HCLK, PCLK2 and PCLK1 prescalers */
+-  /* Configure the Flash Latency cycles and enable prefetch buffer */
+-  SetSysClock();
+ }
+ 
+ /**
+@@ -567,12 +574,25 @@
+     }   
+ #elif defined (STM32F10X_LD_VL) || defined (STM32F10X_MD_VL)
+     /*  PLL configuration:  = (HSE / 2) * 6 = 24 MHz */
+-    RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));
++    RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));	
+     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_PREDIV1 | RCC_CFGR_PLLXTPRE_PREDIV1_Div2 | RCC_CFGR_PLLMULL6);
+-#else    
++#else 
++#ifdef MOD_MTHOMAS_STMLIB
++	RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));
++	#if (HSE_VALUE == 4000000UL)
++		/*  PLL configuration:  = (HSE / 1) * 6 = 24 MHz */
++		RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLMULL6);
++	#elif (HSE_VALUE == 8000000UL)
++		/*  PLL configuration:  = (HSE / 2) * 6 = 24 MHz */
++		RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLXTPRE_HSE_Div2 | RCC_CFGR_PLLMULL6);
++	#else 
++		#error "unhandled HSE_VALUE"
++	#endif
++#else
+     /*  PLL configuration:  = (HSE / 2) * 6 = 24 MHz */
+     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));
+     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLXTPRE_HSE_Div2 | RCC_CFGR_PLLMULL6);
++#endif /* MOD_MTHOMAS_STMLIB */   
+ #endif /* STM32F10X_CL */
+ 
+     /* Enable PLL */
+@@ -655,7 +675,7 @@
+     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLXTPRE_PREDIV1 | RCC_CFGR_PLLSRC_PREDIV1 | 
+                             RCC_CFGR_PLLMULL9); 
+ 
+-	/*!< PLL2 configuration: PLL2CLK = (HSE / 5) * 8 = 40 MHz */
++    /*!< PLL2 configuration: PLL2CLK = (HSE / 5) * 8 = 40 MHz */
+     /* PREDIV1 configuration: PREDIV1CLK = PLL2 / 10 = 4 MHz */
+         
+     RCC->CFGR2 &= (uint32_t)~(RCC_CFGR2_PREDIV2 | RCC_CFGR2_PLL2MUL |
+@@ -671,9 +691,22 @@
+     }
+     
+ #else    
++#ifdef MOD_MTHOMAS_STMLIB
++	RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));
++	#if (HSE_VALUE == 4000000UL)
++		/*  PLL configuration:  = (HSE / 1) * 9 = 36 MHz */
++		RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLMULL9);
++	#elif (HSE_VALUE == 8000000UL)
++		/*  PLL configuration: PLLCLK = (HSE / 2) * 9 = 36 MHz */
++		RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLXTPRE_HSE_Div2 | RCC_CFGR_PLLMULL9);
++	#else 
++		#error "unhandled HSE_VALUE"
++	#endif
++#else
+     /*  PLL configuration: PLLCLK = (HSE / 2) * 9 = 36 MHz */
+     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));
+     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLXTPRE_HSE_Div2 | RCC_CFGR_PLLMULL9);
++#endif /* MOD_MTHOMAS_STMLIB */
+ #endif /* STM32F10X_CL */
+ 
+     /* Enable PLL */
+@@ -770,7 +803,12 @@
+     RCC->CFGR &= (uint32_t)~(RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC | RCC_CFGR_PLLMULL);
+     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLXTPRE_PREDIV1 | RCC_CFGR_PLLSRC_PREDIV1 | 
+                             RCC_CFGR_PLLMULL6); 
+-#else    
++#else
++#ifdef MOD_MTHOMAS_STMLIB
++#if (HSE_VALUE != 8000000UL)
++#error "currently not supported"
++#endif
++#endif /* MOD_MTHOMAS_STMLIB */
+     /*  PLL configuration: PLLCLK = HSE * 6 = 48 MHz */
+     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));
+     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLMULL6);
+@@ -871,11 +909,15 @@
+     RCC->CFGR &= (uint32_t)~(RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC | RCC_CFGR_PLLMULL);
+     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLXTPRE_PREDIV1 | RCC_CFGR_PLLSRC_PREDIV1 | 
+                             RCC_CFGR_PLLMULL7); 
+-#else     
++#else
++#ifdef MOD_MTHOMAS_STMLIB
++#if (HSE_VALUE != 8000000UL)
++#error "currently not supported"
++#endif
++#endif /* MOD_MTHOMAS_STMLIB */
+     /* PLL configuration: PLLCLK = HSE * 7 = 56 MHz */
+     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));
+     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLMULL7);
+-
+ #endif /* STM32F10X_CL */
+ 
+     /* Enable PLL */
+@@ -974,7 +1016,12 @@
+     RCC->CFGR &= (uint32_t)~(RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC | RCC_CFGR_PLLMULL);
+     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLXTPRE_PREDIV1 | RCC_CFGR_PLLSRC_PREDIV1 | 
+                             RCC_CFGR_PLLMULL9); 
+-#else    
++#else
++#ifdef MOD_MTHOMAS_STMLIB
++#if (HSE_VALUE != 8000000UL)
++#error "currently not supported"
++#endif
++#endif /* MOD_MTHOMAS_STMLIB */
+     /*  PLL configuration: PLLCLK = HSE * 9 = 72 MHz */
+     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE |
+                                         RCC_CFGR_PLLMULL));

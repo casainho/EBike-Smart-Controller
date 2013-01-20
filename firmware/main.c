@@ -1,64 +1,133 @@
+/*******************************************************************************
+* File Name          : main.c
+* Author             : Martin Thomas, main-skeleton based on code from the
+*                      STMicroelectronics MCD Application Team
+* Version            : see VERSION_STRING below
+* Date               : see VERSION_STRING below
+* Description        : Main program body for the SD-Card tests
+********************************************************************************
+* License: 3BSD
+*******************************************************************************/
+
+/* Includes ------------------------------------------------------------------*/
+#include <stdint.h>
+#include "stm32f10x.h"
+#include "main.h"
 #include "stm32f10x_rcc.h"
-#include "stm32f10x_gpio.h"
 
-#define STACK_TOP 0x20000800
-#define NVIC_CCR ((volatile unsigned long *)(0xE000ED14))
-//Declarations
-void nmi_handler(void);
-void hardfault_handler(void);
-int main(void);
+/* Private function prototypes -----------------------------------------------*/
+void Periph_Configuration(void);
+void GPIO_Configuration(void);
+void NVIC_Configuration(void);
 
-GPIO_InitTypeDef GPIO_InitStructure;
+/* Public functions -- -------------------------------------------------------*/
 
-void Clk_Init (void)
+/*******************************************************************************
+* Function Name  : main_systick_action
+* Description    : operations to be done every 1ms
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
+void SysTick_Handler(void)
 {
-  // 1. Cloking the controller from internal HSI RC (8 MHz)
-  RCC_HSICmd(ENABLE);
-  // wait until the HSI is ready
-  while(RCC_GetFlagStatus(RCC_FLAG_HSIRDY) == RESET);
-  RCC_SYSCLKConfig(RCC_SYSCLKSource_HSI);
-  // 2. Enable ext. high frequency OSC
-  RCC_HSEConfig(RCC_HSE_ON);
-  // wait until the HSE is ready
-  while(RCC_GetFlagStatus(RCC_FLAG_HSERDY) == RESET);
-  // 3. Init PLL
-  RCC_PLLConfig(RCC_PLLSource_HSE_Div1,RCC_PLLMul_9); // 72MHz
-  //  RCC_PLLConfig(RCC_PLLSource_HSE_Div2,RCC_PLLMul_9); // 72MHz
-  RCC_PLLCmd(ENABLE);
-  // wait until the PLL is ready
-  while(RCC_GetFlagStatus(RCC_FLAG_PLLRDY) == RESET);
-  // 4. Set system clock divders
-  RCC_USBCLKConfig(RCC_USBCLKSource_PLLCLK_1Div5);
-  RCC_ADCCLKConfig(RCC_PCLK2_Div8);
-  RCC_PCLK2Config(RCC_HCLK_Div1);
-  RCC_PCLK1Config(RCC_HCLK_Div2);
-  RCC_HCLKConfig(RCC_SYSCLK_Div1);
-  // Flash 1 wait state
-  *(vu32 *)0x40022000 = 0x12;
-  // 5. Clock system from PLL
-  RCC_SYSCLKConfig(RCC_SYSCLKSource_PLLCLK);
-}
+  static uint16_t cnt = 0;
+  static uint8_t flip = 0;
 
-int main(void)
-{
-  *NVIC_CCR = *NVIC_CCR | 0x200; /* Set STKALIGN in NVIC */
-  // Init clock system
-  Clk_Init ();
-
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOA, ENABLE);
-
-  // Configure PC.12 as output push-pull (LED)
-  GPIO_WriteBit(GPIOC,GPIO_Pin_12,Bit_SET);
-  GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_12;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_Init(GPIOC, &GPIO_InitStructure);
-
-  while (1)
+  cnt++;
+  if (cnt >= 500)
   {
-    GPIOC->BRR |= 0x00001000;
-    GPIOC->BSRR |= 0x00001000;
+    cnt = 0;
+    /* alive sign */
+    if (flip)
+    {
+      // PB5
+      GPIO_SetBits(GPIOB, GPIO_Pin_5);
+    }
+    else
+    {
+      // PB5
+      GPIO_ResetBits(GPIOB, GPIO_Pin_5);
+    }
+    flip = !flip;
   }
 }
 
+/*******************************************************************************
+* Function Name  : main
+* Description    : Main program
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
+int main(void)
+{
+  /* System Clocks Configuration */
+  Periph_Configuration();
+
+  /* NVIC configuration */
+  NVIC_Configuration();
+
+  /* Configure the GPIO ports */
+  GPIO_Configuration();
+
+  /* Turn on/off LED(s) -- PB5 */
+  GPIO_SetBits(GPIOB, GPIO_Pin_5);
+
+  /* Setup SysTick Timer for 1 millisecond interrupts, also enables Systick and Systick-Interrupt */
+  if (SysTick_Config(SystemCoreClock / 1000))
+  {
+    /* Capture error */
+    while (1);
+  }
+
+  while (1)
+  {
+
+  }
+}
+
+/*******************************************************************************
+* Function Name  : PeriphConfiguration
+* Description    : Configures the different system clocks.
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
+void Periph_Configuration(void)
+{
+  /* Enable GPIOB clock. PB5 used for the LED. */
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+}
+
+/*******************************************************************************
+* Function Name  : GPIO_Configuration
+* Description    : Configures the different GPIO ports.
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
+void GPIO_Configuration(void)
+{
+  GPIO_InitTypeDef GPIO_InitStructure;
+
+  /* Configure PB5 as alternate function push-pull */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+  GPIO_Init(GPIOB, &GPIO_InitStructure);
+}
+
+/*******************************************************************************
+* Function Name  : NVIC_Configuration
+* Description    : Configures Vector Table base location.
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
+extern uint32_t _isr_vectorsflash_offs;
+void NVIC_Configuration(void)
+{
+  /* Set the Vector Table base location at 0x08000000+_isr_vectorsflash_offs */
+  NVIC_SetVectorTable(NVIC_VectTab_FLASH, (uint32_t)&_isr_vectorsflash_offs);
+}

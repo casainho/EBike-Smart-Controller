@@ -1,136 +1,82 @@
-/******************** (C) COPYRIGHT 2007 STMicroelectronics ********************
-* File Name          : stm32f10x_conf.h
-* Author             : MCD Application Team
-* Date First Issued  : 09/29/2006
-* Description        : Library configuration file.
-********************************************************************************
-* History:
-* 02/05/2007: V0.1
-* 09/29/2006: V0.01
-********************************************************************************
-* THE PRESENT SOFTWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
-* WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE TIME.
-* AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY DIRECT,
-* INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING FROM THE
-* CONTENT OF SUCH SOFTWARE AND/OR THE USE MADE BY CUSTOMERS OF THE CODING
-* INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
-*******************************************************************************/
+/**
+  ******************************************************************************
+  * @file USART/Polling/stm32f10x_conf.h
+  * @author  MCD Application Team, mod. Martin Thomas for this project
+  * @version  V3.0.0
+  * @date  04/18/2009
+  * @brief  Library configuration file.
+  ******************************************************************************
+  * @copy
+  *
+  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+  * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+  * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+  *
+  * <h2><center>&copy; COPYRIGHT 2009 STMicroelectronics</center></h2>
+  */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __STM32F10x_CONF_H
 #define __STM32F10x_CONF_H
 
 /* Includes ------------------------------------------------------------------*/
+/* Uncomment the line below to enable peripheral header file inclusion */
+/* #include "stm32f10x_adc.h" */
+#include "stm32f10x_bkp.h"
+/* #include "stm32f10x_can.h" */
+/* #include "stm32f10x_crc.h" */
+/* #include "stm32f10x_dac.h" */
+/* #include "stm32f10x_dbgmcu.h" */
+#include "stm32f10x_dma.h"
+/* #include "stm32f10x_exti.h" */
+#include "stm32f10x_flash.h"
+/* #include "stm32f10x_fsmc.h" */
+#include "stm32f10x_gpio.h"
+/* #include "stm32f10x_i2c.h" */
+/* #include "stm32f10x_iwdg.h" */
+#include "stm32f10x_pwr.h"
+#include "stm32f10x_rcc.h"
+#include "stm32f10x_rtc.h"
+/* #include "stm32f10x_sdio.h" */
+#include "stm32f10x_spi.h"
+#include "stm32f10x_tim.h"
+#include "stm32f10x_usart.h"
+/* #include "stm32f10x_wwdg.h" */
+#include "misc.h"  /* High level functions for NVIC and SysTick (add-on to CMSIS functions) */
+
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
-/* Comment the line below to compile the library in release mode */
-//#define DEBUG
+/* Uncomment the line below to expanse the "assert_param" macro in the
+   Standard Peripheral Library drivers code */
+/* #define USE_FULL_ASSERT    1 */
 
-/* Comment the line below to disable the specific peripheral inclusion */
-/************************************* ADC ************************************/
-#define _ADC
-#define _ADC1
-#define _ADC2
-
-/************************************* CAN ************************************/
-#define _CAN
-
-/************************************* DMA ************************************/
-#define _DMA
-#define _DMA_Channel1
-#define _DMA_Channel2
-#define _DMA_Channel3
-#define _DMA_Channel4
-#define _DMA_Channel5
-#define _DMA_Channel6
-#define _DMA_Channel7
-
-/************************************* EXTI ***********************************/
-#define _EXTI
-
-/************************************* GPIO ***********************************/
-#define _GPIO
-#define _GPIOA
-#define _GPIOB
-#define _GPIOC
-#define _GPIOD
-#define _GPIOE
-#define _AFIO
-
-/************************************* I2C ************************************/
-#define _I2C
-#define _I2C1
-#define _I2C2
-
-/************************************* IWDG ***********************************/
-#define _IWDG
-
-/************************************* NVIC ***********************************/
-#define _NVIC
-#define _SCB
-
-/************************************* BKP ************************************/
-#define _BKP
-
-/************************************* PWR ************************************/
-#define _PWR
-
-/************************************* RCC ************************************/
-#define _RCC
-
-/************************************* RTC ************************************/
-#define _RTC
-
-/************************************* SPI ************************************/
-#define _SPI
-#define _SPI1
-#define _SPI2
-
-/************************************* SysTick ********************************/
-#define _SysTick
-
-/************************************* TIM1 ***********************************/
-#define _TIM1
-
-/************************************* TIM ************************************/
-#define _TIM
-#define _TIM2
-#define _TIM3
-#define _TIM4
-
-/************************************* USART **********************************/
-#define _USART
-#define _USART1
-#define _USART2
-#define _USART3
-
-/************************************* WWDG ***********************************/
-#define _WWDG
-
-/* In the following line adjust the value of External High Speed oscillator (HSE)
-   used in your application */
-#define HSE_Value    ((u32)8000000) /* Value of the External oscillator in Hz*/
-
-/* Exported macro ------------------------------------------------------------*/
-#undef assert
-#ifdef  DEBUG
-/*******************************************************************************
-* Macro Name     : assert
-* Description    : The assert macro is used for function's parameters check.
-*                  It is used only if the library is compiled in DEBUG mode.
-* Input          : - expr: If expr is false, it calls assert_failed function
-*                    which reports the name of the source file and the source
-*                    line number of the call that failed.
-*                    If expr is true, it returns no value.
-* Return         : None
-*******************************************************************************/
-  #define assert(expr) ((expr) ? (void)0 : assert_failed((u8 *)__FILE__, __LINE__))
+/* Exported macros -----------------------------------------------------------*/
+#ifdef  USE_FULL_ASSERT
+/**
+  * @brief  The assert_param macro is used for function's parameters check.
+  * @param expr: If expr is false, it calls assert_failed function
+  *   which reports the name of the source file and the source
+  *   line number of the call that failed.
+  *   If expr is true, it returns no value.
+  * @retval : None
+  */
+  #define assert_param(expr) ((expr) ? (void)0 : assert_failed((const uint8_t *)__FILE__, (const uint8_t *)__FUNCTION__, __LINE__))
 /* Exported functions ------------------------------------------------------- */
-  void assert_failed(u8* file, u32 line);
+  void assert_failed(const uint8_t* file, const uint8_t* function, uint32_t line);
 #else
-  #define assert(expr) ((void)0)
-#endif /* DEBUG */
+  #define assert_param(expr) ((void)0)
+#endif /* USE_FULL_ASSERT */
+
+// mthomas:
+#ifdef __GNUC__
+#define RAMFUNC __attribute__ ((long_call, section(".ramfunc")))
+#else
+#define RAMFUNC
+#endif
 
 #endif /* __STM32F10x_CONF_H */
 
-/******************* (C) COPYRIGHT 2007 STMicroelectronics *****END OF FILE****/
+/******************* (C) COPYRIGHT 2009 STMicroelectronics *****END OF FILE****/
