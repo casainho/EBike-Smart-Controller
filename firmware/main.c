@@ -1,78 +1,71 @@
-/*******************************************************************************
-* File Name          : main.c
-* Author             : Martin Thomas, main-skeleton based on code from the
-*                      STMicroelectronics MCD Application Team
-* Version            : see VERSION_STRING below
-* Date               : see VERSION_STRING below
-* Description        : Main program body for the SD-Card tests
-********************************************************************************
-* License: 3BSD
-*******************************************************************************/
+/*
+ * EBike Smart Controller
+ *
+ * Copyright (C) Jorge Pinto aka Casainho, 2012, 2013.
+ *
+ *   casainho [at] gmail [dot] com
+ *     www.casainho.net
+ *
+ * Released under the GPL License, Version 3
+ */
 
-/* Includes ------------------------------------------------------------------*/
+/* Connetions:
+ *
+ * PA0  (ADC1_IN1)      -- throttle signal (OK)
+ * PA1  (ADC1_IN2)      -- voltage signal
+ * PA2  (ADC1_IN3)      -- current signal (OK)
+ * PA3  (ADC1_IN4)      -- temperature signal
+ * PB12 (TIM1_BKIN)     -- brake signal
+ * PA8  (TIM1_CH1)      -- PWM 1
+ * PA9  (TIM1_CH2)      -- PWM 2
+ * PA10 (TIM1_CH3)      -- PWM 3
+ * PB13 (TIM1_CH1N)     -- PWM 4
+ * PB14 (TIM1_CH2N)     -- PWM 5
+ * PB15 (TIM1_CH3N)     -- PWM 6
+ * PA6  (TIM3_CH1)      -- Hall sensor 1
+ * PA7  (TIM3_CH2)      -- Hall sensor 2
+ * PB0  (TIM3_CH3)      -- Hall sensor 3
+ * PB10 (USART3_TX)     -- UART TX Bluetooth module
+ * PB11 (USART3_RX)     -- UART RX Bluetooth module
+ * PB5  (GPIO)          -- LED debug
+ * PB1  (GPIO)          -- switch for debug
+ */
+
 #include <stdint.h>
 #include "stm32f10x.h"
-#include "main.h"
-#include "stm32f10x_rcc.h"
+#include "stm32f10x_gpio.h"
+#include "core_cm3.h"
+#include "gpio.h"
+#include "adc.h"
 
-/* Private function prototypes -----------------------------------------------*/
-void Periph_Configuration(void);
-void GPIO_Configuration(void);
-void NVIC_Configuration(void);
-
-/* Public functions -- -------------------------------------------------------*/
-
-/*******************************************************************************
-* Function Name  : main_systick_action
-* Description    : operations to be done every 1ms
-* Input          : None
-* Output         : None
-* Return         : None
-*******************************************************************************/
 void SysTick_Handler(void)
 {
   static uint16_t cnt = 0;
   static uint8_t flip = 0;
 
+  volatile unsigned int value = (adc_get_throttle_value () / 3);
+
   cnt++;
-  if (cnt >= 500)
+  if (cnt == 500 && flip)
   {
+    // PB5
+    GPIO_SetBits(GPIOB, GPIO_Pin_5);
     cnt = 0;
-    /* alive sign */
-    if (flip)
-    {
-      // PB5
-      GPIO_SetBits(GPIOB, GPIO_Pin_5);
-    }
-    else
-    {
-      // PB5
-      GPIO_ResetBits(GPIOB, GPIO_Pin_5);
-    }
+    flip = !flip;
+  }
+  else if (cnt == value && !flip)
+  {
+    // PB5
+    GPIO_ResetBits(GPIOB, GPIO_Pin_5);
+    cnt = 0;
     flip = !flip;
   }
 }
 
-/*******************************************************************************
-* Function Name  : main
-* Description    : Main program
-* Input          : None
-* Output         : None
-* Return         : None
-*******************************************************************************/
-int main(void)
+void initialize (void)
 {
-  /* System Clocks Configuration */
-  Periph_Configuration();
-
-  /* NVIC configuration */
-  NVIC_Configuration();
-
-  /* Configure the GPIO ports */
-  GPIO_Configuration();
-
-  /* Turn on/off LED(s) -- PB5 */
-  GPIO_SetBits(GPIOB, GPIO_Pin_5);
+  gpio_init ();
+  adc_init ();
 
   /* Setup SysTick Timer for 1 millisecond interrupts, also enables Systick and Systick-Interrupt */
   if (SysTick_Config(SystemCoreClock / 1000))
@@ -80,54 +73,17 @@ int main(void)
     /* Capture error */
     while (1);
   }
+}
+
+int main (void)
+{
+  initialize ();
 
   while (1)
   {
 
   }
-}
 
-/*******************************************************************************
-* Function Name  : PeriphConfiguration
-* Description    : Configures the different system clocks.
-* Input          : None
-* Output         : None
-* Return         : None
-*******************************************************************************/
-void Periph_Configuration(void)
-{
-  /* Enable GPIOB clock. PB5 used for the LED. */
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-}
-
-/*******************************************************************************
-* Function Name  : GPIO_Configuration
-* Description    : Configures the different GPIO ports.
-* Input          : None
-* Output         : None
-* Return         : None
-*******************************************************************************/
-void GPIO_Configuration(void)
-{
-  GPIO_InitTypeDef GPIO_InitStructure;
-
-  /* Configure PB5 as alternate function push-pull */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-  GPIO_Init(GPIOB, &GPIO_InitStructure);
-}
-
-/*******************************************************************************
-* Function Name  : NVIC_Configuration
-* Description    : Configures Vector Table base location.
-* Input          : None
-* Output         : None
-* Return         : None
-*******************************************************************************/
-extern uint32_t _isr_vectorsflash_offs;
-void NVIC_Configuration(void)
-{
-  /* Set the Vector Table base location at 0x08000000+_isr_vectorsflash_offs */
-  NVIC_SetVectorTable(NVIC_VectTab_FLASH, (uint32_t)&_isr_vectorsflash_offs);
+  // should never arrive here
+  return 0;
 }

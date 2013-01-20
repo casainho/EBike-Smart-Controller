@@ -150,8 +150,7 @@ STMEEEMULINCDIR = $(STMEEEMULDIR)/include
 # List C source files here. (C dependencies are automatically generated.)
 # use file-extension c for "c-only"-files
 ## Demo-Application:
-#SRC = main.c term_io.c ff_test_term.c misc_test_term.c
-SRC = main.c
+SRC = main.c gpio.c adc.c
 ## Chan's fat and my low-level drivers
 #SRC += $(FATFSDIR)/ff.c $(FATFSDIR)/option/ccsbcs.c
 #SRC += $(FATFSDIR_DEV)/ff.c $(FATFSDIR_DEV)/option/ccsbcs.c
@@ -166,6 +165,7 @@ SRC += startup_stm32f10x_md_mthomas.c
 SRC += $(CMSISCOREDIR)/core_cm3.c
 SRC += $(CMSISDEVDIR)/system_stm32f10x.c
 ## used parts of the STM-Library
+SRC += $(STMSPDSRCDIR)/stm32f10x_adc.c
 #SRC += $(STMSPDSRCDIR)/stm32f10x_usart.c
 #SRC += $(STMSPDSRCDIR)/stm32f10x_flash.c
 SRC += $(STMSPDSRCDIR)/stm32f10x_gpio.c
@@ -174,7 +174,7 @@ SRC += $(STMSPDSRCDIR)/stm32f10x_rcc.c
 #SRC += $(STMSPDSRCDIR)/stm32f10x_rtc.c
 #SRC += $(STMSPDSRCDIR)/stm32f10x_bkp.c
 SRC += $(STMSPDSRCDIR)/stm32f10x_pwr.c
-#SRC += $(STMSPDSRCDIR)/stm32f10x_dma.c
+SRC += $(STMSPDSRCDIR)/stm32f10x_dma.c
 SRC += $(STMSPDSRCDIR)/stm32f10x_tim.c
 SRC += $(STMSPDSRCDIR)/misc.c
 ## EEprom Emulation AppNote Code

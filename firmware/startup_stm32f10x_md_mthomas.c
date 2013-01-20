@@ -38,6 +38,8 @@
 */
 
 /* Includes ------------------------------------------------------------------*/
+#include "stm32f10x.h"
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private typedef -----------------------------------------------------------*/
 typedef void( *const intfunc )( void );
@@ -66,6 +68,8 @@ extern unsigned long _ebss;
 /* init value for the stack pointer. defined in linker script */
 extern unsigned long _estack;
 
+extern uint32_t _isr_vectorsflash_offs;
+
 /* Private variables ---------------------------------------------------------*/
 
 /* Private function prototypes -----------------------------------------------*/
@@ -75,7 +79,7 @@ void Default_Handler(void);
 
 /* External function prototypes ----------------------------------------------*/
 extern int main(void);                /* Application's main function */
-extern void SystemInit(void);         /* STM's system init */
+//extern void SystemInit(void);         /* STM's system init */
 extern void __libc_init_array(void);  /* calls CTORS of static objects */
 
 
@@ -269,6 +273,10 @@ void Reset_Handler(void)
   /* Setup the microcontroller system. Initialize the Embedded Flash Interface,
      initialize the PLL and update the SystemFrequency variable. */
   SystemInit();
+
+  /* NVIC configuration */
+  /* Set the Vector Table base location at 0x08000000+_isr_vectorsflash_offs */
+  NVIC_SetVectorTable(NVIC_VectTab_FLASH, (uint32_t)&_isr_vectorsflash_offs);
 
   /* Call the application's entry point.*/
   main();
