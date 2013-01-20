@@ -41,19 +41,19 @@
 void SysTick_Handler(void)
 {
   static uint16_t cnt = 0;
-  static uint8_t flip = 0;
+  static uint8_t flip = 1;
 
-  volatile unsigned int value = (adc_get_throttle_value () / 3);
+  volatile unsigned int value = (adc_get_throttle_value () >> 4);
 
   cnt++;
-  if (cnt == 500 && flip)
+  if (cnt >= value && flip)
   {
     // PB5
     GPIO_SetBits(GPIOB, GPIO_Pin_5);
     cnt = 0;
     flip = !flip;
   }
-  else if (cnt == value && !flip)
+  else if (cnt >= value && !flip)
   {
     // PB5
     GPIO_ResetBits(GPIOB, GPIO_Pin_5);
