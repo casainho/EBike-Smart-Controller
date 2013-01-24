@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Ter 22 Jan 2013 16:32:47 WET
+EESchema Schematic File Version 2  date Ter 22 Jan 2013 22:07:00 WET
 LIBS:Allegro_ACS754_ACS755_ACS756_HallCurrentSensor_RevA
 LIBS:ac-dc
 LIBS:conn
