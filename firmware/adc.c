@@ -26,8 +26,6 @@ static unsigned int adc_values[4] = {0, 0, 0, 0};
 
 void adc_init (void)
 {
-  // TODO Setup all other DMA ADC conversions??
-
   /* ADCCLK = PCLK2/8 */
   RCC_ADCCLKConfig(RCC_PCLK2_Div8);
 
