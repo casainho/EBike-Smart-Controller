@@ -11,3 +11,6 @@
 
 void adc_init (void);
 unsigned int adc_get_throttle_value (void);
+unsigned int adc_get_voltage_value (void);
+unsigned int adc_get_current_value (void);
+unsigned int adc_get_temperature_value (void);

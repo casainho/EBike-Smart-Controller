@@ -34,14 +34,14 @@ void adc_init (void)
   /* Enable DMA1 clock */
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
 
-  /* Enable ADC1, ADC2, ADC3, ADC4 and GPIOA clocks */
+  /* Enable ADC1 and GPIOA clocks */
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1 | RCC_APB2Periph_GPIOA, ENABLE);
 
 
   GPIO_InitTypeDef GPIO_InitStructure;
-  /* Configure PA.00, PA.01, PA.02 and PA.03 (ADC Channel1, ADC Channel2, ADC Channel 3 and
+  /* Configure PA.00, PA.01, PA.02 and PA.03 (ADC Channel1, ADC Channel2, ADC Channel3 and
      ADC Channel4) as analog inputs */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
   GPIO_Init(GPIOA, &GPIO_InitStructure);
 
@@ -51,9 +51,9 @@ void adc_init (void)
   DMA_InitStructure.DMA_PeripheralBaseAddr = &(ADC1->DR);
   DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)&adc_values;
   DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
-  DMA_InitStructure.DMA_BufferSize = 1;
+  DMA_InitStructure.DMA_BufferSize = 4;
   DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
-  DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Disable;
+  DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
   DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;
   DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Word;
   DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;
@@ -71,11 +71,17 @@ void adc_init (void)
   ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;
   ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
   ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
-  ADC_InitStructure.ADC_NbrOfChannel = 1;
+  ADC_InitStructure.ADC_NbrOfChannel = 4;
   ADC_Init(ADC1, &ADC_InitStructure);
 
-  /* ADC1 regular channel14 configuration */
+  /* ADC1 regular channel0 configuration */
   ADC_RegularChannelConfig(ADC1, ADC_Channel_0, 1, ADC_SampleTime_55Cycles5);
+  /* ADC1 regular channel1 configuration */
+  ADC_RegularChannelConfig(ADC1, ADC_Channel_1, 2, ADC_SampleTime_55Cycles5);
+  /* ADC1 regular channel2 configuration */
+  ADC_RegularChannelConfig(ADC1, ADC_Channel_2, 3, ADC_SampleTime_55Cycles5);
+  /* ADC1 regular channel3 configuration */
+  ADC_RegularChannelConfig(ADC1, ADC_Channel_3, 4, ADC_SampleTime_55Cycles5);
 
   /* Enable ADC1 DMA */
   ADC_DMACmd(ADC1, ENABLE);
@@ -102,3 +108,17 @@ unsigned int adc_get_throttle_value (void)
   return adc_values[0];
 }
 
+unsigned int adc_get_voltage_value (void)
+{
+  return adc_values[1];
+}
+
+unsigned int adc_get_current_value (void)
+{
+  return adc_values[2];
+}
+
+unsigned int adc_get_temperature_value (void)
+{
+  return adc_values[3];
+}

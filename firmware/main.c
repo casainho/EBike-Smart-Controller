@@ -11,9 +11,9 @@
 
 /* Connetions:
  *
- * PA0  (ADC1_IN1)      -- throttle signal (OK)
+ * PA0  (ADC1_IN1)      -- throttle signal
  * PA1  (ADC1_IN2)      -- voltage signal
- * PA2  (ADC1_IN3)      -- current signal (OK)
+ * PA2  (ADC1_IN3)      -- current signal
  * PA3  (ADC1_IN4)      -- temperature signal
  * PB12 (TIM1_BKIN)     -- brake signal
  * PA8  (TIM1_CH1)      -- PWM 1
