@@ -14,8 +14,10 @@
 
 /*
  * IOs used:
- * - PB5 for LED
- *
+ * PB5 for LED
+ * PB13 (TIM1_CH1N)     -- PWM 4
+ * PB14 (TIM1_CH2N)     -- PWM 5
+ * PB15 (TIM1_CH3N)     -- PWM 6
  */
 
 void gpio_init (void)
@@ -24,11 +26,11 @@ void gpio_init (void)
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 
   GPIO_InitTypeDef GPIO_InitStructure;
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
   GPIO_Init(GPIOB, &GPIO_InitStructure);
 
-  /* Turn on/off LED(s) -- PB5 */
-  GPIO_SetBits(GPIOB, GPIO_Pin_5);
+  /* Turn off port bits */
+  GPIO_ResetBits(GPIOB, GPIO_Pin_5 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
 }

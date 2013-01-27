@@ -47,7 +47,7 @@ void adc_init (void)
   /* DMA1 channel1 configuration ----------------------------------------------*/
   DMA_DeInit(DMA1_Channel1);
   DMA_InitStructure.DMA_PeripheralBaseAddr = &(ADC1->DR);
-  DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)&adc_values;
+  DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t) &adc_values;
   DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
   DMA_InitStructure.DMA_BufferSize = 4;
   DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;

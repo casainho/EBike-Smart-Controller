@@ -37,6 +37,7 @@
 #include "core_cm3.h"
 #include "gpio.h"
 #include "adc.h"
+#include "pwm.h"
 
 void SysTick_Handler(void)
 {
@@ -66,6 +67,7 @@ void initialize (void)
 {
   gpio_init ();
   adc_init ();
+  pwm_init ();
 
   /* Setup SysTick Timer for 1 millisecond interrupts, also enables Systick and Systick-Interrupt */
   if (SysTick_Config(SystemCoreClock / 1000))
@@ -79,6 +81,7 @@ int main (void)
 {
   initialize ();
 
+  //update_duty_cycle (0xffff >> 2);
   while (1)
   {
 
