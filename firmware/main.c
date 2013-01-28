@@ -38,8 +38,19 @@
 #include "gpio.h"
 #include "adc.h"
 #include "pwm.h"
+#include "bldc_hall.h"
+#include "throttle.h"
 
-void SysTick_Handler(void)
+unsigned int _ms;
+
+
+void delay_ms (unsigned int ms)
+{
+  _ms = 0;
+  while (ms >= _ms) ;
+}
+
+void SysTick_Handler(void) // runs every 100ms
 {
   static uint16_t cnt = 0;
   static uint8_t flip = 1;
@@ -61,6 +72,12 @@ void SysTick_Handler(void)
     cnt = 0;
     flip = !flip;
   }
+
+  // for delay_ms ()
+  _ms++;
+
+  // read throttle value and update PWM duty cycle every 100ms
+  update_duty_cycle (throttle_get_percent ()); // 1000 --> 100%
 }
 
 void initialize (void)
@@ -79,12 +96,15 @@ void initialize (void)
 
 int main (void)
 {
+  unsigned int sector = 1;
+
   initialize ();
 
-  //update_duty_cycle (0xffff >> 2);
   while (1)
   {
-
+    commutation_sector (sector);
+    sector = increment_sector (sector);
+    delay_ms (4);
   }
 
   // should never arrive here
