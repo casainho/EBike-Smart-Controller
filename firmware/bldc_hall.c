@@ -10,15 +10,16 @@
  */
 
 /*
- * PB13 (TIM1_CH1N)     -- PWM 4
- * PB14 (TIM1_CH2N)     -- PWM 5
- * PB15 (TIM1_CH3N)     -- PWM 6
+ * PA6  (TIM3_CH1)      -- Hall sensor 1
+ * PA7  (TIM3_CH2)      -- Hall sensor 2
+ * PB0  (TIM3_CH3)      -- Hall sensor 3
  */
 
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_tim.h"
 
-//#define HALL_SENSORS_MASK ((1<<6) | (1<<4) | (1<<2)) // P0.2, P0.4, P0.6
+#define HALL_SENSORS_MASK_PA ((1 << 6) | (1 << 7))
+#define HALL_SENSORS_MASK_PB (1 << 0)
 
 void phase_a_h_on (void)
 {
@@ -175,16 +176,17 @@ unsigned int get_current_sector (void)
   // motor seems to run perfectly but not everytime is able to start and I can start by hand this times
   static unsigned int table[6] =
   {
-        //  c b a
-    80, //  1010000 == 80
-    64, //  1000000 == 64
-    68, //  1000100 == 68
-     4, //  0000100 == 4
-    20, //  0010100 == 20
-    16  //  0010000 == 16
+         //  ba     c
+    129, //  10000001 == 129
+      1, //  00000001 == 1
+     65, //  01000001 == 65
+     64, //  01000000 == 64
+    192, //  11000000 == 192
+    128  //  10000000 == 128
   };
 
-  //hall_sensors = (IOPIN & HALL_SENSORS_MASK); // mask other pins
+  hall_sensors = (GPIO_ReadInputData (GPIOA) & (HALL_SENSORS_MASK_PA)); // mask other pins
+  hall_sensors |= (GPIO_ReadInputData (GPIOB) & (HALL_SENSORS_MASK_PB)); // mask other pins
 
   // go trough the table to identify the indice and calc the sector number
   for (i = 0; i < 6; i++)

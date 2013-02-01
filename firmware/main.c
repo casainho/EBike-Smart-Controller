@@ -40,6 +40,7 @@
 #include "pwm.h"
 #include "bldc_hall.h"
 #include "throttle.h"
+#include "hall_sensor.h"
 
 unsigned int _ms;
 
@@ -55,7 +56,11 @@ void SysTick_Handler(void) // runs every 100ms
   static uint16_t cnt = 0;
   static uint8_t flip = 1;
 
-  volatile unsigned int value = (adc_get_throttle_value () >> 4);
+  // for flash the LED using Throttle value
+  //volatile unsigned int value = (adc_get_throttle_value () >> 4);
+
+  // for flash LED using motor speed
+  volatile unsigned int value = (get_hall_sensors_us () / 200);
 
   cnt++;
   if (cnt >= value && flip)
@@ -85,6 +90,7 @@ void initialize (void)
   gpio_init ();
   adc_init ();
   pwm_init ();
+  hall_sensor_init ();
 
   /* Setup SysTick Timer for 1 millisecond interrupts, also enables Systick and Systick-Interrupt */
   if (SysTick_Config(SystemCoreClock / 1000))
@@ -96,15 +102,11 @@ void initialize (void)
 
 int main (void)
 {
-  unsigned int sector = 1;
-
   initialize ();
 
   while (1)
   {
-    commutation_sector (sector);
-    sector = increment_sector (sector);
-    delay_ms (4);
+
   }
 
   // should never arrive here
