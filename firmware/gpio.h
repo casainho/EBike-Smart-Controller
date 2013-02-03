@@ -10,3 +10,6 @@
  */
 
 void gpio_init (void);
+void debug_on (void);
+void debug_off (void);
+unsigned int switch_is_set (void);

@@ -58,7 +58,7 @@ void SysTick_Handler(void) // runs every 100ms
 
   // for flash the LED using Throttle value
   //volatile unsigned int value = (adc_get_throttle_value () >> 4);
-
+#if 0
   // for flash LED using motor speed
   volatile unsigned int value = (get_hall_sensors_us () / 200);
 
@@ -77,7 +77,7 @@ void SysTick_Handler(void) // runs every 100ms
     cnt = 0;
     flip = !flip;
   }
-
+#endif
   // for delay_ms ()
   _ms++;
 
@@ -88,6 +88,7 @@ void SysTick_Handler(void) // runs every 100ms
 void initialize (void)
 {
   gpio_init ();
+  while (switch_is_set ()) ; // wait
   adc_init ();
   pwm_init ();
   hall_sensor_init ();
@@ -104,9 +105,32 @@ int main (void)
 {
   initialize ();
 
+  unsigned int hall_sensors = 0, old = 0;
+  static uint8_t flip = 1;
+#define HALL_SENSORS_MASK_PA ((1 << 6) | (1 << 7))
+#define HALL_SENSORS_MASK_PB (1 << 0)
   while (1)
   {
+    hall_sensors = (GPIO_ReadInputData (GPIOA) & (HALL_SENSORS_MASK_PA)); // mask other pins
+    hall_sensors |= (GPIO_ReadInputData (GPIOB) & (HALL_SENSORS_MASK_PB)); // mask other pins
 
+    if (old != hall_sensors)
+    {
+      old = hall_sensors;
+
+      if (flip)
+      {
+        // PB5
+        GPIO_SetBits(GPIOB, GPIO_Pin_5);
+        flip = !flip;
+      }
+      else if (!flip)
+      {
+        // PB5
+        GPIO_ResetBits(GPIOB, GPIO_Pin_5);
+        flip = !flip;
+      }
+    }
   }
 
   // should never arrive here

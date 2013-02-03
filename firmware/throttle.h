@@ -9,4 +9,4 @@
  * Released under the GPL License, Version 3
  */
 
-void update_duty_cycle(unsigned int value);
+unsigned int throttle_get_percent (void);

@@ -10,10 +10,16 @@
  */
 
 /*
+ * PHASE_A -- green
+ * PHASE_B -- yellow
+ * PHASE_B -- blue
+ *
+ *
  * PA6  (TIM3_CH1)      -- Hall sensor 1
  * PA7  (TIM3_CH2)      -- Hall sensor 2
  * PB0  (TIM3_CH3)      -- Hall sensor 3
  */
+
 
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_tim.h"
