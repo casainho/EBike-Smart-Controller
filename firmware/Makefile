@@ -104,7 +104,7 @@ USE_THUMB_MODE = YES
 # - SUBMDL used for linker-script name (-T) and passed as define
 # - BOARD just passed as define (don't used '-' characters)
 MCU      = cortex-m3
-CHIP     = STM32F10x_32k_4k
+CHIP     = STM32F10x_16k_4k
 BOARD    = SMART_EBIKE_CONTROL
 #BOARD    = MINI_STM32
 F_XTAL   = 8000000
