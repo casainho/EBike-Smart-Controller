@@ -104,7 +104,7 @@ void hall_sensor_init (void)
   TIM_ITConfig(TIM3, TIM_IT_Trigger, ENABLE);
 
   NVIC_InitTypeDef NVIC_InitStructure;
-  /* Configure and enable ADC interrupt */
+  /* Configure and enable TIM3 interrupt */
   NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;
   NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
