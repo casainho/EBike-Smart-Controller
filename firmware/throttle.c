@@ -11,12 +11,15 @@
 
 #include "config.h"
 #include "adc.h"
+#include "stm32f10x_gpio.h"
 
-unsigned int throttle_get_percent (void)
+unsigned int cruise_control = 0;
+unsigned int throttle_cruise_percent = 0;
+
+unsigned int throttle_percent_value (void)
 {
   unsigned int value;
 
-  // get ADC value
   value = adc_get_throttle_value ();
 
   // limit maximum
@@ -40,3 +43,95 @@ unsigned int throttle_get_percent (void)
 
   return value;
 }
+
+unsigned int throttle_get_percent (void)
+{
+  if (cruise_control)
+  {
+    return throttle_cruise_percent;
+  }
+
+  return throttle_percent_value ();
+}
+
+void cruise_control_tick (void)
+{
+#define PERCENT_DELTA 100 // 10%
+
+  static unsigned int count_cruise_control = 1;
+  static unsigned int throttle_last_percent = 0;
+  unsigned int throttle_percent;
+  static unsigned int state = 0;
+
+  throttle_percent = throttle_percent_value() + 1500; // shift 1500 so next calcs can accommodate negative values
+
+  switch (state)
+  {
+    // wait for stable throttle over 5 seconds
+    //
+    case 0:
+    if ((1500 + PERCENT_DELTA) < throttle_percent) // minimum value
+    {
+      if (((throttle_last_percent + PERCENT_DELTA) >= throttle_percent)
+          || ((throttle_last_percent - PERCENT_DELTA) < throttle_percent))
+      {
+        // throttle didn't changed
+        count_cruise_control++;
+        GPIO_ResetBits(GPIOB, GPIO_Pin_5);; // disable LED
+
+        if (count_cruise_control > 5000) // 5 seconds
+        {
+          GPIO_SetBits(GPIOB, GPIO_Pin_5); // enable LED
+          count_cruise_control = 1;
+          cruise_control = 1;
+          throttle_cruise_percent = throttle_percent - 1500;
+          state = 1;
+        }
+      }
+      else
+      {
+        count_cruise_control = 1;
+        GPIO_ResetBits(GPIOB, GPIO_Pin_5);; // disable LED
+      }
+    }
+    else
+    {
+      count_cruise_control = 1;
+      GPIO_ResetBits(GPIOB, GPIO_Pin_5);; // disable LED
+    }
+
+    throttle_last_percent = throttle_percent;
+    break;
+
+    // verify if throttle value don't go up
+    //
+    case 1:
+    if (throttle_percent > (throttle_last_percent + PERCENT_DELTA))
+    {
+      cruise_control = 0;
+      count_cruise_control = 1;
+      state = 0;
+      GPIO_ResetBits(GPIOB, GPIO_Pin_5);; // disable LED
+    }
+    else if (throttle_percent == 1500)
+    {
+      state = 2;
+    }
+    break;
+
+    // verify if throttle value go up
+    //
+    case 2:
+    if (throttle_percent > (1500 + PERCENT_DELTA))
+    {
+      cruise_control = 0;
+      count_cruise_control = 1;
+      state = 0;
+    }
+    break;
+
+    default:
+    break;
+  }
+}
+

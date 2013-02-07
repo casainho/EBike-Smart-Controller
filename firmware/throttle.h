@@ -10,3 +10,4 @@
  */
 
 unsigned int throttle_get_percent (void);
+void cruise_control_tick (void);

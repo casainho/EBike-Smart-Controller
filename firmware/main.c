@@ -14,6 +14,7 @@
  * PA0  (ADC1_IN1)      -- throttle signal
  * PA1  (ADC1_IN2)      -- voltage signal
  * PA2  (ADC1_IN3)      -- current signal
+ * PA4  (DAC1_OUT)      -- DAC1 signal used for current control
  * PA3  (ADC1_IN4)      -- temperature signal
  * PB12 (TIM1_BKIN)     -- brake signal
  * PA8  (TIM1_CH1)      -- PWM 1
@@ -44,39 +45,16 @@
 
 unsigned int _ms;
 
-
 void delay_ms (unsigned int ms)
 {
   _ms = 0;
   while (ms >= _ms) ;
 }
 
-void SysTick_Handler(void) // runs every 100ms
+void SysTick_Handler(void) // runs every 1ms
 {
-  static uint16_t cnt = 0;
-  static uint8_t flip = 1;
-
-  // for flash the LED using Throttle value
-  //volatile unsigned int value = (adc_get_throttle_value () >> 4);
-
-  // for flash LED using motor speed
-  volatile unsigned int value = (get_hall_sensors_us () / 200);
-
-  cnt++;
-  if (cnt >= value && flip)
-  {
-    // PB5
-    GPIO_SetBits(GPIOB, GPIO_Pin_5);
-    cnt = 0;
-    flip = !flip;
-  }
-  else if (cnt >= value && !flip)
-  {
-    // PB5
-    GPIO_ResetBits(GPIOB, GPIO_Pin_5);
-    cnt = 0;
-    flip = !flip;
-  }
+  // need to call this every 1ms
+  cruise_control_tick ();
 
   // for delay_ms ()
   _ms++;

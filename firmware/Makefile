@@ -272,7 +272,7 @@ EXTRA_LIBDIRS =
 #OPT = s
 #OPT = 2
 #OPT = 3
-OPT = 0
+OPT = s
 
 # Debugging format.
 #DEBUG = stabs
