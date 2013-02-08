@@ -45,6 +45,7 @@
 #include "throttle.h"
 #include "hall_sensor.h"
 #include "dac.h"
+#include "config.h"
 
 unsigned int _ms;
 
@@ -87,10 +88,11 @@ int main (void)
 {
   initialize ();
 
+  motor_set_max_current (4); // set max current in amps
+
   while (1)
   {
-    /* Start DAC Channel1 conversion by software */
-    DAC_SoftwareTriggerCmd(DAC_Channel_1, ENABLE);
+
   }
 
   // should never arrive here

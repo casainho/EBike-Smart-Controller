@@ -23,6 +23,9 @@
 
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_tim.h"
+#include "stm32f10x_dac.h"
+#include "dac.h"
+#include "config.h"
 
 #define HALL_SENSORS_MASK_PA ((1 << 6) | (1 << 7))
 #define HALL_SENSORS_MASK_PB (1 << 0)
@@ -304,4 +307,12 @@ unsigned int decrement_sector (unsigned int sector)
   }
 
   return sector;
+}
+
+void motor_set_max_current (float max_current)
+{
+  // set the DAC output voltage to be equal to current sensor voltage for max current
+  DAC_SetChannel1Data (DAC_Align_12b_R, (MOTOR_CURRENT_ZERO_AMPS_ADC_VALUE + (max_current/MOTOR_CURRENT_PER_ADC_STEP)));
+
+  DAC_SoftwareTriggerCmd (DAC_Channel_1, ENABLE);
 }

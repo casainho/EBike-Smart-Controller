@@ -36,8 +36,7 @@ void dac_init (void)
   /* DAC channel1 Configuration */
   DAC_InitTypeDef DAC_InitStructure;
   DAC_InitStructure.DAC_Trigger = DAC_Trigger_Software;
-  DAC_InitStructure.DAC_WaveGeneration = DAC_WaveGeneration_Triangle;
-  DAC_InitStructure.DAC_LFSRUnmask_TriangleAmplitude = DAC_TriangleAmplitude_4095;
+  DAC_InitStructure.DAC_WaveGeneration = DAC_WaveGeneration_None;
   DAC_InitStructure.DAC_OutputBuffer = DAC_OutputBuffer_Enable;
   DAC_Init(DAC_Channel_1, &DAC_InitStructure);
 
