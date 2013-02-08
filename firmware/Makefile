@@ -150,7 +150,7 @@ STMEEEMULINCDIR = $(STMEEEMULDIR)/include
 # List C source files here. (C dependencies are automatically generated.)
 # use file-extension c for "c-only"-files
 ## Demo-Application:
-SRC = main.c gpio.c adc.c pwm.c bldc_hall.c throttle.c hall_sensor.c
+SRC = main.c gpio.c adc.c pwm.c bldc.c throttle.c hall_sensor.c dac.c
 ## Chan's fat and my low-level drivers
 #SRC += $(FATFSDIR)/ff.c $(FATFSDIR)/option/ccsbcs.c
 #SRC += $(FATFSDIR_DEV)/ff.c $(FATFSDIR_DEV)/option/ccsbcs.c
@@ -176,6 +176,7 @@ SRC += $(STMSPDSRCDIR)/stm32f10x_rcc.c
 SRC += $(STMSPDSRCDIR)/stm32f10x_pwr.c
 SRC += $(STMSPDSRCDIR)/stm32f10x_dma.c
 SRC += $(STMSPDSRCDIR)/stm32f10x_tim.c
+SRC += $(STMSPDSRCDIR)/stm32f10x_dac.c
 SRC += $(STMSPDSRCDIR)/misc.c
 ## EEprom Emulation AppNote Code
 #SRC += $(STMEEEMULSRCDIR)/eeprom.c

@@ -17,6 +17,7 @@
  * PB13 (TIM1_CH1N)     -- PWM 4
  * PB14 (TIM1_CH2N)     -- PWM 5
  * PB15 (TIM1_CH3N)     -- PWM 6
+ * PB12 (TIM1_BKIN)     -- brake signal
  * PB5  (GPIO)          -- LED debug
  * PB1  (GPIO)          -- switch for debug
  */
@@ -38,6 +39,12 @@ void gpio_init (void)
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+  GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+  /* TIM1_BKIN */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_Init(GPIOB, &GPIO_InitStructure);
 }
 

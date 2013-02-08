@@ -18,7 +18,7 @@
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_tim.h"
-#include "bldc_hall.h"
+#include "bldc.h"
 
 unsigned int hall_sensors_time = 0;
 

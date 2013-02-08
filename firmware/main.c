@@ -15,6 +15,7 @@
  * PA1  (ADC1_IN2)      -- voltage signal
  * PA2  (ADC1_IN3)      -- current signal
  * PA4  (DAC1_OUT)      -- DAC1 signal used for current control
+ * PA12 (TIM1_ETR)      -- current control input signal
  * PA3  (ADC1_IN4)      -- temperature signal
  * PB12 (TIM1_BKIN)     -- brake signal
  * PA8  (TIM1_CH1)      -- PWM 1
@@ -35,13 +36,15 @@
 #include <stdint.h>
 #include "stm32f10x.h"
 #include "stm32f10x_gpio.h"
+#include "stm32f10x_dac.h"
 #include "core_cm3.h"
 #include "gpio.h"
 #include "adc.h"
 #include "pwm.h"
-#include "bldc_hall.h"
+#include "bldc.h"
 #include "throttle.h"
 #include "hall_sensor.h"
+#include "dac.h"
 
 unsigned int _ms;
 
@@ -68,6 +71,7 @@ void initialize (void)
   gpio_init ();
   while (switch_is_set ()) ; // wait
   adc_init ();
+  dac_init ();
   pwm_init ();
   hall_sensor_init ();
 
@@ -85,7 +89,8 @@ int main (void)
 
   while (1)
   {
-
+    /* Start DAC Channel1 conversion by software */
+    DAC_SoftwareTriggerCmd(DAC_Channel_1, ENABLE);
   }
 
   // should never arrive here
