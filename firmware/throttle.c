@@ -14,7 +14,9 @@
 #include "stm32f10x_gpio.h"
 
 unsigned int cruise_control = 0;
+unsigned int count_cruise_control = 1;
 unsigned int throttle_cruise_percent = 0;
+unsigned int state = 0;
 
 unsigned int throttle_percent_value (void)
 {
@@ -58,10 +60,8 @@ void cruise_control_tick (void)
 {
 #define PERCENT_DELTA 100 // 10%
 
-  static unsigned int count_cruise_control = 1;
   static unsigned int throttle_last_percent = 0;
   unsigned int throttle_percent;
-  static unsigned int state = 0;
 
   throttle_percent = throttle_percent_value() + 1500; // shift 1500 so next calcs can accommodate negative values
 
@@ -127,11 +127,20 @@ void cruise_control_tick (void)
       cruise_control = 0;
       count_cruise_control = 1;
       state = 0;
+      GPIO_ResetBits(GPIOB, GPIO_Pin_5);; // disable LED
     }
     break;
 
     default:
     break;
   }
+}
+
+void cruise_control_reset (void)
+{
+  cruise_control = 0;
+  count_cruise_control = 1;
+  state = 0;
+  GPIO_ResetBits(GPIOB, GPIO_Pin_5);; // disable LED
 }
 

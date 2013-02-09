@@ -15,4 +15,3 @@ void commutate (void);
 unsigned int get_current_sector (void);
 unsigned int increment_sector (unsigned int sector);
 unsigned int decrement_sector (unsigned int sector);
-void motor_set_max_current (float max_current);

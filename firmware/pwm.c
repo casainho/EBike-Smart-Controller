@@ -32,6 +32,12 @@ void pwm_init (void)
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_Init(GPIOA, &GPIO_InitStructure);
 
+  /* GPIOA Configuration: TIM1_ETR (PA12) as alternate function push-pull */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
+
   TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
   /* Time Base configuration */
   TIM_TimeBaseStructure.TIM_Prescaler = 0;
@@ -56,6 +62,9 @@ void pwm_init (void)
   TIM_OC1Init(TIM1, &TIM_OCInitStructure);
   TIM_OC2Init(TIM1, &TIM_OCInitStructure);
   TIM_OC3Init(TIM1, &TIM_OCInitStructure);
+
+  /* configure ETR for current control */
+  TIM_ETRConfig (TIM1, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0);
 
   /* TIM1 counter enable */
   TIM_Cmd(TIM1, ENABLE);

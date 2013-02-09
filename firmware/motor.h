@@ -9,6 +9,4 @@
  * Released under the GPL License, Version 3
  */
 
-unsigned int throttle_get_percent (void);
-void cruise_control_tick (void);
-void cruise_control_reset (void);
+void motor_set_max_current (float max_current);
