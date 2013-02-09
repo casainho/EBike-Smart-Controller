@@ -49,11 +49,11 @@
 #include "motor.h"
 #include "brake.h"
 
-unsigned int _ms;
+volatile unsigned int _ms;
 
 void delay_ms (unsigned int ms)
 {
-  _ms = 0;
+  _ms = 1;
   while (ms >= _ms) ;
 }
 
@@ -74,10 +74,11 @@ void initialize (void)
   gpio_init ();
   while (switch_is_set ()) ; // wait
   adc_init ();
-  //dac_init ();
-  //brake_init ();
+  dac_init ();
+  brake_init ();
+  commutation_disable ();
   pwm_init ();
-  //hall_sensor_init ();
+  hall_sensor_init ();
 
   /* Setup SysTick Timer for 1 millisecond interrupts, also enables Systick and Systick-Interrupt */
   if (SysTick_Config(SystemCoreClock / 1000))
@@ -91,14 +92,11 @@ int main (void)
 {
   initialize ();
 
-  //motor_set_max_current (4); // set max current in amps
+  motor_set_max_current (4); // set max current in amps
 
-  unsigned int sector = 1;
   while (1)
   {
-    sector = increment_sector (sector);
-    commutation_sector (sector);
-    delay_ms (5);
+
   }
 
   // should never arrive here

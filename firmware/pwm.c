@@ -66,6 +66,11 @@ void pwm_init (void)
   /* configure ETR for current control */
   TIM_ETRConfig (TIM1, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0);
 
+  // duty_cycle = 0
+  TIM_SetCompare1(TIM1, 1200);
+  TIM_SetCompare2(TIM1, 1200);
+  TIM_SetCompare3(TIM1, 1200);
+
   /* TIM1 counter enable */
   TIM_Cmd(TIM1, ENABLE);
 

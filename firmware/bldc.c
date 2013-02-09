@@ -95,32 +95,8 @@ void phase_c_l_off (void)
 
 void commutation_sector_1 (void)
 {
-  phase_a_h_off ();
-  phase_a_l_on ();
-
-  phase_b_h_off ();
-  phase_b_l_off ();
-
-  phase_c_l_off ();
-  phase_c_h_on ();
-}
-
-void commutation_sector_2 (void)
-{
-  phase_a_h_off ();
-  phase_a_l_off ();
-
-  phase_b_h_off ();
-  phase_b_l_on ();
-
-  phase_c_l_off ();
-  phase_c_h_on ();
-}
-
-void commutation_sector_3 (void)
-{
-  phase_a_l_off ();
   phase_a_h_on ();
+  phase_a_l_off ();
 
   phase_b_h_off ();
   phase_b_l_on ();
@@ -129,39 +105,63 @@ void commutation_sector_3 (void)
   phase_c_l_off ();
 }
 
-void commutation_sector_4 (void)
+void commutation_sector_2 (void)
 {
-  phase_a_l_off ();
   phase_a_h_on ();
+  phase_a_l_off ();
 
   phase_b_h_off ();
   phase_b_l_off ();
 
   phase_c_h_off ();
   phase_c_l_on ();
+}
+
+void commutation_sector_3 (void)
+{
+  phase_a_h_off ();
+  phase_a_l_off ();
+
+  phase_b_h_on ();
+  phase_b_l_off ();
+
+  phase_c_h_off ();
+  phase_c_l_on ();
+}
+
+void commutation_sector_4 (void)
+{
+  phase_a_h_off ();
+  phase_a_l_on ();
+
+  phase_b_h_on ();
+  phase_b_l_off ();
+
+  phase_c_h_off ();
+  phase_c_l_off ();
 }
 
 void commutation_sector_5 (void)
 {
   phase_a_h_off ();
-  phase_a_l_off ();
+  phase_a_l_on ();
 
+  phase_b_h_off ();
   phase_b_l_off ();
-  phase_b_h_on ();
 
-  phase_c_h_off ();
-  phase_c_l_on ();
+  phase_c_h_on ();
+  phase_c_l_off ();
 }
 
 void commutation_sector_6 (void)
 {
   phase_a_h_off ();
-  phase_a_l_on ();
+  phase_a_l_off ();
 
-  phase_b_l_off ();
-  phase_b_h_on ();
+  phase_b_h_off ();
+  phase_b_l_on ();
 
-  phase_c_h_off ();
+  phase_c_h_on ();
   phase_c_l_off ();
 }
 
@@ -182,16 +182,15 @@ unsigned int get_current_sector (void)
   static unsigned int hall_sensors = 0;
   unsigned int i;
 
-  // motor seems to run perfectly but not everytime is able to start and I can start by hand this times
   static unsigned int table[6] =
   {
          //  ba     c
-    129, //  10000001 == 129
-      1, //  00000001 == 1
-     65, //  01000001 == 65
      64, //  01000000 == 64
     192, //  11000000 == 192
-    128  //  10000000 == 128
+    128, //  10000000 == 128
+    129, //  10000001 == 129
+      1, //  00000001 == 1
+     65  //  01000001 == 65
   };
 
   hall_sensors = (GPIO_ReadInputData (GPIOA) & (HALL_SENSORS_MASK_PA)); // mask other pins
@@ -283,7 +282,7 @@ void commutation_sector (unsigned int sector)
 
 unsigned int increment_sector (unsigned int sector)
 {
-  if (sector < 5)
+  if (sector < 6)
   {
     sector++;
   }
