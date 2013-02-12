@@ -37,7 +37,7 @@ void phase_a_h_on (void)
 
 void phase_a_h_off (void)
 {
-  TIM_ForcedOC1Config(TIM1, TIM_ForcedAction_InActive); // disable PWM
+  TIM_ForcedOC1Config(TIM1, TIM_ForcedAction_Active); // disable PWM
 }
 
 void phase_a_l_on (void)
@@ -58,7 +58,7 @@ void phase_b_h_on (void)
 
 void phase_b_h_off (void)
 {
-  TIM_ForcedOC2Config(TIM1, TIM_ForcedAction_InActive); // disable PWM
+  TIM_ForcedOC2Config(TIM1, TIM_ForcedAction_Active); // disable PWM
 }
 
 void phase_b_l_on (void)
@@ -79,7 +79,7 @@ void phase_c_h_on (void)
 
 void phase_c_h_off (void)
 {
-  TIM_ForcedOC3Config(TIM1, TIM_ForcedAction_InActive); // disable PWM
+  TIM_ForcedOC3Config(TIM1, TIM_ForcedAction_Active); // disable PWM
 }
 
 void phase_c_l_on (void)

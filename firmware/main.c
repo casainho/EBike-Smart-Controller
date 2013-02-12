@@ -47,7 +47,6 @@
 #include "dac.h"
 #include "config.h"
 #include "motor.h"
-#include "brake.h"
 
 volatile unsigned int _ms;
 
@@ -75,7 +74,7 @@ void initialize (void)
   while (switch_is_set ()) ; // wait
   adc_init ();
   dac_init ();
-  brake_init ();
+  //brake_init ();
   commutation_disable ();
   pwm_init ();
   hall_sensor_init ();
