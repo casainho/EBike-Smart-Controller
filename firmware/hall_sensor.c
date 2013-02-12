@@ -20,7 +20,7 @@
 #include "stm32f10x_tim.h"
 #include "bldc.h"
 
-unsigned int hall_sensors_time = 0;
+volatile unsigned int hall_sensors_time = 0;
 
 void TIM3_IRQHandler(void)
 {

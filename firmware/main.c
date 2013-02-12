@@ -92,11 +92,17 @@ int main (void)
 {
   initialize ();
 
-  motor_set_max_current (4); // set max current in amps
+  motor_set_max_current (0.3f); // set max current in amps
+
+  volatile unsigned int time = 0, a = 0;
 
   while (1)
   {
-
+    time = get_hall_sensors_us ();
+    if (time > a)
+      {
+        a = time;
+      }
   }
 
   // should never arrive here
