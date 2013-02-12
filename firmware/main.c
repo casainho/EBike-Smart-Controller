@@ -9,30 +9,6 @@
  * Released under the GPL License, Version 3
  */
 
-/* Connetions:
- *
- * PA0  (ADC1_IN1)      -- throttle signal
- * PA1  (ADC1_IN2)      -- voltage signal
- * PA2  (ADC1_IN3)      -- current signal
- * PA4  (DAC1_OUT)      -- DAC1 signal used for current control
- * PA12 (TIM1_ETR)      -- current control input signal
- * PA3  (ADC1_IN4)      -- temperature signal
- * PB12 (TIM1_BKIN)     -- brake signal
- * PA8  (TIM1_CH1)      -- PWM 1
- * PA9  (TIM1_CH2)      -- PWM 2
- * PA10 (TIM1_CH3)      -- PWM 3
- * PB13 (TIM1_CH1N)     -- PWM 4
- * PB14 (TIM1_CH2N)     -- PWM 5
- * PB15 (TIM1_CH3N)     -- PWM 6
- * PA6  (TIM3_CH1)      -- Hall sensor 1
- * PA7  (TIM3_CH2)      -- Hall sensor 2
- * PB0  (TIM3_CH3)      -- Hall sensor 3
- * PB10 (USART3_TX)     -- UART TX Bluetooth module
- * PB11 (USART3_RX)     -- UART RX Bluetooth module
- * PB5  (GPIO)          -- LED debug
- * PB1  (GPIO)          -- switch for debug
- */
-
 #include <stdint.h>
 #include "stm32f10x.h"
 #include "stm32f10x_gpio.h"

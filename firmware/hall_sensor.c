@@ -9,12 +9,6 @@
  * Released under the GPL License, Version 3
  */
 
-/*
- * PA6  (TIM3_CH1)      -- Hall sensor 1
- * PA7  (TIM3_CH2)      -- Hall sensor 2
- * PB0  (TIM3_CH3)      -- Hall sensor 3
- */
-
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_tim.h"
@@ -41,28 +35,6 @@ unsigned int get_hall_sensors_us (void)
 
 void hall_sensor_init (void)
 {
-  /* TIM3 clock enable */
-  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
-
-  /* GPIOA and GPIOB clock enable */
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB, ENABLE);
-
-  GPIO_InitTypeDef GPIO_InitStructure;
-  /* TIM3 channel 1 and 2, pin (PA.06 and PA.07) configuration */
-  GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_6 | GPIO_Pin_7;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-
-  GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-  /* TIM3 channel 3, pin (PB.00) configuration */
-  GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_0;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-
-  GPIO_Init(GPIOB, &GPIO_InitStructure);
-
-
   TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
   // timer base configuration
   // 84 => 655ms till overflow ; 100kHz (10us) TimerClock [24MHz/Prescaler]

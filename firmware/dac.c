@@ -9,10 +9,6 @@
  * Released under the GPL License, Version 3
  */
 
-/*
- * PA4  (DAC1_OUT)      -- DAC1 signal used for current control
- */
-
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_tim.h"
@@ -20,19 +16,6 @@
 
 void dac_init (void)
 {
-  /* GPIOA Periph clock enable */
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-  /* DAC Periph clock enable */
-  RCC_APB1PeriphClockCmd(RCC_APB1Periph_DAC, ENABLE);
-
-  /* Once the DAC channel is enabled, the corresponding GPIO pin is automatically
-     connected to the DAC converter. In order to avoid parasitic consumption,
-     the GPIO pin should be configured in analog */
-  GPIO_InitTypeDef GPIO_InitStructure;
-  GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_4;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
-  GPIO_Init(GPIOA, &GPIO_InitStructure);
-
   /* DAC channel1 Configuration */
   DAC_InitTypeDef DAC_InitStructure;
   DAC_InitStructure.DAC_Trigger = DAC_Trigger_Software;

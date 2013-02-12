@@ -14,14 +14,6 @@
 #include "stm32f10x_adc.h"
 #include "stm32f10x_dma.h"
 
-/*
- * ADC channels used:
- * PA0  (ADC1_IN1)      -- throttle signal
- * PA1  (ADC1_IN2)      -- voltage signal
- * PA2  (ADC1_IN3)      -- current signal
- * PA3  (ADC1_IN4)      -- temperature signal
- */
-
 static unsigned int adc_values[4] = {0, 0, 0, 0};
 
 void adc_init (void)
@@ -31,17 +23,6 @@ void adc_init (void)
 
   /* Enable DMA1 clock */
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
-
-  /* Enable ADC1 and GPIOA clocks */
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1 | RCC_APB2Periph_GPIOA, ENABLE);
-
-
-  GPIO_InitTypeDef GPIO_InitStructure;
-  /* Configure PA.00, PA.01, PA.02 and PA.03 (ADC Channel1, ADC Channel2, ADC Channel3 and
-     ADC Channel4) as analog inputs */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
-  GPIO_Init(GPIOA, &GPIO_InitStructure);
 
   DMA_InitTypeDef DMA_InitStructure;
   /* DMA1 channel1 configuration ----------------------------------------------*/

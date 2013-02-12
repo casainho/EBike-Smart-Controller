@@ -9,15 +9,7 @@
  * Released under the GPL License, Version 3
  */
 
-/*
- * PA8  (TIM1_CH1)      -- PWM 1
- * PA9  (TIM1_CH2)      -- PWM 2
- * PA10 (TIM1_CH3)      -- PWM 3
- *
- * PA12 (TIM1_ETR)      -- current control input signal
- * PB12 (TIM1_BKIN)     -- brake signal
- */
-
+#include "stm32f10x.h"
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_tim.h"
@@ -25,24 +17,8 @@
 
 void pwm_init (void)
 {
-  /* TIM1, GPIOA, GPIOB clocks enable */
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1 | RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO, ENABLE);
-
-  GPIO_InitTypeDef GPIO_InitStructure;
-  /* GPIOA Configuration: Channel 1, 2 and 3 as alternate function push-pull */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-  /* GPIOA Configuration: TIM1_ETR (PA12) */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING; //GPIO_Mode_IN_FLOATING ??
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
-  GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-  TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
   /* Time Base configuration */
+  TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
   TIM_TimeBaseStructure.TIM_Prescaler = 0;
   TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
   TIM_TimeBaseStructure.TIM_Period = 1199; // 24MHz clock, 24MHz/1200 = 20KHz
@@ -50,8 +26,8 @@ void pwm_init (void)
   TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
   TIM_TimeBaseInit(TIM1, &TIM_TimeBaseStructure);
 
-  TIM_OCInitTypeDef  TIM_OCInitStructure;
   /* Channel 1, 2,3 Configuration in PWM mode */
+  TIM_OCInitTypeDef TIM_OCInitStructure;
   TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
   TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
   TIM_OCInitStructure.TIM_OutputNState = TIM_OutputNState_Disable;
@@ -65,22 +41,25 @@ void pwm_init (void)
   TIM_OC3Init(TIM1, &TIM_OCInitStructure);
 
   /* configure ETR for current control */
-  //TIM_ETRConfig (TIM1, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0);
-  TIM1->CCMR1 |= (1 << 7); // OC1CE: OC1Ref is cleared as soon as a High level is detected on ETRF input
+  TIM_ETRConfig (TIM1, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0);
+  TIM_SelectInputTrigger (TIM1, TIM_TS_ETRF);
+  TIM_ClearOC1Ref (TIM1, TIM_OCClear_Enable);
+  TIM_ClearOC2Ref (TIM1, TIM_OCClear_Enable);
+  TIM_ClearOC3Ref (TIM1, TIM_OCClear_Enable);
 
   // duty_cycle = 0
-  TIM_SetCompare1(TIM1, 1200);
-  TIM_SetCompare2(TIM1, 1200);
-  TIM_SetCompare3(TIM1, 1200);
+  TIM_SetCompare1 (TIM1, 1200);
+  TIM_SetCompare2 (TIM1, 1200);
+  TIM_SetCompare3 (TIM1, 1200);
 
   /* TIM1 counter enable */
-  TIM_Cmd(TIM1, ENABLE);
+  TIM_Cmd (TIM1, ENABLE);
 
   /* TIM1 Main Output Enable */
-  TIM_CtrlPWMOutputs(TIM1, ENABLE);
+  TIM_CtrlPWMOutputs (TIM1, ENABLE);
 }
 
-void update_duty_cycle(unsigned int value)
+void update_duty_cycle (unsigned int value)
 {
   /* value: 0 -> 1000; 0 == 0% and 1000 == 100% duty cycle
    *
@@ -103,7 +82,7 @@ void update_duty_cycle(unsigned int value)
   TIM_SetCompare3(TIM1, value);
 }
 
-void TIM1_IRQHandler(void)
+void TIM1_BRK_IRQHandler (void)
 {
   // reset cruise control
   cruise_control_reset ();
@@ -114,16 +93,6 @@ void TIM1_IRQHandler(void)
 
 void brake_init (void)
 {
-  /* Enable GPIOB clock. */
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1 | RCC_APB2Periph_GPIOB | RCC_APB2Periph_AFIO, ENABLE);
-
-  /* GPIOB Configuration: BKIN pin */
-  GPIO_InitTypeDef GPIO_InitStructure;
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_Init(GPIOB, &GPIO_InitStructure);
-
   /* Automatic Output enable, Break, dead time and lock configuration*/
   TIM_BDTRInitTypeDef TIM_BDTRInitStructure;
   TIM_BDTRInitStructure.TIM_OSSRState = TIM_OSSRState_Disable;
@@ -134,6 +103,13 @@ void brake_init (void)
   TIM_BDTRInitStructure.TIM_BreakPolarity = TIM_BreakPolarity_Low;
   TIM_BDTRInitStructure.TIM_AutomaticOutput = TIM_AutomaticOutput_Enable;
   TIM_BDTRConfig(TIM1, &TIM_BDTRInitStructure);
+
+  NVIC_InitTypeDef NVIC_InitStructure;
+  NVIC_InitStructure.NVIC_IRQChannel = TIM1_BRK_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_InitStructure);
 
   /* Enable Break interrupt */
   TIM_ITConfig (TIM1, TIM_IT_Break, ENABLE);
