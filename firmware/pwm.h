@@ -10,4 +10,5 @@
  */
 
 void pwm_init (void);
+void brake_init (void);
 void update_duty_cycle(unsigned int value);

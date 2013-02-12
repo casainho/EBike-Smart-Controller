@@ -52,11 +52,11 @@ void pwm_init (void)
 
   TIM_OCInitTypeDef  TIM_OCInitStructure;
   /* Channel 1, 2,3 Configuration in PWM mode */
-  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2;
+  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
   TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
   TIM_OCInitStructure.TIM_OutputNState = TIM_OutputNState_Disable;
   TIM_OCInitStructure.TIM_Pulse = 0; // start with 0% duty cycle
-  TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;
+  TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
   TIM_OCInitStructure.TIM_OCNPolarity = TIM_OCNPolarity_Low;
   TIM_OCInitStructure.TIM_OCIdleState = TIM_OCIdleState_Reset;
   TIM_OCInitStructure.TIM_OCNIdleState = TIM_OCIdleState_Reset;
@@ -69,9 +69,9 @@ void pwm_init (void)
   TIM1->CCMR1 |= (1 << 7); // OC1CE: OC1Ref is cleared as soon as a High level is detected on ETRF input
 
   // duty_cycle = 0
-  TIM_SetCompare1(TIM1, 0);
-  TIM_SetCompare2(TIM1, 0);
-  TIM_SetCompare3(TIM1, 0);
+  TIM_SetCompare1(TIM1, 1200);
+  TIM_SetCompare2(TIM1, 1200);
+  TIM_SetCompare3(TIM1, 1200);
 
   /* TIM1 counter enable */
   TIM_Cmd(TIM1, ENABLE);
@@ -88,7 +88,7 @@ void update_duty_cycle(unsigned int value)
    * 0.1% --> 1.2
    *
    */
-  value = (value * 1.2f);
+  value = 1200 - (value * 1.2f);
   if (value <= 0)
   {
     value = 0;
@@ -126,12 +126,12 @@ void brake_init (void)
 
   /* Automatic Output enable, Break, dead time and lock configuration*/
   TIM_BDTRInitTypeDef TIM_BDTRInitStructure;
-  TIM_BDTRInitStructure.TIM_OSSRState = TIM_OSSRState_Enable;
-  TIM_BDTRInitStructure.TIM_OSSIState = TIM_OSSIState_Enable;
-  TIM_BDTRInitStructure.TIM_LOCKLevel = TIM_LOCKLevel_1;
-  TIM_BDTRInitStructure.TIM_DeadTime = 11;
+  TIM_BDTRInitStructure.TIM_OSSRState = TIM_OSSRState_Disable;
+  TIM_BDTRInitStructure.TIM_OSSIState = TIM_OSSIState_Disable;
+  TIM_BDTRInitStructure.TIM_LOCKLevel = TIM_LOCKLevel_OFF;
+  TIM_BDTRInitStructure.TIM_DeadTime = 0;
   TIM_BDTRInitStructure.TIM_Break = TIM_Break_Enable;
-  TIM_BDTRInitStructure.TIM_BreakPolarity = TIM_BreakPolarity_High;
+  TIM_BDTRInitStructure.TIM_BreakPolarity = TIM_BreakPolarity_Low;
   TIM_BDTRInitStructure.TIM_AutomaticOutput = TIM_AutomaticOutput_Enable;
   TIM_BDTRConfig(TIM1, &TIM_BDTRInitStructure);
 
