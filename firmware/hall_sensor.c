@@ -83,6 +83,5 @@ void hall_sensor_init (void)
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
   NVIC_Init(&NVIC_InitStructure);
 
-  /* TIM enable counter */
   TIM_Cmd(TIM3, ENABLE);
 }

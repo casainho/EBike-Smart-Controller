@@ -65,19 +65,36 @@ void initialize (void)
 
 int main (void)
 {
+  volatile unsigned int throttle_percent = 0;
+  volatile unsigned int coast = 1;
+
   initialize ();
 
   motor_set_max_current (0.3f); // set max current in amps
 
-  volatile unsigned int time = 0, a = 0;
-
   while (1)
   {
-    time = get_hall_sensors_us ();
-    if (time > a)
-      {
-        a = time;
-      }
+    throttle_percent = throttle_get_percent (); // get throttle value
+    if (throttle_percent < 50) // if Throttle < 5%
+    {
+      throttle_percent = 0;
+    }
+
+    if (throttle_percent == 0) // coast...
+    {
+      motor_coast ();
+      coast = 1;
+    }
+    else if (throttle_percent != 0 && coast == 1) // start motor...
+    {
+      motor_set_duty_cycle (throttle_percent);
+      motor_start ();
+      coast = 0;
+    }
+    else // keep motor running...
+    {
+      motor_set_duty_cycle (throttle_percent);
+    }
   }
 
   // should never arrive here

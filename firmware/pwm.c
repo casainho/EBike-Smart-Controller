@@ -42,15 +42,10 @@ void pwm_init (void)
 
   /* configure ETR for current control */
   TIM_ETRConfig (TIM1, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0);
-  TIM_SelectInputTrigger (TIM1, TIM_TS_ETRF);
+  //TIM_SelectInputTrigger (TIM1, TIM_TS_ETRF);
   TIM_ClearOC1Ref (TIM1, TIM_OCClear_Enable);
   TIM_ClearOC2Ref (TIM1, TIM_OCClear_Enable);
   TIM_ClearOC3Ref (TIM1, TIM_OCClear_Enable);
-
-  // duty_cycle = 0
-  TIM_SetCompare1 (TIM1, 1200);
-  TIM_SetCompare2 (TIM1, 1200);
-  TIM_SetCompare3 (TIM1, 1200);
 
   /* TIM1 counter enable */
   TIM_Cmd (TIM1, ENABLE);

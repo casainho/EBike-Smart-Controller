@@ -46,6 +46,8 @@ unsigned int throttle_percent_value (void)
   return value;
 }
 
+// Returns the value of Throttle percent (0 up to 1000, where 1000 is equal to 100%).
+// Cruise Control superimposes the Throttle value.
 unsigned int throttle_get_percent (void)
 {
   if (cruise_control)
