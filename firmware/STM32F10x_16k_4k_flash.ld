@@ -28,7 +28,7 @@ MEMORY
 _estack = ORIGIN(RAM)+LENGTH(RAM);
 
 /* start of the two 1kByte pages used by EEprom emulation at end of flash */
-_seemul = ORIGIN(EEMUL);
+/*_seemul = ORIGIN(EEMUL);*/
 
 /* There will be a link error if there is not this amount of RAM free at the end. */
 _Minimum_Stack_Size = 0x100 ;
