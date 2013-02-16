@@ -42,7 +42,6 @@ void pwm_init (void)
 
   /* configure ETR for current control */
   TIM_ETRConfig (TIM1, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0);
-  //TIM_SelectInputTrigger (TIM1, TIM_TS_ETRF);
   TIM_ClearOC1Ref (TIM1, TIM_OCClear_Enable);
   TIM_ClearOC2Ref (TIM1, TIM_OCClear_Enable);
   TIM_ClearOC3Ref (TIM1, TIM_OCClear_Enable);
@@ -62,7 +61,7 @@ void update_duty_cycle (unsigned int value)
    * 0.1% --> 1.2
    *
    */
-  value = 1200 - (value * 1.2f);
+  value = (value * 1.2f);
   if (value <= 0)
   {
     value = 0;

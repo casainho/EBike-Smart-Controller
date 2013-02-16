@@ -29,14 +29,22 @@
 #define HALL_SENSORS_MASK_PA ((1 << 6) | (1 << 7))
 #define HALL_SENSORS_MASK_PB (1 << 0)
 
+GPIO_InitTypeDef GPIO_InitStructure;
+
 void phase_a_h_on (void)
 {
-  TIM1->CCMR1 |= TIM_OCMode_PWM2; // enable PWM
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
 
 void phase_a_h_off (void)
 {
-  TIM_ForcedOC1Config(TIM1, TIM_ForcedAction_InActive); // disable PWM
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
 
 void phase_a_l_on (void)
@@ -52,12 +60,18 @@ void phase_a_l_off (void)
 
 void phase_b_h_on (void)
 {
-  TIM1->CCMR1 = (TIM_OCMode_PWM2 << 8); // enable PWM
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
 
 void phase_b_h_off (void)
 {
-  TIM_ForcedOC2Config(TIM1, TIM_ForcedAction_InActive); // disable PWM
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
 
 void phase_b_l_on (void)
@@ -73,12 +87,18 @@ void phase_b_l_off (void)
 
 void phase_c_h_on (void)
 {
-  TIM1->CCMR2 |= TIM_OCMode_PWM2; // enable PWM
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
 
 void phase_c_h_off (void)
 {
-  TIM_ForcedOC3Config(TIM1, TIM_ForcedAction_InActive); // disable PWM
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
 
 void phase_c_l_on (void)
