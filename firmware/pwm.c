@@ -34,7 +34,7 @@ void pwm_init (void)
   TIM_OCInitStructure.TIM_Pulse = 0; // start with 0% duty cycle
   TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
   TIM_OCInitStructure.TIM_OCNPolarity = TIM_OCNPolarity_Low;
-  TIM_OCInitStructure.TIM_OCIdleState = TIM_OCIdleState_Reset;
+  TIM_OCInitStructure.TIM_OCIdleState = TIM_OCIdleState_Set;
   TIM_OCInitStructure.TIM_OCNIdleState = TIM_OCIdleState_Reset;
   TIM_OC1Init(TIM1, &TIM_OCInitStructure);
   TIM_OC2Init(TIM1, &TIM_OCInitStructure);
@@ -66,9 +66,9 @@ void update_duty_cycle (unsigned int value)
   {
     value = 0;
   }
-  else if (value >= 1200)
+  else if (value >= 1180)
   {
-    value = 1200;
+    value = 1180;
   }
 
   TIM_SetCompare1(TIM1, value);

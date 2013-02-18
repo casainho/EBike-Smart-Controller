@@ -16,6 +16,6 @@
 #define MOTOR_CURRENT_ZERO_AMPS_ADC_VALUE 1998 // 1.61V --> 3.3V ==> 4095; 1.61V ==> 1998
 
 // Throttle config
-#define THROTTLE_ADC_MAX 3348 // 2.7V (rounded to lower so throttle will always get there)
+#define THROTTLE_ADC_MAX 3102 // 2.5V (rounded to lower so throttle will always get there)
 #define THROTTLE_ADC_MIN 868 // 0.7V (rounded to higher)
 #define THROTTLE_ADC_AMPLITUDE (THROTTLE_ADC_MAX - THROTTLE_ADC_MIN)

@@ -70,7 +70,7 @@ int main (void)
 
   initialize ();
 
-  motor_set_max_current (1); // set max current in amps
+  motor_set_max_current (0.3); // set max current in amps
 
   while (1)
   {
