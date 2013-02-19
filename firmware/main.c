@@ -9,6 +9,7 @@
  * Released under the GPL License, Version 3
  */
 
+#include <stdio.h>
 #include <stdint.h>
 #include "stm32f10x.h"
 #include "stm32f10x_gpio.h"
@@ -70,10 +71,18 @@ int main (void)
 
   initialize ();
 
-  motor_set_max_current (0.3); // set max current in amps
+  motor_set_max_current (2); // set max current in amps
 
   while (1)
   {
+      // turn off buffers, so IO occurs immediately
+      setvbuf(stdin, NULL, _IONBF, 0);
+      setvbuf(stdout, NULL, _IONBF, 0);
+      setvbuf(stderr, NULL, _IONBF, 0);
+
+      iprintf("Greetings Earthlings");
+
+
     throttle_percent = throttle_get_percent (); // get throttle value
     if (throttle_percent < 50) // if Throttle < 5%
     {

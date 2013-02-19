@@ -150,7 +150,7 @@ STMEEEMULINCDIR = $(STMEEEMULDIR)/include
 # List C source files here. (C dependencies are automatically generated.)
 # use file-extension c for "c-only"-files
 ## Demo-Application:
-SRC = main.c gpio.c adc.c pwm.c bldc.c throttle.c hall_sensor.c dac.c motor.c
+SRC = syscalls.c main.c gpio.c adc.c pwm.c bldc.c throttle.c hall_sensor.c dac.c motor.c
 ## Chan's fat and my low-level drivers
 #SRC += $(FATFSDIR)/ff.c $(FATFSDIR)/option/ccsbcs.c
 #SRC += $(FATFSDIR_DEV)/ff.c $(FATFSDIR_DEV)/option/ccsbcs.c
@@ -166,7 +166,7 @@ SRC += $(CMSISCOREDIR)/core_cm3.c
 SRC += $(CMSISDEVDIR)/system_stm32f10x.c
 ## used parts of the STM-Library
 SRC += $(STMSPDSRCDIR)/stm32f10x_adc.c
-#SRC += $(STMSPDSRCDIR)/stm32f10x_usart.c
+SRC += $(STMSPDSRCDIR)/stm32f10x_usart.c
 #SRC += $(STMSPDSRCDIR)/stm32f10x_flash.c
 SRC += $(STMSPDSRCDIR)/stm32f10x_gpio.c
 SRC += $(STMSPDSRCDIR)/stm32f10x_rcc.c
