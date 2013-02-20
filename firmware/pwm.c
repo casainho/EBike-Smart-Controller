@@ -66,9 +66,9 @@ void update_duty_cycle (unsigned int value)
   {
     value = 0;
   }
-  else if (value >= 1180)
+  else if (value >= 1200)
   {
-    value = 1180;
+    value = 1200;
   }
 
   TIM_SetCompare1(TIM1, value);

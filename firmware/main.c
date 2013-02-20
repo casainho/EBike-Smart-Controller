@@ -23,25 +23,40 @@
 #include "dac.h"
 #include "config.h"
 #include "motor.h"
+#include "uart.h"
 
-volatile unsigned int _ms;
+volatile unsigned int _ms10;
 
-void delay_ms (unsigned int ms)
+unsigned char message_1[4] = "123\n";
+unsigned char message_2[7] = "ola :)\n";
+
+void delay_ms10 (unsigned int ms10)
 {
-  _ms = 1;
-  while (ms >= _ms) ;
+  _ms10 = 1;
+  while (ms10 >= _ms10) ;
 }
 
-void SysTick_Handler(void) // runs every 1ms
+void SysTick_Handler(void) // runs every 10ms
 {
-  // need to call this every 1ms
+  static unsigned int counter = 1;
+
+  // need to call this every 10ms
   cruise_control_tick ();
 
-  // for delay_ms ()
-  _ms++;
+  // for delay_ms10 ()
+  _ms10++;
 
-  // read throttle value and update PWM duty cycle every 100ms
+  // read throttle value and update PWM duty cycle every 10ms
   update_duty_cycle (throttle_get_percent ()); // 1000 --> 100%
+
+  // every 500ms
+  if (counter++ > 50)
+  {
+    uart_send (message_1, 4);
+    uart_send (message_2, 7);
+
+    counter = 1;
+  }
 }
 
 void initialize (void)
@@ -54,6 +69,7 @@ void initialize (void)
   commutation_disable ();
   pwm_init ();
   hall_sensor_init ();
+  uart_init ();
 
   /* Setup SysTick Timer for 1 millisecond interrupts, also enables Systick and Systick-Interrupt */
   if (SysTick_Config(SystemCoreClock / 1000))
@@ -70,7 +86,7 @@ int main (void)
 
   initialize ();
 
-  motor_set_max_current (0.3); // set max current in amps
+  motor_set_max_current (2); // set max current in amps
 
   while (1)
   {

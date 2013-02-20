@@ -11,6 +11,7 @@
 
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_gpio.h"
+#include "stm32f10x_rcc.h"
 
 /* Connetions:
  *
@@ -48,9 +49,9 @@ void gpio_init (void)
 
   /* DAC Periph clock enable */
   RCC_APB1PeriphClockCmd( RCC_APB1Periph_DAC   |
-                          RCC_APB1Periph_TIM3
+                          RCC_APB1Periph_TIM3  |
+                          RCC_APB1Periph_USART3
                           , ENABLE);
-
 
   /* Once the DAC channel is enabled, the corresponding GPIO pin is automatically
      connected to the DAC converter. In order to avoid parasitic consumption,
@@ -77,8 +78,13 @@ void gpio_init (void)
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
   GPIO_Init(GPIOB, &GPIO_InitStructure);
 
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_12;
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_11 | GPIO_Pin_12;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_Init(GPIOB, &GPIO_InitStructure);
 

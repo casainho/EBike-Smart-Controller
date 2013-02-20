@@ -81,7 +81,7 @@ void cruise_control_tick (void)
         count_cruise_control++;
         GPIO_ResetBits(GPIOB, GPIO_Pin_5);; // disable LED
 
-        if (count_cruise_control > 5000) // 5 seconds
+        if (count_cruise_control > 500) // 5 seconds
         {
           GPIO_SetBits(GPIOB, GPIO_Pin_5); // enable LED
           count_cruise_control = 1;
