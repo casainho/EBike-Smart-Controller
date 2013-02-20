@@ -71,8 +71,8 @@ void initialize (void)
   hall_sensor_init ();
   uart_init ();
 
-  /* Setup SysTick Timer for 1 millisecond interrupts, also enables Systick and Systick-Interrupt */
-  if (SysTick_Config(SystemCoreClock / 1000))
+  /* Setup SysTick Timer for 10 millisecond interrupts, also enables Systick and Systick-Interrupt */
+  if (SysTick_Config(SystemCoreClock / 100))
   {
     /* Capture error */
     while (1);
