@@ -18,7 +18,7 @@
 void uart_init (void)
 {
   USART_InitTypeDef USART_InitStructure;
-  USART_InitStructure.USART_BaudRate = 19200;
+  USART_InitStructure.USART_BaudRate = 9600;
   USART_InitStructure.USART_WordLength = USART_WordLength_8b;
   USART_InitStructure.USART_StopBits = USART_StopBits_1;
   USART_InitStructure.USART_Parity = USART_Parity_No;
@@ -30,16 +30,33 @@ void uart_init (void)
   USART_Cmd(USART3, ENABLE);
 }
 
-void uart_send (unsigned char *buf, unsigned int len)
+void uart_send_char (unsigned char c)
+{
+  /* Send one byte from USARTy to USARTz */
+  USART_SendData (USART3, c);
+
+  /* Loop until USARTy DR register is empty */
+  while (USART_GetFlagStatus (USART3, USART_FLAG_TXE) == RESET) ;
+}
+
+void uart_send_str (unsigned char *data)
+{
+  unsigned char i = 0, r;
+
+  while ((r = data[i++]))
+    uart_send_char (r);
+}
+
+void uart_send_buf (unsigned char *buf, unsigned int len)
 {
   unsigned int i;
 
   for (i = 0; i < len; i++)
   {
     /* Send one byte from USARTy to USARTz */
-    USART_SendData(USART3, buf[i]);
+    USART_SendData (USART3, buf[i]);
 
     /* Loop until USARTy DR register is empty */
-    while(USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET) ;
+    while (USART_GetFlagStatus (USART3, USART_FLAG_TXE) == RESET) ;
   }
 }

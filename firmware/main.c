@@ -24,11 +24,9 @@
 #include "config.h"
 #include "motor.h"
 #include "uart.h"
+#include "sersendf.h"
 
 volatile unsigned int _ms10;
-
-unsigned char message_1[4] = "123\n";
-unsigned char message_2[7] = "ola :)\n";
 
 void delay_ms10 (unsigned int ms10)
 {
@@ -49,13 +47,11 @@ void SysTick_Handler(void) // runs every 10ms
   // read throttle value and update PWM duty cycle every 10ms
   update_duty_cycle (throttle_get_percent ()); // 1000 --> 100%
 
+  volatile unsigned int motor_speed = motor_get_speed ();
   // every 500ms
   if (counter++ > 50)
   {
-    uart_send (message_1, 4);
-    uart_send (message_2, 7);
-
-    counter = 1;
+    sersendf ("%u\n", motor_speed);
   }
 }
 

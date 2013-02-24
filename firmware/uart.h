@@ -10,4 +10,6 @@
  */
 
 void uart_init (void);
-void uart_send (unsigned char *buf, unsigned int len);
+void uart_send_char (unsigned char c);
+void uart_send_str (unsigned char *data);
+void uart_send_buf (unsigned char *buf, unsigned int len);

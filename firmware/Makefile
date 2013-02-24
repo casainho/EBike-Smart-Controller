@@ -150,7 +150,7 @@ STMEEEMULINCDIR = $(STMEEEMULDIR)/include
 # List C source files here. (C dependencies are automatically generated.)
 # use file-extension c for "c-only"-files
 ## Demo-Application:
-SRC = main.c gpio.c adc.c pwm.c bldc.c throttle.c hall_sensor.c dac.c motor.c uart.c
+SRC = main.c gpio.c adc.c pwm.c bldc.c throttle.c hall_sensor.c dac.c motor.c uart.c sermsg.c sersendf.c
 ## Chan's fat and my low-level drivers
 #SRC += $(FATFSDIR)/ff.c $(FATFSDIR)/option/ccsbcs.c
 #SRC += $(FATFSDIR_DEV)/ff.c $(FATFSDIR_DEV)/option/ccsbcs.c
